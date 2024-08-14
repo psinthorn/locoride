@@ -1,10 +1,12 @@
+"use client"
+
 import InputItem from './InputItem'
 
 const SearchSection = () => {
   return (
     <div className='p-2 md:p-4 border-[2px] rounded-xl'>
         <p className='text-[20px] font-bold'>
-            Get A ride
+            Location and Estimation
         </p>
         <InputItem type='source' />
         <InputItem type='destination' />    
