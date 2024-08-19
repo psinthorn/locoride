@@ -3,14 +3,12 @@
 import React, { useContext, useCallback, useEffect, useState, memo } from 'react';
 import SourceContext from '@/context/SourceContext'
 import DestinationContext from '@/context/DestinationContext'
-import { GoogleMap, MarkerF, OverlayView, OverlayViewF, useJsApiLoader } from '@react-google-maps/api';
-
-
+import { DirectionsRenderer, GoogleMap, MarkerF, OverlayView, OverlayViewF, useJsApiLoader } from '@react-google-maps/api';
 
 const GoogleMapsSection = () => {
   const {source, setSource} = useContext(SourceContext);
   const {destination, setDestination} = useContext(DestinationContext); 
-
+  const [directionRoutePoints, setDirectionRoutePoints] = useState([]);
   const containerStyle = {
     width: '100%',
     height: '600px'
@@ -29,6 +27,8 @@ const GoogleMapsSection = () => {
 
   const [map, setMap] = useState(null)
 
+
+// Pickup location
   useEffect(() => {
     if(source?.length != [] && map){
       map.panTo(
@@ -42,8 +42,14 @@ const GoogleMapsSection = () => {
         lng: source.lng
       })
     }
+
+    if(source.length != [] && destination.length != []){
+      directionRoute();
+    }
+
   },[source]);
 
+// Destination drop off
   useEffect(() => {
     if(destination?.length != [] && map ){
       map.panTo(
@@ -56,14 +62,32 @@ const GoogleMapsSection = () => {
         lng: destination.lng
       })
     }
-  },[destination])
-    
 
+    if(source.length != [] && destination.length != []){
+      directionRoute();
+    }
+  },[destination])
+
+  const directionRoute = () => {
+    const DirectionService = new google.maps.DirectionsService();
+    DirectionService.route({
+      origin:{lat: source.lat, lng: source.lng},
+      destination:{lat: destination.lat, lng: destination.lng},
+      travelMode: google.maps.TravelMode.DRIVING
+    }, (result, status) => {
+      if(status === google.maps.DirectionsStatus.OK){
+        console.log('result: ' + result  );
+        setDirectionRoutePoints(result)
+      }else{
+        console.error('Error: ' + Error);
+      }
+    })
+  }
+    
     const onLoad = useCallback(function callback(map) {
       // This is just an example of getting and using the map instance!!! don't just blindly copy!
       const bounds = new window.google.maps.LatLngBounds(center);
       map.fitBounds(bounds);
-
       setMap(map)
     }, [])
 
@@ -103,29 +127,42 @@ const GoogleMapsSection = () => {
               </div> */}
 
             </OverlayViewF>
-          </MarkerF>: null }
+            </MarkerF>: null }
 
-          { destination?.length != []? <MarkerF
-              position={{lat: destination.lat, lng: destination.lng }} 
-              icon={{
-                url: '/source-destination.png',
-                scaledSize:{
-                  width: 60,
-                  height: 60
-                }
+            { destination?.length != []? <MarkerF
+                position={{lat: destination.lat, lng: destination.lng }} 
+                icon={{
+                  url: '/source-destination.png',
+                  scaledSize:{
+                    width: 60,
+                    height: 60
+                  }
+                }}
+              >
+              <OverlayViewF
+                position={{lat: destination.lat, lng: destination.lng}} 
+                mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
+              >
+                {/* Show location label */}
+                {/* <div>
+                  <p>{destination.label}</p>
+                </div> */}
+              </OverlayViewF>
+
+            </MarkerF> : null }
+
+            {/* render route on the maps  */}
+            <DirectionsRenderer 
+              directions={directionRoutePoints}
+              options={{
+              polylineOptions:{
+                strokeColor: "#FFA500",
+                strokeWeight: 3,
+                draggable: false,
+              },
+                suppressMarkers: true
               }}
-            >
-            <OverlayViewF
-              position={{lat: destination.lat, lng: destination.lng}} 
-              mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
-            >
-              {/* Show location label */}
-              {/* <div>
-                <p>{destination.label}</p>
-              </div> */}
-            </OverlayViewF>
-
-          </MarkerF> : null }
+            />
 
         </GoogleMap>
       ) 
