@@ -152,6 +152,7 @@ const GoogleMapsSection = () => {
             </MarkerF> : null }
 
             {/* render route on the maps  */}
+            
             <DirectionsRenderer 
               directions={directionRoutePoints}
               options={{
