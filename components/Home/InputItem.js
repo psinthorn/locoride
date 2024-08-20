@@ -21,7 +21,7 @@ const InputItem = ({type, googleApiKey}) => {
     setValue(place);
     console.log(place);
     console.log(type);
-    const placeId = place.value.place_id;
+    const placeId = place?.value.place_id;
     console.log("Place ID is: " + placeId);
     const service = new google.maps.places.PlacesService(document.createElement('div'));
     service.getDetails({placeId}, (place, status) => {
