@@ -13,7 +13,7 @@ const Header = () => {
                 <a>Reserve Now</a>
             </div>
             <div className='flex gap-6 items-center text-sm'>
-                <a>Static Rate</a>
+                <a href="/service-rate" >Service Rate</a>
             </div>
             <div className='flex gap-6 items-center text-sm'>
                 Why Us?
