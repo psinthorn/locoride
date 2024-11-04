@@ -14,11 +14,6 @@ const SearchSection = () => {
   const [routeDistanceInMile, setRouteDistanceInMile] = useState(0);
   const [routeDistanceInKiloMeter, setRouteDistanceInKiloMeter] = useState(0);
 
-  // useEffect(() => {
-  //   console.log(source);
-  //   console.log(destination)
-  // },[source, destination]);
-
   const calculateDistance  = () => {
     const distance = google.maps.geometry.spherical.computeDistanceBetween(
       { lat: source.lat, lng: source.lng },
@@ -35,37 +30,11 @@ const SearchSection = () => {
     console.log("KM: ", km);
   }
 
-    // console.log(routeDistanceInMile);
-    // console.log(routeDistanceInKiloMeter);
-    // distanceToMile(distance);
-    // milesToKiloMeters(distance);
-    // setRouteDistanceInMile(routeDistance*0.000621374)
-  
-
-  // const distanceToMile = () => {
-  //   const miles = routeDistance*0.000621374;
-  //   setRouteDistanceInMile(miles)
-  // };
-  
-  // const milesToKiloMeters = () => {
-  //   const conversionFactor = 1.60934
-  //   const km = routeDistanceInMile * conversionFactor
-  //   setRouteDistanceInKiloMeter(km)
-  // };
-
-
-  // useEffect(() => {
-  //   setRouteDistanceInMile(miles)
-  //   console.log(routeDistance);
-  //   console.log(routeDistanceInMile);
-  //   console.log(routeDistanceInKiloMeter);
-  // }, [source, destination]);
-  
   return (
     <div>
       <div className='p-2 md:p-4 border-[2px] rounded-xl'>
           <p className='text-[20px] font-bold'>
-              Location and Estimation
+              From - To Rate Estimation
           </p>
           <InputItem type='source' />
           <InputItem type='destination' />    
