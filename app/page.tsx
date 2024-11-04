@@ -8,6 +8,7 @@ import DestinationContext from './../context/DestinationContext'
 import GoogleApiKeyContext from '@/context/GoogleApiKeyContext'
 import { useState, useEffect, useContext } from "react";
 import { LoadScript } from '@react-google-maps/api'
+import CarListOptions from './../components/Home/CarListOptions'
 
 export default function Home() {
 
