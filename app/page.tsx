@@ -12,8 +12,9 @@ import CarListOptions from './../components/Home/CarListOptions'
 
 export default function Home() {
 
-  const [source, setSource] = useState([]);
-  const [destination, setDestination] = useState([]);
+  const [source, setSource] = useState<any[]>([]);
+  const [destination, setDestination] = useState<any[]>([]);
+  let googleMapsApiKey: string = ""
   
  
 
@@ -28,7 +29,7 @@ export default function Home() {
       <DestinationContext.Provider value={{destination, setDestination}}>
       <LoadScript 
         libraries={['places']}
-        googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_API_KEY}
+        googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_API_KEY || "" }
       >
         <div className="grid grid-cols-1 md:grid-cols-3 p-6 gap-5 ">
           <div >
