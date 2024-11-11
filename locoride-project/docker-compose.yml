@@ -1,0 +1,89 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ../frontend
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+    restart: always
+    environment:
+      - NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_ZmlybS1saW9uZmlzaC00NS5jbGVyay5hY2NvdW50cy5kZXYk
+      - CLERK_SECRET_KEY=sk_test_TpLyfri6nGQ0XnTO2FSSlSJxA2tSF1AnBKdx9fZyQv
+      - GOOGLE_API_KEY=AIzaSyDroTpry8Oh-Y-6Rx0Pw10FhYZ6vtfX8HY
+      - NEXT_PUBLIC_GOOGLE_API_KEY=AIzaSyDroTpry8Oh-Y-6Rx0Pw10FhYZ6vtfX8HY
+      - NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+      - NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+      - NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/
+      - NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/
+      # - NEXT_PUBLIC_GOOGLE_API_KEY=${NEXT_PUBLIC_GOOGLE_API_KEY}
+    depends_on:
+      - backend
+      - mysql
+      - postgres
+
+  backend:
+    build:
+      context: ../backend
+      dockerfile: Dockerfile
+    ports:
+      - '8080:8080'
+    restart: always
+    depends_on:
+      - mysql
+      - postgres
+
+  mysql:
+    image: mysql:5.7
+    restart: always
+    deploy:
+      mode: replicated
+      replicas: 1
+    ports:
+      - '3306:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: adminx
+      MYSQL_DATABASE: locoride
+      MYSQL_USER: root
+      MYSQL_PASSWORD: adminx
+
+  postgres:
+    image: postgres:13
+    restart: always
+    deploy:
+      mode: replicated
+      replicas: 1
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_DB: locoride
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: adminx
+    logging:
+      options:
+        max-size: 10m
+        max-file: '3'
+    volumes:
+      - ./db-data/postgres:/var/lib/postgresql/data
+      # - ./sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - '8081:80'
+    environment:
+      PMA_HOST: mysql
+      MYSQL_ROOT_PASSWORD: adminx
+
+  pgadmin:
+    image: dpage/pgadmin4
+    restart: always
+    ports:
+      - '8082:80'
+    environment:
+      PGADMIN_DEFAULT_EMAIL: adminx@adminx.com
+      PGADMIN_DEFAULT_PASSWORD: adminx
+    depends_on:
+      - postgres
