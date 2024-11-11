@@ -133,3 +133,4 @@ dist
 locoride-project/.env
 frontend/.env.local
 backend/.env.local
+.env
