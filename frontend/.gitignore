@@ -130,3 +130,6 @@ dist
 .pnp.*
 
 # docker-compose.yml
+locoride-project/.env
+frontend/.env.local
+backend/.env.local
