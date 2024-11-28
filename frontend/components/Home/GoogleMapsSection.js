@@ -5,6 +5,8 @@ import SourceContext from '@/context/SourceContext'
 import DestinationContext from '@/context/DestinationContext'
 import { DirectionsRenderer, GoogleMap, MarkerF, OverlayView, OverlayViewF, useJsApiLoader } from '@react-google-maps/api';
 
+// rate per km
+
 const GoogleMapsSection = () => {
   const {source, setSource} = useContext(SourceContext);
   const {destination, setDestination} = useContext(DestinationContext); 

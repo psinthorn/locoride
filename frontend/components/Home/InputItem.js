@@ -24,9 +24,13 @@ const InputItem = ({type, googleApiKey}) => {
     const placeId = place?.value.place_id;
     console.log("Place ID is: " + placeId);
     const service = new google.maps.places.PlacesService(document.createElement('div'));
+
     service.getDetails({placeId}, (place, status) => {
       if(status === "OK" && place.geometry && place.geometry.location){
-        console.log(place.geometry.location.lat());
+
+        console.log(place.geometry.location.lat()
+      
+      );
         
         if(type === 'source'){
           setSource({
@@ -35,6 +39,7 @@ const InputItem = ({type, googleApiKey}) => {
             name:place.formatted_address,
             label:place.name
           })
+          console.log("Source: ", source);
         }else{
           setDestination({
             lat:place.geometry.location.lat(),
@@ -42,6 +47,7 @@ const InputItem = ({type, googleApiKey}) => {
             name:place.formatted_address,
             label:place.name
           })
+          console.log("Destination: ", destination);
         };
 
       }

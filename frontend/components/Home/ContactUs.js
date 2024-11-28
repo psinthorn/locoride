@@ -13,9 +13,8 @@ const ContactUs = () => {
                             className="font-heading mb-4 font-bold tracking-tight text-gray-900 dark:text-white text-3xl sm:text-5xl">
                             Get in Touch
                         </h2>
-                        <p className="mx-auto mt-4 max-w-3xl text-xl text-gray-600 dark:text-slate-400">In hac habitasse platea
-                            dictumst
-                        </p>
+                        <p className="mx-auto mt-4 max-w-3xl text-xl text-gray-600 dark:text-slate-400">The best airport transfer service in Koh Samui. We provide a professional and reliable service to all our customers. Our drivers are experienced and friendly. We offer a range of vehicles to suit your needs. Whether you are travelling alone or with a group, we have the perfect vehicle for you. Our prices are competitive and our service is second to none. Book with us today and experience the best airport transfer service in Koh Samui.</p>
+                           
                     </div>
                 </div>
                 <div className="flex items-stretch justify-center">

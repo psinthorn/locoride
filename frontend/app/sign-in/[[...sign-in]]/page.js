@@ -7,7 +7,7 @@ export default function Page() {
       <Image  src="/limousine-service.png" width={1024} height={1024}
         className="object-contain w-full h-full"
       />
-      <div className="absolute top-10 left-10">
+      <div className="flex absolute inset-0  items-center justify-center">
         <SignIn />
       </div>
     </>
