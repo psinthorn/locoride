@@ -47,7 +47,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: adminx
       MYSQL_DATABASE: locoride
-      MYSQL_USER: root
+      MYSQL_USER: adminx
       MYSQL_PASSWORD: adminx
 
   postgres:
@@ -61,7 +61,7 @@ services:
     environment:
       POSTGRES_DB: locoride
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: adminx
+      POSTGRES_PASSWORD: postgres
     logging:
       options:
         max-size: 10m
