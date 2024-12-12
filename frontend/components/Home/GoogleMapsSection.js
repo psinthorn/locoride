@@ -13,7 +13,7 @@ const GoogleMapsSection = () => {
   const [directionRoutePoints, setDirectionRoutePoints] = useState([]);
   const containerStyle = {
     width: '100%',
-    height: '600px'
+    height: '680px'
   };
   
   const [center,setCenter ] = useState({
@@ -102,7 +102,7 @@ const GoogleMapsSection = () => {
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={center}
-          zoom={14}
+          zoom={10}
           onLoad={onLoad}
           onUnmount={onUnmount}
           options={{mapId:'976a7c2e003306bf'}}
@@ -160,7 +160,7 @@ const GoogleMapsSection = () => {
               options={{
               polylineOptions:{
                 strokeColor: "#FFA500",
-                strokeWeight: 3,
+                strokeWeight: 4,
                 draggable: false,
               },
                 suppressMarkers: true

@@ -14,7 +14,7 @@ const InputItem = ({type, googleApiKey}) => {
   const {destination, setDestination} = useContext(DestinationContext); 
 
   useEffect(() => {
-    type == 'source' ? setInputPlaceHolder('Pickup Location') : setInputPlaceHolder('Dropoff Location')
+    type == 'source' ? setInputPlaceHolder('Enter Your Pickup Location') : setInputPlaceHolder('Enter Your Drop Off Location')
   },[])
 
   const getLatAndLng = (place, type) => {
@@ -27,9 +27,7 @@ const InputItem = ({type, googleApiKey}) => {
 
     service.getDetails({placeId}, (place, status) => {
       if(status === "OK" && place.geometry && place.geometry.location){
-
         console.log(place.geometry.location.lat()
-      
       );
         
         if(type === 'source'){
@@ -54,6 +52,7 @@ const InputItem = ({type, googleApiKey}) => {
     })
   };
 
+  
   return (
     <div className='flex items-center p-3 gap-4 mt-3 bg-slate-200 rounded-lg'>
         <Image src={ type == 'source' ? '/source-destination.png' : '/source-destination.png'} width={40} height={40}/>

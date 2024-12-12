@@ -5,7 +5,7 @@ import InputItem from './InputItem'
 import SourceContext from '@/context/SourceContext';
 import DestinationContext from '@/context/DestinationContext';
 import { calculateOverrideValues } from 'next/dist/server/font-utils';
-import CarListOptions from './CarListOptions';
+import CarListOptions from '../vehicle/CarListOptions';
 
 const SearchSection = () => {
   const {source, setSource} = useContext(SourceContext);
@@ -13,6 +13,7 @@ const SearchSection = () => {
   const [routeDistance, setRouteDistance] = useState(0);
   const [routeDistanceInMile, setRouteDistanceInMile] = useState(0);
   const [routeDistanceInKiloMeter, setRouteDistanceInKiloMeter] = useState(0);
+  
 
   const calculateDistance  = () => {
 
@@ -37,9 +38,9 @@ const SearchSection = () => {
           }
         }
       );
-    } else {
-      console.error('Google Maps JavaScript API is not loaded or geometry library is not available.');
-    };
+  } else {
+    console.error('Google Maps JavaScript API is not loaded or geometry library is not available.');
+  };
 
     // // Origin and destination variables
     // if (typeof google !== 'undefined' && google.maps && google.maps.geometry) {
@@ -65,30 +66,37 @@ const SearchSection = () => {
     calculateDistance();
   }, [source, destination]);
 
-  console.log("raw distance: ", routeDistance);
-  // console.log("Miles: ", miles);
-  console.log("KM: ", routeDistanceInKiloMeter);
-
-
   return (
     <div>
       <div className='p-2 md:p-4 border-[2px] rounded-xl'>
           <p className='text-[20px] font-bold'>
-              From - To Rate Estimation
+              From where to where? Let us know youre route.
+          </p>
+          <p>
+              to check availibility and fare rate now.
           </p>
           <InputItem type='source' />
           <InputItem type='destination' />    
-          <button 
+          {/* <button 
             className='w-full p-3 mt-5 bg-orange-400 text-white rounded-lg' 
             onClick={()=>calculateDistance()}
-          >Search</button>  
+          >Search</button>   */}
       </div>
-        <div className='p-4'>
-            <p className='text-[20px] font-semibold items-center'>
-              {routeDistance? "Available Book Now" : <p className='items-center text-center'>Click Search for Availibility Check</p>}
+        <div className='p-2'>
+            <p className='text-[20px] font-light items-center mt-4'>
+              {routeDistance? <span className='text-green-700 font-bold'>Available Book Now</span> : <p className='items-center text-center p-4'>"Transfers Made Simple on Koh Samui!"</p>}
             </p>
-              {routeDistance?  <p className='text-sm'>Estimate Distance: { routeDistanceInKiloMeter.toFixed(2)} KM</p> : null }
-              { routeDistance? <CarListOptions/> : null }
+              {routeDistance?  <p className='text-sm'>Distance: <span>
+                { 
+                  routeDistanceInKiloMeter.toFixed(2)
+                } </span>KM</p> : null }
+        </div>
+        <div className='mt-2'>
+          {routeDistance? <p className='p-1'>
+              Select car type for your comfortable
+            </p> : null }
+            
+          { routeDistance? <CarListOptions distance={routeDistanceInKiloMeter.toFixed(2)} /> : null }
         </div>
       </div>
   )

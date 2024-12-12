@@ -7,17 +7,17 @@ const Header = () => {
     <div className='flex items-center justify-between p-5 pb-3 pl-10 border-b-[4px] border-gray-200'>
         <div className='flex gap-16 items-center'>
             <p className='text-3xl font-bold text-orange-500'>
-              <a href="/">rOs</a>
+              <a href="/">rRs</a>
             </p>
             <div className='flex gap-6 items-center text-sm'>
-                <a>Reserve Now</a>
+                <a href="/booking" >Book Now</a>
             </div>
             <div className='flex gap-6 items-center text-sm'>
                 <a href="/service-rate" >Service Rate</a>
             </div>
-            <div className='flex gap-6 items-center text-sm'>
-                Why Us?
-            </div>
+            {/* <div className='flex gap-6 items-center text-sm'>
+                Package Rate
+            </div> */}
             <div className='flex gap-6 items-center text-sm'>
                 <a href="/contact">Contact</a> 
             </div>

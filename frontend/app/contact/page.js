@@ -3,7 +3,8 @@ import ContactUs from '../../components/Home/ContactUs'
 
 const page = () => {
   return (
-    <div><ContactUs/></div>
+    // <div><ContactUs /></div> 
+    <>Contact Us</>
   )
 }
 

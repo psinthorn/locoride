@@ -2,8 +2,8 @@ import React from 'react'
 
 const ContactUs = () => {
   return (
-        <section className="bg-blue-50 dark:bg-slate-800" id="contact">
-            <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+        <section className="bg-blue-50 dark:bg-slate-200" id="contact-us">
+            <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:py-8">
                 <div className="mb-4">
                     <div className="mb-6 max-w-3xl text-center sm:text-center md:mx-auto md:mb-12">
                         <p className="text-base font-semibold uppercase tracking-wide text-blue-600 dark:text-blue-200">
@@ -13,7 +13,7 @@ const ContactUs = () => {
                             className="font-heading mb-4 font-bold tracking-tight text-gray-900 dark:text-white text-3xl sm:text-5xl">
                             Get in Touch
                         </h2>
-                        <p className="mx-auto mt-4 max-w-3xl text-xl text-gray-600 dark:text-slate-400">The best airport transfer service in Koh Samui. We provide a professional and reliable service to all our customers. Our drivers are experienced and friendly. We offer a range of vehicles to suit your needs. Whether you are travelling alone or with a group, we have the perfect vehicle for you. Our prices are competitive and our service is second to none. Book with us today and experience the best airport transfer service in Koh Samui.</p>
+                        <p className="mx-auto mt-4 max-w-3xl text-xl text-gray-600 dark:text-slate-400">AAAA The best airport transfer service in Koh Samui. We provide a professional and reliable service to all our customers. Our drivers are experienced and friendly. We offer a range of vehicles to suit your needs. Whether you are travelling alone or with a group, we have the perfect vehicle for you. Our prices are competitive and our service is second to none. Book with us today and experience the best airport transfer service in Koh Samui.</p>
                            
                     </div>
                 </div>
@@ -21,9 +21,7 @@ const ContactUs = () => {
                     <div className="grid md:grid-cols-2">
                         <div className="h-full pr-6">
                             <p className="mt-3 mb-12 text-lg text-gray-600 dark:text-slate-400">
-                                ClassName aptent taciti sociosqu ad
-                                litora torquent per conubia nostra, per inceptos himenaeos. Duis nec ipsum orci. Ut scelerisque
-                                sagittis ante, ac tincidunt sem venenatis ut.
+                                Social Us 
                             </p>
                             <ul className="mb-6 md:mb-0">
                                 <li className="flex">
@@ -40,8 +38,8 @@ const ContactUs = () => {
                                     <div className="ml-4 mb-4">
                                         <h3 className="mb-2 text-lg font-medium leading-6 text-gray-900 dark:text-white">Our Address
                                         </h3>
-                                        <p className="text-gray-600 dark:text-slate-400">1230 Maecenas Street Donec Road</p>
-                                        <p className="text-gray-600 dark:text-slate-400">New York, EEUU</p>
+                                        <p className="text-gray-600 dark:text-slate-400">Sanambin Rd.,</p>
+                                        <p className="text-gray-600 dark:text-slate-400">Koh Samui, Thailand</p>
                                     </div>
                                 </li>
                                 <li className="flex">
