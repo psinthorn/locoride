@@ -11,7 +11,7 @@ const Footer = () => {
           <div className="mb-6 md:mb-0 items-center">
               <a href="https://flowbite.com/" className="flex items-center">
                   {/* <img src="https://flowbite.com/docs/images/logo.svg" className="h-8 me-3" alt="FlowBite Logo" /> */}
-                  <span className="self-center text-2xl  whitespace-nowrap text-orange-500 font-bold dark:text-white">rRs</span>
+                  <span className="self-center text-2xl  whitespace-nowrap text-orange-500 font-bold dark:text-white">rRSs</span>
               </a>
               <p className='text-gray-500 hover:text-gray-900 dark:hover:text-white text-sm'>VIP Transfer Service</p>
               <p className='text-gray-500 hover:text-gray-900 dark:hover:text-white text-sm'>Koh Samui, Thailand</p>
@@ -46,7 +46,10 @@ const Footer = () => {
                           <a href="https://flowbite.com/" className="hover:underline">About Us</a>
                       </li>
                       <li className="mb-4">
-                          <a href="https://tailwindcss.com/" className="hover:underline">Fixed Rate</a>
+                          <a href="https://tailwindcss.com/" className="hover:underline">Why Us</a>
+                      </li>
+                      <li className="mb-4">
+                          <a href="https://tailwindcss.com/" className="hover:underline">Faq</a>
                       </li>
                       <li>
                           <a href="https://tailwindcss.com/" className="hover:underline">Contract Rate</a>
@@ -64,8 +67,8 @@ const Footer = () => {
                       </li>
                   </ul>
               </div>
-              <div>
-                  <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Legal</h2>
+              {/* <div>
+                  <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Faq</h2>
                   <ul className="text-gray-500 dark:text-gray-400 font-medium">
                       <li className="mb-4">
                           <a href="#" className="hover:underline">Privacy Policy</a>
@@ -74,7 +77,7 @@ const Footer = () => {
                           <a href="#" className="hover:underline">Terms &amp; Conditions</a>
                       </li>
                   </ul>
-              </div>
+              </div> */}
               <div>
                   <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Legal</h2>
                   <ul className="text-gray-500 dark:text-gray-400 font-medium">

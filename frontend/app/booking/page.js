@@ -19,7 +19,7 @@ export default function Booking() {
       from: '"F2xMail 👻" <f2coltd@gmail.com>', // sender address
       to: "psinthorn@gmail.com", // list of receivers
       subject: "Hello ✔", // Subject line
-      text: "Hello world?", // plain text body
+      text: "Hello world? LOcoride", // plain text body
       html: "<b>Hello world?</b>", // html body
     });
   

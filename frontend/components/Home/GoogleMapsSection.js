@@ -13,10 +13,11 @@ const GoogleMapsSection = () => {
   const [directionRoutePoints, setDirectionRoutePoints] = useState([]);
   const containerStyle = {
     width: '100%',
-    height: '680px'
+    height: '80%'
   };
   
   const [center,setCenter ] = useState({
+
     // diamond pool villa samui 
     lat: 9.550519, 
     lng: 100.0662909
@@ -29,9 +30,9 @@ const GoogleMapsSection = () => {
 
   const [map, setMap] = useState(null)
 
-
 // Pickup location
   useEffect(() => {
+
     if(source?.length != [] && map){
       map.panTo(
         {
@@ -43,13 +44,14 @@ const GoogleMapsSection = () => {
         lat: source.lat,
         lng: source.lng
       })
-    }
+    };
 
     if(source.length != [] && destination.length != []){
       directionRoute();
-    }
+    };
 
   },[source]);
+
 
 // Destination drop off
   useEffect(() => {
@@ -64,7 +66,6 @@ const GoogleMapsSection = () => {
         lng: destination.lng
       })
     }
-
     if(source.length != [] && destination.length != []){
       directionRoute();
     }
@@ -84,7 +85,7 @@ const GoogleMapsSection = () => {
         console.error('Error: ' + Error);
       }
     })
-  }
+  };
     
     const onLoad = useCallback(function callback(map) {
       // This is just an example of getting and using the map instance!!! don't just blindly copy!
@@ -95,7 +96,7 @@ const GoogleMapsSection = () => {
 
     const onUnmount = useCallback(function callback(map) {
       setMap(null)
-    }, [])
+    }, []);
 
 
   return (

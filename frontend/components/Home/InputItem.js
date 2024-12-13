@@ -13,6 +13,7 @@ const InputItem = ({type, googleApiKey}) => {
   const {source, setSource} = useContext(SourceContext);
   const {destination, setDestination} = useContext(DestinationContext); 
 
+  // check if type is source or destination and set the placeholder accordingly
   useEffect(() => {
     type == 'source' ? setInputPlaceHolder('Enter Your Pickup Location') : setInputPlaceHolder('Enter Your Drop Off Location')
   },[])
@@ -52,10 +53,10 @@ const InputItem = ({type, googleApiKey}) => {
     })
   };
 
-  
+
   return (
     <div className='flex items-center p-3 gap-4 mt-3 bg-slate-200 rounded-lg'>
-        <Image src={ type == 'source' ? '/source-destination.png' : '/source-destination.png'} width={40} height={40}/>
+        <Image src={ type == 'source' ? '/source-destination.png' : '/source-destination.png'} width={40} height={40} alt='pin location'/>
         {/* <input type='text' placeholder={ type == 'source' ? 'Pickup Location' : 'Destination'}  className='w-full bg-transparent outline-none' /> */}
         <GooglePlacesAutocomplete
           // apiKey={process.env.NEXT_PUBLIC_GOOGLE_API_KEY}

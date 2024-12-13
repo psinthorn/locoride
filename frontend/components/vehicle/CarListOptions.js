@@ -24,7 +24,7 @@ const CarListOptions = (distance) => {
             <div className='cursor-pointer p-2'
             onClick={() => { setActiveIndex(index); setSelectedCar(car); console.log(selectedCar); }} 
             >
-              <CarItem  car={car} distance={distance} />  
+              <CarItem key={car.ID} car={car} distance={distance} />  
             </div>       
           ))}
 

@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ["latin"] });
 const montserrat = Montserrat({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "rOs: Limousine Service on Koh Samui Thailand",
+  title: "rRSs: Limousine Service on Koh Samui Thailand",
   description: "Transfer service on Koh Samui Thailand",
 };
 

@@ -11,36 +11,34 @@ const SearchSection = () => {
   const {source, setSource} = useContext(SourceContext);
   const {destination, setDestination} = useContext(DestinationContext); 
   const [routeDistance, setRouteDistance] = useState(0);
-  const [routeDistanceInMile, setRouteDistanceInMile] = useState(0);
+  //const [routeDistanceInMile, setRouteDistanceInMile] = useState(0);
   const [routeDistanceInKiloMeter, setRouteDistanceInKiloMeter] = useState(0);
   
-
   const calculateDistance  = () => {
+    if (source && destination) {
+        const service = new google.maps.DistanceMatrixService();
+        service.getDistanceMatrix(
+          {
+            origins: [new google.maps.LatLng(source.lat, source.lng)],
+            destinations: [new google.maps.LatLng(destination.lat, destination.lng)],
+            travelMode: google.maps.TravelMode.DRIVING,
+          },
+          (response, status) => {
+            if (status === google.maps.DistanceMatrixStatus.OK) {
+              const distanceInMeters = response.rows[0].elements[0].distance.value;
+              const distanceInKilometers = distanceInMeters / 1000;
 
-  if (source && destination) {
-      const service = new google.maps.DistanceMatrixService();
-      service.getDistanceMatrix(
-        {
-          origins: [new google.maps.LatLng(source.lat, source.lng)],
-          destinations: [new google.maps.LatLng(destination.lat, destination.lng)],
-          travelMode: google.maps.TravelMode.DRIVING,
-        },
-        (response, status) => {
-          if (status === google.maps.DistanceMatrixStatus.OK) {
-            const distanceInMeters = response.rows[0].elements[0].distance.value;
-            const distanceInKilometers = distanceInMeters / 1000;
-
-            setRouteDistance(distanceInMeters);
-            setRouteDistanceInKiloMeter(distanceInKilometers);
-            setRouteDistanceInMile(distanceInKilometers * 0.621371); // Convert kilometers to miles
-          } else {
-            console.error('Error calculating distance:', status);
+              setRouteDistance(distanceInMeters);
+              setRouteDistanceInKiloMeter(distanceInKilometers);
+              //setRouteDistanceInMile(distanceInKilometers * 0.621371); // Convert kilometers to miles
+            } else {
+              console.error('Error calculating distance:', status);
+            }
           }
-        }
-      );
-  } else {
-    console.error('Google Maps JavaScript API is not loaded or geometry library is not available.');
-  };
+        );
+    } else {
+      console.error('Google Maps JavaScript API is not loaded or geometry library is not available.');
+    };
 
     // // Origin and destination variables
     // if (typeof google !== 'undefined' && google.maps && google.maps.geometry) {
@@ -67,9 +65,9 @@ const SearchSection = () => {
   }, [source, destination]);
 
   return (
-    <div>
-      <div className='p-2 md:p-4 border-[2px] rounded-xl'>
-          <p className='text-[20px] font-bold'>
+    <div className='space-y-6 p-4 md:p-6'>
+      <div className='p-4 md:p-6 border-2 rounded-xl'>
+          <p className='text-1xl font-bold mb-2'>
               From where to where? Let us know youre route.
           </p>
           <p>
@@ -82,9 +80,9 @@ const SearchSection = () => {
             onClick={()=>calculateDistance()}
           >Search</button>   */}
       </div>
-        <div className='p-2'>
-            <p className='text-[20px] font-light items-center mt-4'>
-              {routeDistance? <span className='text-green-700 font-bold'>Available Book Now</span> : <p className='items-center text-center p-4'>"Transfers Made Simple on Koh Samui!"</p>}
+        <div className='p-4'>
+            <p className='text-2xl font-light items-center mt-4'>
+              {routeDistance ? <span className='text-green-700 font-bold'>Available Book Now</span> : <p className="items-center text-center p-4 font-bold text-orange-500 rounded-md">" Transfers Made Simple on Koh Samui! "</p>}
             </p>
               {routeDistance?  <p className='text-sm'>Distance: <span>
                 { 
