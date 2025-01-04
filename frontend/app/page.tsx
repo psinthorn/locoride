@@ -1,8 +1,8 @@
 "use client"
 
 
-import SearchSection from '@/components/home/SearchSection'
-// import SearchSection from '@/components/home/SearchSection'
+import GoogleMapsSection from '../components/home/GoogleMapsSection'
+import SearchSection from '../components/home/SearchSection'
 import SourceContext from '@/context/SourceContext'
 import DestinationContext from '@/context/DestinationContext'
 // import GoogleApiKeyContext from '@/context/GoogleApiKeyContext'
@@ -35,7 +35,7 @@ export default function Home() {
             <SearchSection />
           </div>
           <div className="col-span-2">
-            {/* <GoogleMapsSection />  */}
+            <GoogleMapsSection /> 
           </div>
         </div>
       </LoadScript>
