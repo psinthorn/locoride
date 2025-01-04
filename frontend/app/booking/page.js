@@ -1,35 +1,60 @@
+"use client"
+
 import Head from 'next/head';
-import BookingForm from '../../components/booking/BookingForm';
-import nodemailer from 'nodemailer';
+import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
+import BookingForm from '../../components/form/BookingForm';
 
 export default function Booking() {
+  const searchParams = useSearchParams();
+  const rateEstimate = searchParams.get('rateEstimate');
+  const source = JSON.parse(searchParams.get('source'));
+  const destination = JSON.parse(searchParams.get('destination'));
+  const carType = searchParams.get('carType');
+  const carModel = searchParams.get('carModel');
+  // const name = searchParams.get('name');
+  const pickupPoint = source.label;
+  const destinationPoint = destination.label;
+  
+  // console.log(source);
+  // console.log(destination);
 
-  const transporter = nodemailer.createTransport({
-    host: 'sandbox.smtp.mailtrap.io',
-    port: 2525,
-    auth: {
-      user: '192643efe13672',
-      pass: '2a309a3b94ae90',
-    },
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    mobile: '',
+    flightNo: '',
+    arrivalTime: '',
+    carType: carType? carType : '',
+    carModel: carModel? carModel : '',
+    rate: rateEstimate,
+    pickupPoint: pickupPoint,
+    dropoffPoint: destinationPoint,
   });
 
-  async function mailServ() {
-    // send mail with defined transport object
-    const info = await transporter.sendMail({
-      from: '"F2xMail 👻" <f2coltd@gmail.com>', // sender address
-      to: "psinthorn@gmail.com", // list of receivers
-      subject: "Hello ✔", // Subject line
-      text: "Hello world? LOcoride", // plain text body
-      html: "<b>Hello world?</b>", // html body
-    });
-  
-    console.log("Message sent: %s", info.messageId);
-    // Message sent: <d786aa62-4e0a-070a-47ed-0b0666549519@ethereal.email>
-  }
-  console.log('mailServ excute Go ->', );
-  mailServ().catch(console.error);
-  
+  //console.log(formData);
 
+  useEffect(() => {
+    console.log(pickupPoint);
+    console.log(destinationPoint);
+    console.log(rateEstimate);
+    console.log(carType);
+    console.log(carModel);
+    // if (searchParams) {
+    //   console.log('searchParams: ', searchParams);
+    setFormData((formData) => ({
+        ...formData,
+        carType: carType,
+        carModel: carModel,
+        rate: rateEstimate,
+        pickupPoint: pickupPoint,
+        dropoffPoint: destinationPoint,
+      }));
+      
+  }, [searchParams]);
+
+  console.log("Form Data: ", formData);
 
   return (
     <div className="min-h-screen bg-gray-100">
@@ -40,7 +65,7 @@ export default function Booking() {
       </Head>
 
       <main className="py-10">
-        <BookingForm />
+        <BookingForm bookingData={formData}/>
       </main>
     </div>
   );

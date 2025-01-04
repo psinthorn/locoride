@@ -1,52 +1,70 @@
+"use client"
 import Image from 'next/image';
 import {CarListData} from '../../data/CarListData'
 import CarItem from './CarItem'
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import RateCalculate from '../utilities/RateCalculate';
+import { useRouter } from 'next/navigation';
+import SourceContext from '@/context/SourceContext';
+import DestinationContext from '@/context/DestinationContext';
 
-
-const CarListOptions = (distance) => {
+const CarListOptions = (distance, sou, des) => {
 
   const [selectedCar, setSelectedCar] = useState();
   const [activeIndex, setActiveIndex] = useState();
   const [rateEstimate, setRateEstimate] = useState(0);
+  const {source, setSource} = useContext(SourceContext);
+  const {destination, setDestination} = useContext(DestinationContext); 
+  const router = useRouter();
 
- 
+  const handleClick = async (index) => {
+    setActiveIndex(index);
+    const car = CarListData[index];
+    setSelectedCar(car);
 
-  // useEffect(() => {
-  //   //setRateEstimate(0);
-  //   // rateCalculate(distance,rate);
-  // }, (distance));
+    if (car) {
+      const rateAvrage = await RateCalculate(distance, car.rate);
+      setRateEstimate(rateAvrage);
+      //console.log(typeof(rateAvrage));
+    }
+  };
+
+  // send data to booking page 
+  const handleBookNow = () => {
+    console.log('Book Now');
+    console.log(source);
+    console.log(destination);
+    console.log(rateEstimate);
+    console.log(selectedCar);
+    if (selectedCar) {
+      rateEstimate.toString();
+      router.push(`/booking?carType=${selectedCar.type}&carModel=${selectedCar.model}&rateEstimate=${rateEstimate}&source=${JSON.stringify(source)}&destination=${JSON.stringify(destination)}`);
+    }
+  };
 
 
   return ( 
+    <div>
         <div className='p-4 overflow-auto h-[480px]'>
           { CarListData.map((car, index) => (    
             <div className='cursor-pointer p-2'
-            onClick={() => { setActiveIndex(index); setSelectedCar(car); console.log(selectedCar); }} 
+            onClick={() => handleClick(index)}
             >
               <CarItem key={car.ID} car={car} distance={distance} />  
             </div>       
-          ))}
+          ))}     
+        </div>    
 
-          {selectedCar?
-           <div className='flex justify-between bottom-8 fixed items-center font-bold text-center w-full text-slate-700 p-4 shadow-xl bg-white  md:w-[30%] sm:w-full border-[1px] rounded-sm '>
-              <h2>Make Payment for {selectedCar.type}</h2>
-              <button className='bg-black text-white rounded-lg text-center p-4'>Book Now</button>
-              {/* <Booking /> */}
-            </div> 
-            : null
-          }
-        </div>       
-   
+        { selectedCar?
+          <div className='flex justify-between bottom-8 fixed items-center font-bold text-center w-full text-slate-700 p-4 shadow-xl bg-white  md:w-[30%] sm:w-full border-[1px] rounded-sm '>
+             <h2>Make Payment for {selectedCar.type}  Avg. {rateEstimate} THB</h2>
+             <button onClick={handleBookNow} className='bg-black text-white rounded-lg text-center p-4'>Book Now</button>
+             {/* <Booking /> */}
+           </div> 
+           : null
+        }
 
-    // <div className='mt-10 mb-10'>
-    //   <h2 className='font-bold'>Choose Car Type and Book Now</h2>
-    //   <div className='flex justify-between p-4'>
-    //   { CarListData.map((car) => (
-    //     <CarItem  car={car} />
-    //   ))}
-    //   </div> 
-    // </div>
+   </div>
   )
 }
 

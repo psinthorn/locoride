@@ -13,7 +13,7 @@ const GoogleMapsSection = () => {
   const [directionRoutePoints, setDirectionRoutePoints] = useState([]);
   const containerStyle = {
     width: '100%',
-    height: '80%'
+    height: '85%'
   };
   
   const [center,setCenter ] = useState({
@@ -29,6 +29,7 @@ const GoogleMapsSection = () => {
   });
 
   const [map, setMap] = useState(null)
+
 
 // Pickup location
   useEffect(() => {

@@ -1,10 +1,13 @@
 import nodemailer from 'nodemailer';
 
+
+
 export default async (req, res) => {
   if (req.method === 'POST') {
     const { name, email, message } = req.body;
     console.log('req.body ->', req.body);
 
+  
     // Create a SMTP transporter object
     console.log('process.env.MAILTRAP_HOST ->', process.env.MAILTRAP_HOST);
     console.log('process.env.MAILTRAP_USER ->', process.env.MAILTRAP_USER);
@@ -20,6 +23,13 @@ export default async (req, res) => {
       },
     });
 
+    // Check email type to choose email template and content
+    // 1. Contact Form Submission
+    // 2. Booking Request
+    // 3. Customer Inquiry
+    // 4. Others
+    
+        
     // Email content to be sent to the administrator
     const adminMailOptions = {
       from: '"Contact Form" <no-reply@locoride.com>',

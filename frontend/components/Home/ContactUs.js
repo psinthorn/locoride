@@ -10,6 +10,7 @@ const ContactUs = () => {
   });
 
   const [responseMessage, setResponseMessage] = useState('');
+  const [showMessage, setShowMessage] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
@@ -27,15 +28,21 @@ const ContactUs = () => {
       },
       body: JSON.stringify(formData),
     });
-    console.log('response ->', response);
+    
+    // Get the response message
     const result = await response.json();
     setResponseMessage(result.message);
+    setShowMessage(true);
+
+     // Hide the message after 5 seconds
+     setTimeout(() => {
+      setShowMessage(false);
+    }, 5000);
 
     if (response.ok) {
-      alert({responseMessage});
+      alert(responseMessage);
     } else {
-      console.log('Response Failed Error: ', {responseMessage});
-      alert('Failed to send message. Error: ', {responseMessage});
+      alert('Failed to send message. Error: ', responseMessage);
     }
   };
 
@@ -106,11 +113,17 @@ const ContactUs = () => {
               <button type="submit" className="w-full bg-blue-500 text-white py-2 rounded">
                 Send Message
               </button>
-            </form>
-            {responseMessage && (
-              <p className="mt-4 text-center text-green-600">{responseMessage}</p>
-            )}
+            </form>      
           </div>
+
+            <div className='m-1 p-1'>
+              {showMessage && (
+                <div className="mt-6 p-4 bg-green-100 text-green-700 rounded">
+                  {responseMessage}
+                </div>
+              )}
+            </div>
+            
         </div>
       </div>
     </section>

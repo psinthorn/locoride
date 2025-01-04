@@ -4,15 +4,14 @@ import { useContext, useEffect, useState } from 'react';
 import InputItem from './InputItem'
 import SourceContext from '@/context/SourceContext';
 import DestinationContext from '@/context/DestinationContext';
-import { calculateOverrideValues } from 'next/dist/server/font-utils';
 import CarListOptions from '../vehicle/CarListOptions';
 
 const SearchSection = () => {
   const {source, setSource} = useContext(SourceContext);
   const {destination, setDestination} = useContext(DestinationContext); 
   const [routeDistance, setRouteDistance] = useState(0);
-  //const [routeDistanceInMile, setRouteDistanceInMile] = useState(0);
   const [routeDistanceInKiloMeter, setRouteDistanceInKiloMeter] = useState(0);
+  
   
   const calculateDistance  = () => {
     if (source && destination) {
@@ -30,7 +29,7 @@ const SearchSection = () => {
 
               setRouteDistance(distanceInMeters);
               setRouteDistanceInKiloMeter(distanceInKilometers);
-              //setRouteDistanceInMile(distanceInKilometers * 0.621371); // Convert kilometers to miles
+        
             } else {
               console.error('Error calculating distance:', status);
             }
@@ -39,28 +38,13 @@ const SearchSection = () => {
     } else {
       console.error('Google Maps JavaScript API is not loaded or geometry library is not available.');
     };
-
-    // // Origin and destination variables
-    // if (typeof google !== 'undefined' && google.maps && google.maps.geometry) {
-    // if (source && destination) {
-    // const origin = new google.maps.LatLng(source.lat, source.lng);
-    // const dest = new google.maps.LatLng(destination.lat, destination.lng);
-
-    // const distanceInMeters =  google.maps.geometry.spherical.computeDistanceBetween(origin, dest)
-    //                           // google.maps.geometry.spherical.computeDistanceBetween(origin, dest);
-    // const distanceInKilometers = distanceInMeters / 1000;
-
-    // // setDistance(distanceInKilometers);
-    // setRouteDistance(distanceInMeters);
-    // setRouteDistanceInKiloMeter(distanceInKilometers);
-    // //setRouteDistanceInMile(miles)
-    // //setRouteDistanceInKiloMeter(distanceInKilometers)
-    // } } else {
-    //   console.error('Google Maps JavaScript API is not loaded or geometry library is not available.');
-    // }
 };
 
   useEffect(() => {
+    console.log("source: ", source);
+    console.log("destination: ", destination);
+    setSource(source);
+    setDestination(destination);
     calculateDistance();
   }, [source, destination]);
 
@@ -94,7 +78,8 @@ const SearchSection = () => {
               Select car type for your comfortable
             </p> : null }
             
-          { routeDistance? <CarListOptions distance={routeDistanceInKiloMeter.toFixed(2)} /> : null }
+          { routeDistance? <CarListOptions distance={routeDistanceInKiloMeter.toFixed(2)} source={source} destination={destination}  /> : null }
+          
         </div>
       </div>
   )
