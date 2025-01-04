@@ -1,7 +1,7 @@
 "use client"
 
 
-// import GoogleMapsSection from '@/components/home/GoogleMapsSection'
+import SearchSection from '@/components/home/SearchSection'
 // import SearchSection from '@/components/home/SearchSection'
 import SourceContext from '@/context/SourceContext'
 import DestinationContext from '@/context/DestinationContext'
@@ -32,7 +32,7 @@ export default function Home() {
       >
         <div className="grid grid-cols-1 md:grid-cols-3 p-6 gap-5 ">
           <div >
-            {/* <SearchSection /> */}
+            <SearchSection />
           </div>
           <div className="col-span-2">
             {/* <GoogleMapsSection />  */}
