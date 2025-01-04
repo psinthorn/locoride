@@ -174,4 +174,3 @@ const GoogleMapsSection = () => {
 }
 
 export default GoogleMapsSection;
-// export default memo(GoogleMapsSection);

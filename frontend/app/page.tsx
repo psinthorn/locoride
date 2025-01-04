@@ -1,8 +1,8 @@
 "use client"
 
 
-import GoogleMapsSection from '../components/home/GoogleMapsSection'
-import SearchSection from '../components/home/SearchSection'
+import GoogleMapsSection from '@/components/Home/GoogleMapsSection'
+import SearchSection from '@/components/Home/SearchSection'
 import SourceContext from '@/context/SourceContext'
 import DestinationContext from '@/context/DestinationContext'
 // import GoogleApiKeyContext from '@/context/GoogleApiKeyContext'
