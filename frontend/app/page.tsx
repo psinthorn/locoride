@@ -1,10 +1,10 @@
 "use client"
 
 
-import GoogleMapsSection from '../components/home/GoogleMapsSection'
-import SearchSection from '../components/home/SearchSection'
-import SourceContext from './../context/SourceContext'
-import DestinationContext from './../context/DestinationContext'
+import GoogleMapsSection from '@/components/home/GoogleMapsSection'
+import SearchSection from '@/components/home/SearchSection'
+import SourceContext from '@/context/SourceContext'
+import DestinationContext from '@/context/DestinationContext'
 // import GoogleApiKeyContext from '@/context/GoogleApiKeyContext'
 import { useState, useEffect, useContext } from "react";
 import { LoadScript } from '@react-google-maps/api'
