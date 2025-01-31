@@ -2,9 +2,9 @@ version: '3.8'
 
 services:
   nextjs:
-    container_name: nextjs-app
+    container_name: frontend
     build:
-      context: .
+      context: ./frontend
       dockerfile: Dockerfile
     ports:
       - '3000:3000'
@@ -16,20 +16,30 @@ services:
       - NODE_ENV=development
       - MYSQL_HOST=mysql
       - MYSQL_USER=root
-      - MYSQL_PASSWORD=root
+      - MYSQL_PASSWORD=adminx
       - MYSQL_DATABASE=locoride
-    depends_on:
-      - mysql
+    
+  # golang:
+  #   container_name: backend
+  #   build:
+  #     context: ./backend
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - '8080:8080'
+  #   restart: always
+  #   depends_on:
+  #     - mysql
+  #     # - postgres
 
   mysql:
     container_name: mysql-db
     image: mysql:8
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: adminx
       MYSQL_DATABASE: locoride
       MYSQL_USER: root
-      MYSQL_PASSWORD: root
+      MYSQL_PASSWORD: adminx
     ports:
       - '3306:3306'
     volumes:
@@ -41,11 +51,47 @@ services:
     restart: always
     environment:
       PMA_HOST: mysql
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: adminx
     ports:
       - '8080:80'
     depends_on:
       - mysql
+  
+#   postgres:
+#     container_name: postgres-db
+#     image: postgres:13
+#     ports:
+#       - '5432:5432'
+#     environment:
+#       POSTGRES_DB: locoride
+#       POSTGRES_USER: postgres
+#       POSTGRES_PASSWORD: adminx
+#     volumes:
+#       - data/postgres
 
+#   pgadmin:
+#     image: dpage/pgadmin4
+#     ports:
+#       - '8082:80'
+#     environment:
+#       PGADMIN_DEFAULT_EMAIL: adminx@adminx.com
+#       PGADMIN_DEFAULT_PASSWORD: adminx
+#     depends_on:
+#       - postgres
 volumes:
   mysql-data:
+
+  # frontend:
+  #   build:
+  #     context: ./frontend
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - '3000:3000'
+  #   environment:
+  #     - NEXT_PUBLIC_GOOGLE_API_KEY=${NEXT_PUBLIC_GOOGLE_API_KEY}
+  #   depends_on:
+  #     - backend
+  #     - mysql
+  #     - postgres
+
+  
