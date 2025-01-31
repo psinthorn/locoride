@@ -13,8 +13,9 @@ const InputItem = ({type, googleApiKey}) => {
   const {source, setSource} = useContext(SourceContext);
   const {destination, setDestination} = useContext(DestinationContext); 
 
+  // check if type is source or destination and set the placeholder accordingly
   useEffect(() => {
-    type == 'source' ? setInputPlaceHolder('Pickup Location') : setInputPlaceHolder('Dropoff Location')
+    type == 'source' ? setInputPlaceHolder('Enter Your Pickup Location') : setInputPlaceHolder('Enter Your Drop Off Location')
   },[])
 
   const getLatAndLng = (place, type) => {
@@ -24,9 +25,11 @@ const InputItem = ({type, googleApiKey}) => {
     const placeId = place?.value.place_id;
     console.log("Place ID is: " + placeId);
     const service = new google.maps.places.PlacesService(document.createElement('div'));
+
     service.getDetails({placeId}, (place, status) => {
       if(status === "OK" && place.geometry && place.geometry.location){
-        console.log(place.geometry.location.lat());
+        console.log(place.geometry.location.lat()
+      );
         
         if(type === 'source'){
           setSource({
@@ -35,6 +38,7 @@ const InputItem = ({type, googleApiKey}) => {
             name:place.formatted_address,
             label:place.name
           })
+          console.log("Source: ", source);
         }else{
           setDestination({
             lat:place.geometry.location.lat(),
@@ -42,15 +46,17 @@ const InputItem = ({type, googleApiKey}) => {
             name:place.formatted_address,
             label:place.name
           })
+          console.log("Destination: ", destination);
         };
 
       }
     })
   };
 
+
   return (
     <div className='flex items-center p-3 gap-4 mt-3 bg-slate-200 rounded-lg'>
-        <Image src={ type == 'source' ? '/source-destination.png' : '/source-destination.png'} width={40} height={40}/>
+        <Image src={ type == 'source' ? '/source-destination.png' : '/source-destination.png'} width={40} height={40} alt='pin location'/>
         {/* <input type='text' placeholder={ type == 'source' ? 'Pickup Location' : 'Destination'}  className='w-full bg-transparent outline-none' /> */}
         <GooglePlacesAutocomplete
           // apiKey={process.env.NEXT_PUBLIC_GOOGLE_API_KEY}

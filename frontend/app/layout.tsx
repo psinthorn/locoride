@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Montserrat } from "next/font/google";
-import Header from "./../components/Header";
-import Footer from "./../components/Footer";
+import Header from "../components/layout/Header";
+import Footer from "../components/layout/Footer";
 
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ["latin"] });
 const montserrat = Montserrat({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "rOs: Limousine Service on Koh Samui Thailand",
+  title: "rRSs: Limousine Service on Koh Samui Thailand",
   description: "Transfer service on Koh Samui Thailand",
 };
 

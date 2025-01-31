@@ -5,16 +5,19 @@ import SourceContext from '@/context/SourceContext'
 import DestinationContext from '@/context/DestinationContext'
 import { DirectionsRenderer, GoogleMap, MarkerF, OverlayView, OverlayViewF, useJsApiLoader } from '@react-google-maps/api';
 
+// rate per km
+
 const GoogleMapsSection = () => {
   const {source, setSource} = useContext(SourceContext);
   const {destination, setDestination} = useContext(DestinationContext); 
   const [directionRoutePoints, setDirectionRoutePoints] = useState([]);
   const containerStyle = {
     width: '100%',
-    height: '600px'
+    height: '85%'
   };
   
   const [center,setCenter ] = useState({
+
     // diamond pool villa samui 
     lat: 9.550519, 
     lng: 100.0662909
@@ -30,6 +33,7 @@ const GoogleMapsSection = () => {
 
 // Pickup location
   useEffect(() => {
+
     if(source?.length != [] && map){
       map.panTo(
         {
@@ -41,13 +45,14 @@ const GoogleMapsSection = () => {
         lat: source.lat,
         lng: source.lng
       })
-    }
+    };
 
     if(source.length != [] && destination.length != []){
       directionRoute();
-    }
+    };
 
   },[source]);
+
 
 // Destination drop off
   useEffect(() => {
@@ -62,7 +67,6 @@ const GoogleMapsSection = () => {
         lng: destination.lng
       })
     }
-
     if(source.length != [] && destination.length != []){
       directionRoute();
     }
@@ -82,7 +86,7 @@ const GoogleMapsSection = () => {
         console.error('Error: ' + Error);
       }
     })
-  }
+  };
     
     const onLoad = useCallback(function callback(map) {
       // This is just an example of getting and using the map instance!!! don't just blindly copy!
@@ -93,14 +97,14 @@ const GoogleMapsSection = () => {
 
     const onUnmount = useCallback(function callback(map) {
       setMap(null)
-    }, [])
+    }, []);
 
 
   return (
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={center}
-          zoom={14}
+          zoom={10}
           onLoad={onLoad}
           onUnmount={onUnmount}
           options={{mapId:'976a7c2e003306bf'}}
@@ -158,7 +162,7 @@ const GoogleMapsSection = () => {
               options={{
               polylineOptions:{
                 strokeColor: "#FFA500",
-                strokeWeight: 3,
+                strokeWeight: 4,
                 draggable: false,
               },
                 suppressMarkers: true
@@ -170,4 +174,3 @@ const GoogleMapsSection = () => {
 }
 
 export default GoogleMapsSection;
-// export default memo(GoogleMapsSection);

@@ -1,25 +1,30 @@
 "use client"
 
 
-import GoogleMapsSection from './../components/Home/GoogleMapsSection'
-import SearchSection from './../components/Home/SearchSection'
-import SourceContext from './../context/SourceContext'
-import DestinationContext from './../context/DestinationContext'
-import GoogleApiKeyContext from '@/context/GoogleApiKeyContext'
+import GoogleMapsSection from '@/components/Home/GoogleMapsSection'
+import SearchSection from '@/components/Home/SearchSection'
+import SourceContext from '@/context/SourceContext'
+import DestinationContext from '@/context/DestinationContext'
+// import GoogleApiKeyContext from '@/context/GoogleApiKeyContext'
 import { useState, useEffect, useContext } from "react";
 import { LoadScript } from '@react-google-maps/api'
-import CarListOptions from './../components/Home/CarListOptions'
+// import CarListOptions from '../components/vehicle/CarListOptions'
 
 export default function Home() {
 
   const [source, setSource] = useState<any[]>([]);
-  const [destination, setDestination] = useState<any[]>([]);
+  const [destination, setDestination] = useState<any[]>([]);   
   
+<<<<<<< HEAD
+=======
+
+>>>>>>> 296623d3cfb7959fa5d1cc0379aaf573f5d1cd23
   const googleAPiKeyContext = process.env.NEXT_PUBLIC_GOOGLE_API_KEY
 
-  useEffect(() => {
-    // setApiKey({apiKey: googleAPiKeyContext})
-  },[])
+  // useEffect(() => {
+  //   // setApiKey({apiKey: googleAPiKeyContext})
+  // },[])
+  
 
   return (
     <SourceContext.Provider value={{source, setSource}}>
@@ -30,7 +35,7 @@ export default function Home() {
       >
         <div className="grid grid-cols-1 md:grid-cols-3 p-6 gap-5 ">
           <div >
-            <SearchSection/>
+            <SearchSection />
           </div>
           <div className="col-span-2">
             <GoogleMapsSection /> 
