@@ -13,7 +13,7 @@ const Footer = () => {
                   {/* <img src="https://flowbite.com/docs/images/logo.svg" className="h-8 me-3" alt="FlowBite Logo" /> */}
                   <span className="self-center text-2xl  whitespace-nowrap text-orange-500 font-bold dark:text-white">rRSs</span>
               </a>
-              <p className='text-gray-500 hover:text-gray-900 dark:hover:text-white text-sm'>VIP Transfer Service</p>
+              <p className='text-gray-500 hover:text-gray-900 dark:hover:text-white text-sm'>Transfers Made Simple</p>
               <p className='text-gray-500 hover:text-gray-900 dark:hover:text-white text-sm'>Koh Samui, Thailand</p>
               
           </div>

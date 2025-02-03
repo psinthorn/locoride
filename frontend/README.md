@@ -34,3 +34,21 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+# Corporate Identity
+- [Logo](https://drive.google.com/file/d/1J9Q6J9Q9)
+- [Color Palette](https://drive.google)
+- [Typography](https://drive.google)
+- [Iconography](https://drive.google)
+- [Illustrations](https://drive.google)
+- [Photography](https://drive.google)
+- [Video](https://drive.google)
+- [Audio](https://drive.google)
+- [3D Assets](https://drive.google)
+- [Animations](https://drive.google)
+- [Design System](https://drive.google)
+- [Brand Guidelines](https://drive.google)
+- [Brand Assets](https://drive.google)
+
+- color color='#f97316'

@@ -15,10 +15,6 @@ export default function Home() {
   const [source, setSource] = useState<any[]>([]);
   const [destination, setDestination] = useState<any[]>([]);   
   
-<<<<<<< HEAD
-=======
-
->>>>>>> 296623d3cfb7959fa5d1cc0379aaf573f5d1cd23
   const googleAPiKeyContext = process.env.NEXT_PUBLIC_GOOGLE_API_KEY
 
   // useEffect(() => {

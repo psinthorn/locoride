@@ -1,16 +1,33 @@
 import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/nextjs'
-import React from 'react'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+
+import { Menu } from 'lucide-react'
+import { Badge } from '../ui/badge'
+
+
 
 
 const Header = () => {
   return (
     <div className='flex items-center justify-between p-5 pb-3 pl-10 border-b-[4px] border-gray-200'>
-        <div className='flex gap-16 items-center'>
+
+        {/* desktop navbar  */}
+        <div className='hidden md:flex md:gap-16 md:items-center'>
             <p className='text-3xl font-bold text-orange-500'>
               <a href="/">rRSs</a>
             </p>
             <div className='flex gap-6 items-center text-sm'>
-                <a href="/booking" >Book Now</a>
+                <a href="/booking" >About Us</a>
+            </div>
+            <div className='flex gap-6 items-center text-sm'>
+                <a href="/booking" >Why? Us</a>
             </div>
             {/* <div className='flex gap-6 items-center text-sm'>
                 <a href="/service-rate" >Service Rate</a>
@@ -21,14 +38,38 @@ const Header = () => {
             <div className='flex gap-6 items-center text-sm'>
                 <a href="/contact">Contact</a> 
             </div>
-        </div>      
+        </div>    
+          
+        {/* mobile navbar */}
+        <div className='flex md:hidden gap-5'>
+            {/* <p className='text-3xl font-bold text-orange-500'>
+              <a href="/">rRSs</a>
+            </p> */}
+            
+            <DropdownMenu className="w-1/2">
+              <DropdownMenuTrigger><Menu size='32' color='#f97316' /></DropdownMenuTrigger>
+              <DropdownMenuContent className='w-1/2'>
+                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>About Us</DropdownMenuItem>
+                <DropdownMenuItem>Why? Us</DropdownMenuItem>
+                <DropdownMenuItem>Contact</DropdownMenuItem>
+                <DropdownMenuItem>...</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+
+
+        </div>
+
         <div>
+          <Badge className='px-4 py-2'>
             <SignedOut>
               <SignInButton />
             </SignedOut>
-            <SignedIn>
+          </Badge>
+          <SignedIn>
               <UserButton />
-            </SignedIn>      
+          </SignedIn>      
         </div>            
     </div>
   )
