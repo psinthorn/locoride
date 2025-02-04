@@ -1,27 +1,32 @@
 import React from 'react'
 import WhyChooseUsItem from '@/components/why-us/WhyChooseUsItem'
+import { Car, Clock, DollarSign, Smile } from 'lucide-react';
 
 const WhyChooseUs = () => {
   const items = [
     {
     id: 1,
     title: 'Comfort & Safety',
-    description: 'Well-maintained vehicles with professional drivers.',
+    description: 'Enjoy a smooth ride in well-maintained vehicles, driven by professional and reliable drivers.',
+    icon: <Car />,
     },
     {
     id: 2,
     title: 'Affordable Pricing',
-    description: 'No hidden fees, just transparent rates.',
+    description: 'No hidden fees, just transparent rates, with our best rate guarantee.',
+    icon: <DollarSign />,
     },
     {
     id: 3,
-    title: '24/7 Availability',
-    description: 'Book anytime, we operate day and night.',
+    title: '24/7 Ready & Waiting',
+    description: 'Book with us anytime—we are always prepared and ready for you!',
+    icon: <Clock/>,
     },
     {
     id: 4,
     title: 'Fast & Convenient',
-    description: 'Direct, door-to-door service with no waiting.',
+    description: 'Enjoy a direct, door-to-door transfer service, smooth and seamless ride to your destination.',
+    icon: <Smile/>,
     },
     // {
     //   id: 5,
@@ -38,7 +43,7 @@ const WhyChooseUs = () => {
           
           {items.map((item) => (
             <div key={item.id}>
-              <WhyChooseUsItem title={item.title} description={item.description} />
+              <WhyChooseUsItem title={item.title} description={item.description} icon={item.icon} />
             </div>
             )
           )}
