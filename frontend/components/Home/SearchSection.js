@@ -52,7 +52,7 @@ const SearchSection = () => {
   return (
     <div className='space-y-6 p-4 bg-white rounded-none h-full md:p-6'>
       <div className='p-4 md:p-6 border-2 rounded-t-xl rounded-b-none'>
-          <p className='text-1xl font-bold mb-2'>
+          <p className='text-2xl font-light mb-2 sm:text-1xl'>
               From where to where? Let us know youre route.
           </p>
           <p>
