@@ -38,7 +38,7 @@ const InputItem = ({type, googleApiKey}) => {
             name:place.formatted_address,
             label:place.name
           })
-          console.log("Source: ", source);
+          
         }else{
           setDestination({
             lat:place.geometry.location.lat(),
@@ -46,7 +46,7 @@ const InputItem = ({type, googleApiKey}) => {
             name:place.formatted_address,
             label:place.name
           })
-          console.log("Destination: ", destination);
+          
         };
 
       }
@@ -55,7 +55,7 @@ const InputItem = ({type, googleApiKey}) => {
 
 
   return (
-    <div className='flex items-center p-3 gap-4 mt-3 bg-slate-200 rounded-lg'>
+    <div className='flex h-full items-center p-3 gap-4 mt-3 bg-slate-200 rounded-lg'>
         <Image src={ type == 'source' ? '/source-destination.png' : '/source-destination.png'} width={40} height={40} alt='pin location'/>
         {/* <input type='text' placeholder={ type == 'source' ? 'Pickup Location' : 'Destination'}  className='w-full bg-transparent outline-none' /> */}
         <GooglePlacesAutocomplete

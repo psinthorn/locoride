@@ -1,5 +1,5 @@
 "use client"
-import Image from 'next/image';
+
 import {CarListData} from '../../data/CarListData'
 import CarItem from './CarItem'
 import { useContext, useEffect, useState } from 'react';
@@ -31,17 +31,11 @@ const CarListOptions = (distance, sou, des) => {
 
   // send data to booking page 
   const handleBookNow = () => {
-    console.log('Book Now');
-    console.log(source);
-    console.log(destination);
-    console.log(rateEstimate);
-    console.log(selectedCar);
     if (selectedCar) {
       rateEstimate.toString();
       router.push(`/booking?carType=${selectedCar.type}&carModel=${selectedCar.model}&rateEstimate=${rateEstimate}&source=${JSON.stringify(source)}&destination=${JSON.stringify(destination)}`);
     }
   };
-
 
   return ( 
     <div>
@@ -56,8 +50,8 @@ const CarListOptions = (distance, sou, des) => {
         </div>    
 
         { selectedCar?
-          <div className='flex justify-between bottom-8 fixed items-center font-bold text-center w-full text-slate-700 p-4 shadow-xl bg-white  md:w-[30%] sm:w-full border-[1px] rounded-sm '>
-             <h2>Make Payment for {selectedCar.type}  Avg. {rateEstimate} THB</h2>
+          <div className='relative flex justify-between bottom-8 items-center font-bold text-center w-full text-slate-700 p-4 shadow-xl bg-white  md:w-full sm:w-full border-[1px] rounded-sm '>
+             <h2>{selectedCar.type}  Avg. {rateEstimate} THB</h2>
              <button onClick={handleBookNow} className='bg-black text-white rounded-lg text-center p-4'>Book Now</button>
              {/* <Booking /> */}
            </div> 

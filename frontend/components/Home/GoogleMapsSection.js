@@ -4,32 +4,25 @@ import React, { useContext, useCallback, useEffect, useState, memo } from 'react
 import SourceContext from '@/context/SourceContext'
 import DestinationContext from '@/context/DestinationContext'
 import { DirectionsRenderer, GoogleMap, MarkerF, OverlayView, OverlayViewF, useJsApiLoader } from '@react-google-maps/api';
+import { Divide } from 'lucide-react';
 
 // rate per km
-
 const GoogleMapsSection = () => {
   const {source, setSource} = useContext(SourceContext);
   const {destination, setDestination} = useContext(DestinationContext); 
   const [directionRoutePoints, setDirectionRoutePoints] = useState([]);
   const containerStyle = {
     width: '100%',
-    height: '85%'
+    height: '100%'
   };
   
   const [center,setCenter ] = useState({
-
     // diamond pool villa samui 
     lat: 9.550519, 
     lng: 100.0662909
-  
-    // // coffee farm samui 
-    // lat: 9.5321372, 
-    // lng: 100.0438586
-   
   });
 
   const [map, setMap] = useState(null)
-
 
 // Pickup location
   useEffect(() => {
@@ -101,6 +94,7 @@ const GoogleMapsSection = () => {
 
 
   return (
+    <div className='w-full h-full relative mx-auto bg-white'>
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={center}
@@ -131,28 +125,23 @@ const GoogleMapsSection = () => {
               </div> */}
 
             </OverlayViewF>
-            </MarkerF>: null }
+              </MarkerF>: null }
 
-            { destination?.length != []? <MarkerF
-                position={{lat: destination.lat, lng: destination.lng }} 
-                icon={{
-                  url: '/source-destination.png',
-                  scaledSize:{
-                    width: 60,
-                    height: 60
-                  }
-                }}
-              >
+              { destination?.length != []? <MarkerF
+                  position={{lat: destination.lat, lng: destination.lng }} 
+                  icon={{
+                    url: '/source-destination.png',
+                    scaledSize:{
+                      width: 60,
+                      height: 60
+                    }
+                  }}
+                >
               <OverlayViewF
                 position={{lat: destination.lat, lng: destination.lng}} 
                 mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
               >
-                {/* Show location label */}
-                {/* <div>
-                  <p>{destination.label}</p>
-                </div> */}
               </OverlayViewF>
-
             </MarkerF> : null }
 
             {/* render route on the maps  */}
@@ -170,6 +159,7 @@ const GoogleMapsSection = () => {
             />
 
         </GoogleMap>
+    </div>
       ) 
 }
 

@@ -5,6 +5,7 @@ import InputItem from './InputItem'
 import SourceContext from '@/context/SourceContext';
 import DestinationContext from '@/context/DestinationContext';
 import CarListOptions from '../vehicle/CarListOptions';
+import Services from '../services/Services';
 
 const SearchSection = () => {
   const {source, setSource} = useContext(SourceContext);
@@ -49,8 +50,8 @@ const SearchSection = () => {
   }, [source, destination]);
 
   return (
-    <div className='space-y-6 p-4 md:p-6'>
-      <div className='p-4 md:p-6 border-2 rounded-xl'>
+    <div className='space-y-6 p-4 bg-white rounded-none h-full md:p-6'>
+      <div className='p-4 md:p-6 border-2 rounded-t-xl rounded-b-none'>
           <p className='text-1xl font-bold mb-2'>
               From where to where? Let us know youre route.
           </p>
@@ -64,23 +65,29 @@ const SearchSection = () => {
             onClick={()=>calculateDistance()}
           >Search</button>   */}
       </div>
-        <div className='p-4'>
-            <p className='text-2xl font-light items-center mt-4'>
-              {routeDistance ? <span className='text-green-700 font-bold'>Available Book Now</span> : <p className="items-center text-center p-4 font-bold text-orange-500 rounded-md">" Transfers Made Simple on Koh Samui! "</p>}
+      <div className='p-4 md:p-5 border-2 rounded-none'>
+            <p className='text-2xl font-light items-center'>
+              {routeDistance ? 
+              <span className='text-green-700 font-bold'>Available Book Now</span> 
+              : 
+              <p className="items-center text-center font-bold text-orange-500">" Transfers Made Simple"</p>}
             </p>
-              {routeDistance?  <p className='text-sm'>Distance: <span>
-                { 
-                  routeDistanceInKiloMeter.toFixed(2)
-                } </span>KM</p> : null }
+              {routeDistance ?  
+                <p className='text-sm'>Distance: <span>{ routeDistanceInKiloMeter.toFixed(2)}</span>KM</p> 
+                : 
+                null }
         </div>
         <div className='mt-2'>
-          {routeDistance? <p className='p-1'>
-              Select car type for your comfortable
-            </p> : null }
-            
-          { routeDistance? <CarListOptions distance={routeDistanceInKiloMeter.toFixed(2)} source={source} destination={destination}  /> : null }
-          
+          { routeDistance ? 
+            <p className='p-1'> Select car type for your comfortable</p> 
+            : 
+            null }            
+          { routeDistance ? 
+            <CarListOptions distance={routeDistanceInKiloMeter.toFixed(2)} source={source} destination={destination}  /> 
+            : 
+            null }
         </div>
+        <Services />
       </div>
   )
 }

@@ -1,5 +1,5 @@
 import { createContext  } from "react";
 
-const  GoogleApiKeyContext = createContext(any);
+const  GoogleApiKeyContext = createContext();
 
 export default GoogleApiKeyContext;

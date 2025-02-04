@@ -22,10 +22,14 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={montserrat.className}>
-          <Header />
-          {children}
-          <Footer/>
+        <body className={`montserrat.className, h-auto`}>
+          <div className="h-full">
+            <Header />
+            {children}
+          </div>
+          <div className="h-20">
+            <Footer />
+          </div>
         </body>
       </html>
     </ClerkProvider>
