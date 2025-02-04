@@ -10,6 +10,7 @@ import {
 
 import { Menu } from 'lucide-react'
 import { Badge } from '../ui/badge'
+import Link from 'next/link'
 
 
 
@@ -21,13 +22,13 @@ const Header = () => {
         {/* desktop navbar  */}
         <div className='hidden md:flex md:gap-16 md:items-center'>
             <p className='text-3xl font-bold text-orange-500'>
-              <a href="/">rRSs</a>
+              <Link href="/">rRSs</Link>
             </p>
             <div className='flex gap-6 items-center text-sm'>
-                <a href="/booking" >About Us</a>
+                <Link href="/" >About Us</Link>
             </div>
             <div className='flex gap-6 items-center text-sm'>
-                <a href="/booking" >Why? Us</a>
+                <Link href="/" >Why? Us</Link>
             </div>
             {/* <div className='flex gap-6 items-center text-sm'>
                 <a href="/service-rate" >Service Rate</a>

@@ -1,5 +1,6 @@
 "use client"
 
+import Link from 'next/link';
 import React, { useState } from 'react';
 
 const ContactUs = () => {
@@ -69,12 +70,13 @@ const ContactUs = () => {
             <p className="mb-2"><strong>Email:</strong> info@kohsamuitransfer.com</p>
             <h3 className="text-xl font-bold mt-6 mb-4">Follow Us</h3>
             <div className="flex space-x-4">
-              <a href="#" className="text-blue-600">Facebook</a>
-              <a href="#" className="text-blue-400">Twitter</a>
-              <a href="#" className="text-pink-600">Instagram</a>
+              <Link href="#" className="text-blue-600">Facebook</Link>
+              {/* <Link href="#" className="text-blue-400">Twitter</Link> */}
+              <Link href="#" className="text-pink-600">Instagram</Link>
+              <Link href="#" className="text-pink-600">Line Official</Link>
             </div>
           </div>
-          <div>
+          {/* <div>
             <h3 className="text-xl font-bold mb-4">Send Us a Message</h3>
             <form onSubmit={handleSubmit} className="bg-white p-8 shadow-md rounded">
               <div className="mb-4">
@@ -114,7 +116,7 @@ const ContactUs = () => {
                 Send Message
               </button>
             </form>      
-          </div>
+          </div> */}
 
             <div className='m-1 p-1'>
               {showMessage && (

@@ -1,5 +1,5 @@
 "use client"
-import Image from 'next/image';
+
 import {CarListData} from '../../data/CarListData'
 import CarItem from './CarItem'
 import { useContext, useEffect, useState } from 'react';
@@ -31,17 +31,11 @@ const CarListOptions = (distance, sou, des) => {
 
   // send data to booking page 
   const handleBookNow = () => {
-    console.log('Book Now');
-    console.log(source);
-    console.log(destination);
-    console.log(rateEstimate);
-    console.log(selectedCar);
     if (selectedCar) {
       rateEstimate.toString();
       router.push(`/booking?carType=${selectedCar.type}&carModel=${selectedCar.model}&rateEstimate=${rateEstimate}&source=${JSON.stringify(source)}&destination=${JSON.stringify(destination)}`);
     }
   };
-
 
   return ( 
     <div>
