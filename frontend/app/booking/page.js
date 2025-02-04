@@ -13,8 +13,8 @@ export default function Booking() {
   const carType = searchParams.get('carType');
   const carModel = searchParams.get('carModel');
   // const name = searchParams.get('name');
-  const pickupPoint = source.label;
-  const destinationPoint = destination.label;
+  const pickupPoint = source?.label;
+  const destinationPoint = destination?.label;
   
   // console.log(source);
   // console.log(destination);
