@@ -1,5 +1,6 @@
 import React from 'react'
 import ServiceItem from './ServiceItem'
+import { Label } from '../ui/label';
 
 const Services = () => {
   const services = [
@@ -31,10 +32,13 @@ const Services = () => {
 ];
 
   return (
-    <div className='bg-blue-200 rounded-sm p-2'>
-      {services.map((service) => (
-        <ServiceItem key={service.id} service={service} />
-      ))}
+    <div className='rounded-t-none rounded-b-xl border-2 p-4'>
+    <Label className='font-semibold text-2xl'>Our Services</Label>
+      <div className='bg-blue-200 p-2 mt-0'>
+        {services.map((service) => (
+          <ServiceItem key={service.id} service={service} />
+        ))}
+      </div>
     </div>
   )
 }

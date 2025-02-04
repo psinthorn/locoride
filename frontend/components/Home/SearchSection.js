@@ -50,8 +50,8 @@ const SearchSection = () => {
   }, [source, destination]);
 
   return (
-    <div className='space-y-6 p-4 bg-white rounded-sm md:p-6'>
-      <div className='p-4 md:p-6 border-2 rounded-xl'>
+    <div className='space-y-6 p-4 bg-white rounded-none h-full md:p-6'>
+      <div className='p-4 md:p-6 border-2 rounded-t-xl rounded-b-none'>
           <p className='text-1xl font-bold mb-2'>
               From where to where? Let us know youre route.
           </p>
@@ -65,12 +65,12 @@ const SearchSection = () => {
             onClick={()=>calculateDistance()}
           >Search</button>   */}
       </div>
-        <div className='p-4'>
-            <p className='text-2xl font-light items-center mt-4'>
+      <div className='p-4 md:p-5 border-2 rounded-none'>
+            <p className='text-2xl font-light items-center'>
               {routeDistance ? 
               <span className='text-green-700 font-bold'>Available Book Now</span> 
               : 
-              <p className="items-center text-center p-4 font-bold text-orange-500 rounded-md">" Transfers Made Simple"</p>}
+              <p className="items-center text-center font-bold text-orange-500">" Transfers Made Simple"</p>}
             </p>
               {routeDistance ?  
                 <p className='text-sm'>Distance: <span>{ routeDistanceInKiloMeter.toFixed(2)}</span>KM</p> 
