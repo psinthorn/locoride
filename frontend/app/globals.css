@@ -79,6 +79,28 @@
 }
 
 @layer base {
+  /* Radial gradient background */
+  .radial-gradient-bg {
+    background: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 1) 80%,
+      rgba(0, 123, 255, 1) 100%
+    );
+  }
+}
+
+@layer base {
+  /* Linear gradient background from top to bottom */
+  .linear-gradient-vertical {
+    background: linear-gradient(
+      to bottom,
+      rgba(211, 211, 211, 1) 0%,
+      /* Light gray */ rgba(105, 105, 105, 1) 100% /* Dark gray */
+    );
+  }
+}
+
+@layer base {
   * {
     @apply border-border;
   }

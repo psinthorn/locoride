@@ -32,7 +32,7 @@ const Services = () => {
 ];
 
   return (
-    <div className='rounded-t-none rounded-b-xl border-2 p-4'>
+    <div className='rounded-t-none p-2'>
     <Label className='font-semibold text-2xl text-slate-900'>Our Services</Label>
       <div className='bg-blue-200 p-2 mt-0'>
         {services.map((service) => (
