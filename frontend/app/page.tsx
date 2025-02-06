@@ -54,7 +54,7 @@ export default function Home() {
         <div className='w-full min-h-96 mb-32'>
           <Faq />
         </div>
-        <div className='w-full bg-slate-200 min-h-96'>
+        <div className='w-full min-h-96'>
           <AboutUs />
         </div>
       </LoadScript>

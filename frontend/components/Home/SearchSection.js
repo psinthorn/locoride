@@ -6,6 +6,7 @@ import SourceContext from '@/context/SourceContext';
 import DestinationContext from '@/context/DestinationContext';
 import CarListOptions from '../vehicle/CarListOptions';
 import Services from '../services/Services';
+import { CircleArrowDown, CircleChevronDown, Heart, Plane, Smile, SmilePlus, Snowflake, Sun, TreePalm, Waves } from 'lucide-react';
 
 const SearchSection = () => {
   const {source, setSource} = useContext(SourceContext);
@@ -50,14 +51,16 @@ const SearchSection = () => {
   }, [source, destination]);
 
   return (
-    <div className='space-y-6 p-4 bg-white rounded-none h-full md:p-6'>
+    <div className='space-y-4 p-4 bg-white rounded-none h-full md:p-6'>
       <div className='p-4 md:p-6 border-2 rounded-t-xl rounded-b-none'>
-          <p className='text-2xl font-light mb-2 sm:text-1xl'>
+          <p className='text-2xl text-orange-600 font-bold mb-2 sm:text-1xl'>Book Your Transfer Now</p>
+          <p>Arrive in Koh Samui. Click below to get an instant quote and secure your ride today!</p>
+          <p className='text-2xl font-light mt-4 sm:text-1xl'>
               From where to where? Let us know youre route.
           </p>
-          <p>
+          {/* <p>
               to check availibility and fare rate now.
-          </p>
+          </p> */}
           <InputItem type='source' />
           <InputItem type='destination' />    
           {/* <button 
@@ -65,21 +68,32 @@ const SearchSection = () => {
             onClick={()=>calculateDistance()}
           >Search</button>   */}
       </div>
-      <div className='p-4 md:p-5 border-2 rounded-none'>
-            <p className='text-2xl font-light items-center'>
+      <div className=''>
+            <div className='w-full text-2xl font-light items-center'>
               {routeDistance ? 
-              <span className='text-green-700 font-bold'>Available Book Now</span> 
+                  <div>
+                  <h2 className='font-semibold text-2xl text-green-800 pt-8'>Available Book Now</h2>
+                  <p className='text-sm text-muted-foreground'>Distance: <span>{ routeDistanceInKiloMeter.toFixed(2)}</span>KM</p>
+                  </div>
+              // <>
+              //   <span className='pt-4 pb-0 md:pt-5 md:pb-0  text-green-700 font-bold mt-4'>
+              //     Available Book Now
+              //   </span> 
+              //   <span className='text-sm'>Distance: <span>{ routeDistanceInKiloMeter.toFixed(2)}</span>KM</span> 
+              // </>
               : 
-              <p className="items-center text-center font-bold text-orange-500">" Transfers Made Simple"</p>}
-            </p>
-              {routeDistance ?  
-                <p className='text-sm'>Distance: <span>{ routeDistanceInKiloMeter.toFixed(2)}</span>KM</p> 
-                : 
-                null }
+              <span className='flex justify-center text-center items-center text-slate-400 gap-3'>
+                <Snowflake/><Smile/><Plane/><Sun/><TreePalm/><Waves/><Heart/><SmilePlus/>
+              </span>
+              
+              // <p className="items-center text-center font-bold text-orange-500">" Transfers Made Simple"</p>
+              // <Services />
+              }
+            </div>
         </div>
         <div className='mt-2'>
           { routeDistance ? 
-            <p className='p-1'> Select car type for your comfortable</p> 
+            <p className='flex p-1 gap-2'> Select car type for your comfortable <CircleChevronDown /></p> 
             : 
             null }            
           { routeDistance ? 
