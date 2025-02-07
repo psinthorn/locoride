@@ -28,11 +28,11 @@ const Header = () => {
                 <Link href="/" >About Us</Link>
             </div>
             <div className='flex gap-6 items-center text-sm'>
-                <Link href="/" >Why? Us</Link>
+                <Link href="/" >Why Choose Us</Link>
             </div>
-            {/* <div className='flex gap-6 items-center text-sm'>
-                <a href="/service-rate" >Service Rate</a>
-            </div> */}
+            <div className='flex gap-6 items-center text-sm'>
+                <a href="/faqs" >{`FAQ(s)`}</a>
+            </div>
             {/* <div className='flex gap-6 items-center text-sm'>
                 Package Rate
             </div> */}
