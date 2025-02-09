@@ -25,10 +25,10 @@ const Header = () => {
               <Link href="/">rRSs</Link>
             </p>
             <div className='flex gap-6 items-center text-sm'>
-                <Link href="/" >About Us</Link>
+                <Link href="/about-us" >About Us</Link>
             </div>
             <div className='flex gap-6 items-center text-sm'>
-                <Link href="/" >Why Choose Us</Link>
+                <Link href="/why-choose-us" >Why Choose Us</Link>
             </div>
             <div className='flex gap-6 items-center text-sm'>
                 <a href="/faqs" >{`FAQ(s)`}</a>
