@@ -70,10 +70,10 @@ const ContactUs = () => {
             <p className="mb-2"><strong>Email:</strong> info@kohsamuitransfer.com</p>
             <h3 className="text-xl font-bold mt-6 mb-4">Follow Us</h3>
             <div className="flex space-x-4">
-              <Link href="#" className="text-blue-600">Facebook</Link>
+              <Link href="https://www.facebook.com/profile.php?id=100076740563309" className="text-blue-600" target='_blank'>Facebook</Link>
               {/* <Link href="#" className="text-blue-400">Twitter</Link> */}
-              <Link href="#" className="text-pink-600">Instagram</Link>
-              <Link href="#" className="text-pink-600">Line Official</Link>
+              {/* <Link href="#" className="text-pink-600">Instagram</Link>
+              <Link href="#" className="text-pink-600">Line Official</Link> */}
             </div>
           </div>
           {/* <div>

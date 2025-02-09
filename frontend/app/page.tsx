@@ -11,7 +11,7 @@ import Faq from '@/components/faq/Faq'
 import { useState, useEffect, useContext } from "react";
 import { LoadScript } from '@react-google-maps/api'
 import MainBanner from '@/components/hero/MainBanner'
-import AboutUs from '@/components/about-us/AboutUs'
+import AboutUs from '@/components/AboutUs/AboutUs'
 // import CarListOptions from '../components/vehicle/CarListOptions'
 
 export default function Home() {
@@ -51,9 +51,9 @@ export default function Home() {
         <div className='w-full mx-auto p-6 gap-5'>
           <WhyChooseUs />
         </div>
-        <div className='w-full min-h-96 mb-32'>
+        {/* <div id="faqs" className='w-full min-h-96 mb-32'>
           <Faq />
-        </div>
+        </div> */}
         <div className='w-full min-h-96'>
           <AboutUs />
         </div>
