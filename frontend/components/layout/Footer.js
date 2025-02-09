@@ -96,7 +96,7 @@ const Footer = () => {
 
       <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
       <div className="sm:flex sm:items-center sm:justify-between">
-          <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <Link href="https://www.rungruangsubsamui.com" className="hover:underline">rOs™</Link>. All Rights Reserved.
+          <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <Link href="https://www.rungruangsubsamui.com" className="hover:underline">rungruansubsamui.com™</Link>. All Rights Reserved.
           </span>
           <div className="flex mt-4 sm:justify-center sm:mt-0">
               <Link href="https://www.facebook.com/profile.php?id=100076740563309" className="text-gray-500 hover:text-gray-900 dark:hover:text-white" target='_blank'>
