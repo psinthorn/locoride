@@ -16,6 +16,33 @@ import Link from 'next/link'
 
 
 const Header = () => {
+  const MainMenu = [
+    // {
+    //   id: 1,
+    //   title: 'Home',
+    //   link: '/',
+    // },
+    {
+      id: 2,
+      title: 'About Us',
+      link: '/about-us',
+    },
+    {
+      id: 3,
+      title: 'Why Choose Us',
+      link: '/why-choose-us',
+    },
+    {
+      id: 4,
+      title: 'FAQ(s)',
+      link: '/faqs',
+    },
+    {
+      id: 5,
+      title: 'Contact',
+      link: '/contact',
+    }
+  ]
   return (
     <div className='flex items-center justify-between p-5 pb-3 pl-10 border-b-[4px] border-gray-200'>
 
@@ -24,21 +51,12 @@ const Header = () => {
             <p className='text-3xl font-bold text-orange-500'>
               <Link href="/">rRSs</Link>
             </p>
-            <div className='flex gap-6 items-center text-sm'>
-                <Link href="/about-us" >About Us</Link>
+            {MainMenu.map((item) => (
+              <div keu={item.id} className='flex gap-6 items-center text-sm'>
+              <Link href={item.link} >{item.title}</Link>
             </div>
-            <div className='flex gap-6 items-center text-sm'>
-                <Link href="/why-choose-us" >Why Choose Us</Link>
-            </div>
-            <div className='flex gap-6 items-center text-sm'>
-                <a href="/faqs" >{`FAQ(s)`}</a>
-            </div>
-            {/* <div className='flex gap-6 items-center text-sm'>
-                Package Rate
-            </div> */}
-            <div className='flex gap-6 items-center text-sm'>
-                <a href="/contact">Contact</a> 
-            </div>
+            ))
+          }
         </div>    
           
         {/* mobile navbar */}
@@ -47,15 +65,19 @@ const Header = () => {
               <a href="/">rRSs</a>
             </p> */}
             
-            <DropdownMenu className="w-1/2">
+            <DropdownMenu className="">
               <DropdownMenuTrigger><Menu size='32' color='#f97316' /></DropdownMenuTrigger>
-              <DropdownMenuContent className='w-1/2'>
-                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+              <DropdownMenuContent className='w-300'>
+                <DropdownMenuLabel>
+                  <Link href="/" >Home</Link>
+                </DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>About Us</DropdownMenuItem>
-                <DropdownMenuItem>Why? Us</DropdownMenuItem>
-                <DropdownMenuItem>Contact</DropdownMenuItem>
-                <DropdownMenuItem>...</DropdownMenuItem>
+                {MainMenu.map((item) => (
+                  <DropdownMenuItem key={item.id}>
+                    <Link href={item.link} >{item.title}</Link>
+                  </DropdownMenuItem>
+                ))
+                } 
               </DropdownMenuContent>
             </DropdownMenu>
 

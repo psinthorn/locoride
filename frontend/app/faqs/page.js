@@ -6,10 +6,10 @@ import {faqData} from '@/data/FaqListData';
 export default function FAQPage() {
   return (
    
-      <div className="max-w-4xl mx-auto mt-24 mb-8 text-gray-800">
-        <h1 className="text-5xl font-bold my-16 text-center text-slate-700">Frequently Asked Questions (FAQs)</h1>
+      <div className="max-w-5xl p-2 mx-auto mt-8 mb-8 text-gray-800">
+        <h1 className="text-5xl font-bold py-8 text-center text-slate-700">Frequently Asked Questions (FAQs)</h1>
         {faqData?.map((section) => (
-          <Card key={section.id} className="mb-4 p-4 shadow-md bg-gray-100 border border-slate-500">
+          <Card key={section.id} className="mb-4 py-4 shadow-md bg-gray-100 border border-slate-500">
             <CardContent>
               <h2 className="text-xl font-semibold my-4 text-slate-700">{section.category}</h2>
               <Accordion type="single" collapsible>
