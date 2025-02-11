@@ -1,6 +1,6 @@
 import React from 'react'
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '../ui/dropdown-menu'
-import { Button } from '../ui/button'
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
+import { Button } from '@/components/ui/button'
 import { CheckCircle, DownloadCloud, Eye, Mail, MoreHorizontal, Pencil, Trash } from 'lucide-react'
 import Link from 'next/link'
 

@@ -4,7 +4,6 @@ import Head from 'next/head';
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import BookingForm from '../../components/form/BookingForm';
-import CreateBookingRequest from '@/components/form/booking/CreateBookingRequest';
 
 export default function Booking() {
   const searchParams = useSearchParams();
@@ -66,7 +65,6 @@ export default function Booking() {
       </Head>
 
       <main className="py-10">
-        {/* <CreateBookingRequest bookingData={formData}/> */}
         <BookingForm bookingData={formData}/>
       </main>
     </div>
