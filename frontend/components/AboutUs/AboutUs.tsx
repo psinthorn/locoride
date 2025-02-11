@@ -14,9 +14,9 @@ const AboutUs = () => {
     }
   ]
   return (
-    <div className='p-16 bg-slate-50 sm:p-8 md:16'>
+    <div className='p-4 bg-slate-50 sm:p-2 md:16 lg:p-16'>
       
-      <div className="grid grid-cols-1 w-full sm:grid-cols-1 sm:p-8  md:grid-cols-2 md:p-16 lg:grid-cols-2 lg:p-24  gap-10">
+      <div className="grid grid-cols-1 w-full sm:grid-cols-1 sm:p-4  md:grid-cols-2 md:p-8 lg:grid-cols-2 lg:p-8  gap-10">
           {/* <div>
             Image here
           </div> */}

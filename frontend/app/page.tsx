@@ -35,7 +35,7 @@ export default function Home() {
         libraries={['places']}
         googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_API_KEY || ''}
       >
-        <div className="grid grid-cols-1 md:grid-cols-3 py-2 gap-0 bg-slate-200">
+        <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3 py-2 gap-0 bg-slate-200">
           <div >
             <SearchSection />
           </div>
