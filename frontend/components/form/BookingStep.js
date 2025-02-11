@@ -74,7 +74,7 @@ const BookingStep = ({bookingData, handleChange, nextStep}) => {
           />
         </div>
         <div>
-          <label className="block text-gray-700">Arrival Time</label>
+          <label className="block text-gray-700">Arrival/Departure : Date/Time</label>
           <input
             type="datetime-local"
             name="arrivalTime"

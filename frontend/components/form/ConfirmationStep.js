@@ -9,7 +9,7 @@ const ConfirmationStep = ({ formData, prevStep, handleSubmit }) => {
       <p><strong>Email:</strong> {formData.email}</p>
       <p><strong>Mobile:</strong> {formData.mobile}</p>
       <p><strong>Flight No:</strong> {formData.flightNo}</p>
-      <p><strong>Arrival Time:</strong> {formData.arrivalTime}</p>
+      <p><strong>Arrival/Departure :  Date/Time:</strong> {formData.arrivalTime}</p>
       <p><strong>Car Type:</strong> {formData.carType}</p>
       <p><strong>Pickup Point:</strong> {formData.pickupPoint}</p>
       <p><strong>Dropoff Point:</strong> {formData.dropoffPoint}</p>
