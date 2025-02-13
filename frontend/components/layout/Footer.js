@@ -1,6 +1,7 @@
 import Link from 'next/link';
-import React from 'react'
+import RosLogo from '@/public/logo-ros-sm.png'
 import { FaPhoneSquareAlt } from "react-icons/fa";
+import Image from 'next/image';
 
 const Footer = () => {
   return (
@@ -9,11 +10,11 @@ const Footer = () => {
 <footer className="relative bg-white mt-32 dark:bg-gray-900 pt-4 w-full">
     <div className="mx-auto w-full max-w-screen-xl p-4 py-1 lg:py-4">
         <div className="md:flex md:justify-between">
-          <div className="mb-6 md:mb-0 items-center">
-              <a href="https://flowbite.com/" className="flex items-center">
-                  {/* <img src="https://flowbite.com/docs/images/logo.svg" className="h-8 me-3" alt="FlowBite Logo" /> */}
-                  <span className="self-center text-2xl  whitespace-nowrap text-orange-500 font-bold dark:text-white">rRSs</span>
-              </a>
+          <div className="mb-6 md:mb-0 justify-center text-center  items-center">
+              <Link href="/" className="flex justify-center text-center  items-center">
+                  <Image src={RosLogo} alt="Ros Logo" width={100} />
+                  {/* <span className="self-center text-2xl  whitespace-nowrap text-orange-500 font-bold dark:text-white">rRSs</span> */}
+              </Link>
               <p className='text-gray-500 hover:text-gray-900 dark:hover:text-white text-sm'>Transfers Made Simple</p>
               <p className='text-gray-500 hover:text-gray-900 dark:hover:text-white text-sm'>Koh Samui, Thailand</p>
               
