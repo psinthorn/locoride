@@ -37,9 +37,9 @@ const WhyChooseUs = () => {
   ];
 
   return (
-    <div className='my-4 relative'>
-      <h1 className='text-5xl text-center font-semibold'>Why Choose Us</h1>
-      <p className='text-center text-2xl font-light mt-1'>We are committed to providing you with</p>
+    <div className='my-2 relative'>
+      <h1 className='text-center text-7xl md:text-7xl text-slate-600'>Why Choose Us</h1>
+      <p className='text-center  font-light mt-1 md:text-lg text-sm mb-8 text-slate-600  '>We are committed to providing you with</p>
       <div className="grid grid-cols-1 w-full sm:grid-cols-2 sm:p-8 sm:bg-none  md:grid-cols-2 md:p-16 lg:grid-cols-4 lg:py-24  gap-8">
           {items.map((item) => (
             <div key={item.id}>

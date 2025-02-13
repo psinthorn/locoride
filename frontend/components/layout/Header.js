@@ -11,6 +11,8 @@ import {
 import { Menu } from 'lucide-react'
 import { Badge } from '../ui/badge'
 import Link from 'next/link'
+import RosLogo from '@/public/logo-ros-sm.png'
+import Image from 'next/image'
 
 
 
@@ -48,9 +50,11 @@ const Header = () => {
 
         {/* desktop navbar  */}
         <div className='hidden md:flex md:gap-16 md:items-center'>
-            <p className='text-3xl font-bold text-orange-500'>
-              <Link href="/">rRSs</Link>
-            </p>
+            {/* <p className='text-3xl font-bold text-orange-500'> */}
+              <Link href="/">
+                <Image src={RosLogo} alt='Ros Logo' width={100}/>
+              </Link>
+            {/* </p> */}
             {MainMenu.map((item) => (
               <div keu={item.id} className='flex gap-6 items-center text-sm'>
               <Link href={item.link} >{item.title}</Link>
