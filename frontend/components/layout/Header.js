@@ -90,7 +90,7 @@ const Header = () => {
         </div>
 
         <div className="">
-          <div className='flex gap-3 text-slate-700'>
+          <div className='hidden lg:flex gap-3 text-slate-700'>
             <Phone size='24' color='#f97316'/><span>(+66)084-678-0154</span>
             <FaWhatsapp size='24' color='#f97316'/><span>(+66)084-678-0154</span>
             <Link href="https://www.facebook.com/profile.php?id=100076740563309" target='_blank'>
