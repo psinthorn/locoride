@@ -1,5 +1,6 @@
 "use client"
 
+import { Phone } from 'lucide-react';
 import Link from 'next/link';
 import React, { useState } from 'react';
 
@@ -64,10 +65,12 @@ const ContactUs = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
             <h3 className="text-xl font-bold mb-4">Contact Information</h3>
-            <p className="mb-2"><strong>Telephone:</strong> (+66) 077-332-480</p>
+            <p className="mb-2"><strong>Phone:</strong> (+66) 077-332-480</p>
             <p className="mb-2"><strong>Mobile:</strong> (+66) 084-678-0154</p>
+            <p className="mb-2"><strong>WhatsApp:</strong> (+66) 084-678-0154</p>
+            <p className="mb-2"><strong>Line ID:</strong> (+66) 084 678 0154</p>
             <p className="mb-2"><strong>Address:</strong> 64/66 Moo 4 Tambol Bophut, Amphoe Koh Sa-mui, Thailand, 84320</p>
-            <p className="mb-2"><strong>Email:</strong> info@rungruangsubsamui.com</p>
+            <p className="mb-2"><strong>Email:</strong> rungruangsamui2510@gmail.com</p>
             <h3 className="text-xl font-bold mt-6 mb-4">Follow Us</h3>
             <div className="flex space-x-4">
               <Link href="https://www.facebook.com/profile.php?id=100076740563309" className="text-blue-600" target='_blank'>Facebook</Link>

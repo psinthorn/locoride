@@ -10,8 +10,8 @@ const inter = Inter({ subsets: ["latin"] });
 const montserrat = Montserrat({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "rRSs: Limousine Service on Koh Samui Thailand",
-  description: "Transfer service on Koh Samui Thailand",
+  title: "Rungruang Sub Samui Co.,Ltd. Transfer Service and Car For Rent on Koh Samui Thailand",
+  description: "Transfer service made simple on Koh Samui, Thailand",
 };
 
 export default function RootLayout({
