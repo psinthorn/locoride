@@ -8,11 +8,12 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
-import { Menu } from 'lucide-react'
+import { Facebook, Menu, Phone } from 'lucide-react'
 import { Badge } from '../ui/badge'
 import Link from 'next/link'
 import RosLogo from '@/public/logo-ros-sm.png'
 import Image from 'next/image'
+import { FaWhatsapp } from 'react-icons/fa'
 
 
 
@@ -88,15 +89,22 @@ const Header = () => {
 
         </div>
 
-        <div>
-          <Badge className='px-4 py-2'>
+        <div className="">
+          <div className='flex gap-3 text-slate-700'>
+            <Phone size='24' color='#f97316'/><span>(+66)084-678-0154</span>
+            <FaWhatsapp size='24' color='#f97316'/><span>(+66)084-678-0154</span>
+            <Link href="https://www.facebook.com/profile.php?id=100076740563309" target='_blank'>
+            <Facebook size='24' color='#f97316' />
+            </Link>
+          </div>
+          {/* <Badge className='px-4 py-2'>
             <SignedOut>
               <SignInButton />
             </SignedOut>
           </Badge>
           <SignedIn>
               <UserButton />
-          </SignedIn>      
+          </SignedIn>       */}
         </div>            
     </div>
   )
