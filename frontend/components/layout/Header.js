@@ -49,14 +49,14 @@ const Header = () => {
     <div className='flex items-center justify-between p-5 pb-3 pl-10 border-b-[4px] border-gray-200'>
 
         {/* desktop navbar  */}
-        <div className='hidden md:flex md:gap-16 md:items-center'>
+        <div className='hidden md:flex md:gap-8 md:items-center'>
             {/* <p className='text-3xl font-bold text-orange-500'> */}
               <Link href="/">
                 <Image src={RosLogo} alt='Ros Logo' width={100}/>
               </Link>
             {/* </p> */}
             {MainMenu.map((item) => (
-              <div keu={item.id} className='flex gap-6 items-center text-sm'>
+              <div keu={item.id} className='flex gap-4 items-center text-md text-slate-600'>
               <Link href={item.link} >{item.title}</Link>
             </div>
             ))

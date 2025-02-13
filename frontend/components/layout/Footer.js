@@ -9,8 +9,8 @@ const Footer = () => {
 
 <footer className="relative bg-white mt-32 dark:bg-gray-900 pt-4 w-full">
     <div className="mx-auto w-full max-w-screen-xl p-4 py-1 lg:py-4">
-        <div className="md:flex md:justify-between">
-          <div className="mb-6 md:mb-0 justify-center text-center  items-center">
+        <div className=" md:flex md:justify-between">
+          <div className="hidden lg:block mb-6 md:mb-0 justify-center text-center  items-center">
               <Link href="/" className="flex justify-center text-center  items-center">
                   <Image src={RosLogo} alt="Ros Logo" width={100} />
                   {/* <span className="self-center text-2xl  whitespace-nowrap text-orange-500 font-bold dark:text-white">rRSs</span> */}
