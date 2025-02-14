@@ -90,10 +90,11 @@ const Header = () => {
         </div>
 
         <div className="">
-          <div className='hidden lg:flex gap-3 text-slate-700'>
-            <Phone size='24' color='#f97316'/><span>(+66)084-678-0154</span>
-            <FaWhatsapp size='24' color='#f97316'/><span>(+66)084-678-0154</span>
-            <Link href="https://www.facebook.com/profile.php?id=100076740563309" target='_blank'>
+          <div className='hidden gap-0 lg:flex text-slate-700'>
+            
+            <Phone size='24' color='#f97316' className='gap-0'/><span className='text-sm pr-2'>(+66)084-678-0154</span>
+            <FaWhatsapp size='24' color='#f97316' className='gap-0'/><span className='text-sm pr-2'>(+66)084-678-0154</span>
+            <Link href="https://www.facebook.com/profile.php?id=100076740563309" target='_blank' className='gap-0 pr-2'>
             <Facebook size='24' color='#f97316' />
             </Link>
           </div>
