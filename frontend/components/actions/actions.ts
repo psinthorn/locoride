@@ -104,91 +104,91 @@ export const CreateRequest = async  (prevState: any ,formData: FormData) => {
 }; 
 
 
-// // create new invoice for client or customer
-// export const CreateInvoice = async  (prevState: any ,formData: FormData) => {
-//   const session = requireAuth()
+// create new invoice for client or customer
+export const CreateInvoice = async  (prevState: any ,formData: FormData) => {
+  // const session = requireAuth()
 
-//   console.log("Create Invoice action")
+  // console.log("Create Invoice action")
 
-//   const submission = parseWithZod(formData, {
-//     schema: invoiceSchema
-//   });
+  // const submission = parseWithZod(formData, {
+  //   schema: invoiceSchema
+  // });
 
-//   if (submission.status !== "success") {
-//     return submission.reply();
-//   }
+  // if (submission.status !== "success") {
+  //   return submission.reply();
+  // }
 
-//   const data = await prisma.invoice.create({
-//     data: {
-//       firstName: submission.value.firstName,
-//       date: submission.value.date,
-//       invoiceNumber: submission.value.invoiceNumber, // Add this field
+  // const data = await prisma.invoice.create({
+  //   data: {
+  //     firstName: submission.value.firstName,
+  //     date: submission.value.date,
+  //     invoiceNumber: submission.value.invoiceNumber, // Add this field
 
-//       fromName: submission.value.fromName,
-//       fromAddress: submission.value.fromAddress,
-//       fromEmail: submission.value.fromEmail,
+  //     fromName: submission.value.fromName,
+  //     fromAddress: submission.value.fromAddress,
+  //     fromEmail: submission.value.fromEmail,
 
-//       clientName: submission.value.clientName,
-//       clientAddress: submission.value.clientAddress,
-//       clientEmail: submission.value.clientEmail,
+  //     clientName: submission.value.clientName,
+  //     clientAddress: submission.value.clientAddress,
+  //     clientEmail: submission.value.clientEmail,
 
-//       // clientId: submission.value.clientId, // Add this field
-//       // vendorId: submission.value.vendorId, // Add this field
-//       // quotationId: submission.value.quotationId, // Add this field
-//       dueDate: submission.value.dueDate || "",
+  //     // clientId: submission.value.clientId, // Add this field
+  //     // vendorId: submission.value.vendorId, // Add this field
+  //     // quotationId: submission.value.quotationId, // Add this field
+  //     dueDate: submission.value.dueDate || "",
       
 
-//       // subTotal: submission.value.subTotal,
-//       // discountPercent: submission.value.discountPercent,
-//       // discountTotal:  submission.value.discountTotal,
-//       // vatPercent:     submission.value.vatPercent,
-//       // vatTotal:       submission.value.vatTotal,
-//       note: submission.value.note,
+  //     // subTotal: submission.value.subTotal,
+  //     // discountPercent: submission.value.discountPercent,
+  //     // discountTotal:  submission.value.discountTotal,
+  //     // vatPercent:     submission.value.vatPercent,
+  //     // vatTotal:       submission.value.vatTotal,
+  //     note: submission.value.note,
 
-//       itemId:          submission.value.itemId,
-//       // itemModel:       submission.value.itemModel,
-//       // itemName:        submission.value.itemName,
-//       itemDescription: submission.value.itemDescription,
-//       itemQuantity:     submission.value.itemQuantity,
-//       itemRate:        submission.value.itemRate,
-//       itemTotal:       submission.value.itemTotal,
+  //     itemId:          submission.value.itemId,
+  //     // itemModel:       submission.value.itemModel,
+  //     // itemName:        submission.value.itemName,
+  //     itemDescription: submission.value.itemDescription,
+  //     itemQuantity:     submission.value.itemQuantity,
+  //     itemRate:        submission.value.itemRate,
+  //     itemTotal:       submission.value.itemTotal,
 
-//       // total: submission.value.total, // Add this field
-//       currency: submission.value.currency,
+  //     // total: submission.value.total, // Add this field
+  //     currency: submission.value.currency,
 
-//       status: submission.value.status,
+  //     status: submission.value.status,
 
-//       userId: (await session).user?.id,
-//     }
-//   });
+  //     userId: (await session).user?.id,
+  //   }
+  // });
 
-//   const sender= {
-//     email: "hello@demomailtrap.com",
-//     name: data.fromEmail
-//   }
+  // const sender= {
+  //   email: "hello@demomailtrap.com",
+  //   name: data.fromEmail
+  // }
 
-//   mailClient.send({
-//     from: sender,
-//     to: [{ email: data.clientEmail }],
-//     // subject: `Invoice ${data.invoiceNumber} from ${data.fromName}`,
-//     // text: `Hello ${data.clientName},\n\nYou have a new invoice from ${data.fromName} for the amount of ${data.itemRate} ${data.currency}.\n\nPlease find the invoice attached.\n\nBest Regards,\n${data.fromName}`,
-//     // category: "invoice test",
-//     template_uuid: "eb703aa6-64b1-4960-9b78-a4b486f75124",
-//     template_variables: {
-//       "clientName": data.clientName,
-//       "invoicenumber": data.invoiceNumber,
-//       "dueDate": data.dueDate,
-//       "total": data.itemTotal,
-//       "invoiceLink": `http://localhost:3000/invoice/${data.id}`
-//     }
-//   }).then(console.log, console.error);
+  // mailClient.send({
+  //   from: sender,
+  //   to: [{ email: data.clientEmail }],
+  //   // subject: `Invoice ${data.invoiceNumber} from ${data.fromName}`,
+  //   // text: `Hello ${data.clientName},\n\nYou have a new invoice from ${data.fromName} for the amount of ${data.itemRate} ${data.currency}.\n\nPlease find the invoice attached.\n\nBest Regards,\n${data.fromName}`,
+  //   // category: "invoice test",
+  //   template_uuid: "eb703aa6-64b1-4960-9b78-a4b486f75124",
+  //   template_variables: {
+  //     "clientName": data.clientName,
+  //     "invoicenumber": data.invoiceNumber,
+  //     "dueDate": data.dueDate,
+  //     "total": data.itemTotal,
+  //     "invoiceLink": `http://localhost:3000/invoice/${data.id}`
+  //   }
+  // }).then(console.log, console.error);
 
-//   return redirect("/dashboard/invoices")
+  return redirect("/")
 
-// }; 
+}; 
 
-// // Get invoice by id
-// export const GetInvoiceByID = async (userId: string, invoiceId: string) => {
+// Get invoice by id
+export const GetInvoiceByID = async (userId: string, invoiceId: string) => {
 //   const session = await requireAuth()
 
 //   const invoice = await prisma.invoice.findUnique({
@@ -261,5 +261,5 @@ export const CreateRequest = async  (prevState: any ,formData: FormData) => {
 //     }
 //   });
 
-//   return redirect("/dashboard/invoices")
-// };
+  return redirect("/")
+};
