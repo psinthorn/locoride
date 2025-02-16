@@ -208,58 +208,59 @@ export const GetInvoiceByID = async (userId: string, invoiceId: string) => {
 //   //   return redirect("/dashboard/invoices"); // Redirect to the error page that we created
 //   // }
 
-//   return invoice;
-// };
+  // return invoice;
+  return redirect("/")
+};
 
 
-// // Update invoice by id
-// export const UpdateInvoiceByID = async (prevState: any, formData: FormData) => {
-//   const session = await requireAuth()
+// Update invoice by id
+export const UpdateInvoiceByID = async (prevState: any, formData: FormData) => {
+  // const session = await requireAuth()
 
-//   const submission = parseWithZod(formData, {
-//     schema: invoiceSchema
-//   });
+  // const submission = parseWithZod(formData, {
+  //   schema: invoiceSchema
+  // });
 
-//   if (submission.status !== "success") {
-//     return submission.reply();
-//   }
+  // if (submission.status !== "success") {
+  //   return submission.reply();
+  // }
 
-//   // Get the invoice id from the form data
-//   const invoiceId = formData.get("id") as string;
+  // // Get the invoice id from the form data
+  // const invoiceId = formData.get("id") as string;
  
-//   const data = await prisma.invoice.update({
-//     where: {
-//       id: invoiceId,
-//       userId: session.user?.id,
-//     },
-//     data: {
-//       title: submission.value.title,
-//       date: submission.value.date,
-//       // invoiceNumber: submission.value.invoiceNumber, // Add this field
+  // const data = await prisma.invoice.update({
+  //   where: {
+  //     id: invoiceId,
+  //     userId: session.user?.id,
+  //   },
+  //   data: {
+  //     title: submission.value.title,
+  //     date: submission.value.date,
+  //     // invoiceNumber: submission.value.invoiceNumber, // Add this field
 
-//       fromName: submission.value.fromName,
-//       fromAddress: submission.value.fromAddress,
-//       fromEmail: submission.value.fromEmail,
+  //     fromName: submission.value.fromName,
+  //     fromAddress: submission.value.fromAddress,
+  //     fromEmail: submission.value.fromEmail,
 
-//       clientName: submission.value.clientName,
-//       clientAddress: submission.value.clientAddress,
-//       clientEmail: submission.value.clientEmail,
+  //     clientName: submission.value.clientName,
+  //     clientAddress: submission.value.clientAddress,
+  //     clientEmail: submission.value.clientEmail,
 
-//       dueDate: submission.value.dueDate || "",
+  //     dueDate: submission.value.dueDate || "",
 
-//       note: submission.value.note,
+  //     note: submission.value.note,
 
-//       itemId:          submission.value.itemId,
-//       itemDescription: submission.value.itemDescription,
-//       itemQuantity:     submission.value.itemQuantity,
-//       itemRate:        submission.value.itemRate,
-//       itemTotal:       submission.value.itemTotal,
+  //     itemId:          submission.value.itemId,
+  //     itemDescription: submission.value.itemDescription,
+  //     itemQuantity:     submission.value.itemQuantity,
+  //     itemRate:        submission.value.itemRate,
+  //     itemTotal:       submission.value.itemTotal,
 
-//       currency: submission.value.currency,
+  //     currency: submission.value.currency,
 
-//       status: submission.value.status,
-//     }
-//   });
+  //     status: submission.value.status,
+  //   }
+  // });
 
   return redirect("/")
 };
