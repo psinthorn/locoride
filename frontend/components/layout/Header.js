@@ -57,7 +57,7 @@ const Header = () => {
               </Link>
             {/* </p> */}
             {MainMenu.map((item) => (
-              <div keu={item.id} className='flex gap-4 items-center text-md text-slate-600'>
+              <div key={item.id} className='flex gap-4 items-center text-md text-slate-600'>
               <Link href={item.link} >{item.title}</Link>
             </div>
             ))
