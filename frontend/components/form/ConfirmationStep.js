@@ -4,12 +4,13 @@ const ConfirmationStep = ({ formData, prevStep, handleSubmit }) => {
   return (
     <div className="bg-white p-8 shadow-md rounded">
       <h2 className="text-2xl font-bold mb-4">Confirm Your Booking</h2>
+      <p>Please confirm your booking details below:</p>
       <p><strong>First Name:</strong> {formData.firstName}</p>
       <p><strong>Last Name:</strong> {formData.lastName}</p>
       <p><strong>Email:</strong> {formData.email}</p>
       <p><strong>Mobile:</strong> {formData.mobile}</p>
       <p><strong>Flight No:</strong> {formData.flightNo}</p>
-      <p><strong>Arrival/Departure :  Date/Time:</strong> {formData.arrivalTime}</p>
+      <p><strong>Date/Time:</strong> {formData.date}</p>
       <p><strong>Car Type:</strong> {formData.carType}</p>
       <p><strong>Pickup Point:</strong> {formData.pickupPoint}</p>
       <p><strong>Dropoff Point:</strong> {formData.dropoffPoint}</p>

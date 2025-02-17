@@ -49,6 +49,7 @@ const BookingStep = ({bookingData, handleChange, nextStep}: any) => {
             defaultValue={fields.firstName.initialValue}
             type='text' 
             placeholder='First Name' 
+            onChange={handleChange}
             className="w-full px-3 py-2 border rounded"
           />
           <p className="text-sm text-red-500">{fields.firstName.errors}</p>
@@ -61,7 +62,7 @@ const BookingStep = ({bookingData, handleChange, nextStep}: any) => {
             key={fields.lastName.key}
             defaultValue={fields.lastName.initialValue}
             placeholder="Last Name"
-            // onChange={handleChange}
+            onChange={handleChange}
             className="w-full px-3 py-2 border rounded"
           />
           <p className="text-sm text-red-500">{fields.lastName.errors}</p>
@@ -73,7 +74,7 @@ const BookingStep = ({bookingData, handleChange, nextStep}: any) => {
             name={fields.email.name}
             key={fields.email.key}
             defaultValue={fields.email.initialValue}
-            // onChange={handleChange}
+            onChange={handleChange}
             placeholder="Your Email"
             className="w-full px-3 py-2 border rounded"
           />
@@ -87,7 +88,7 @@ const BookingStep = ({bookingData, handleChange, nextStep}: any) => {
             key={fields.mobile.key}
             defaultValue={fields.mobile.initialValue}
             placeholder="Your Mobile"
-            // onChange={handleChange}
+            onChange={handleChange}
             className="w-full px-3 py-2 border rounded"
           />
           <p className="text-sm text-red-500">{fields.mobile.errors}</p>
@@ -100,7 +101,7 @@ const BookingStep = ({bookingData, handleChange, nextStep}: any) => {
             key={fields.date.key}
             defaultValue={fields.date.initialValue}
             // placeholder="Date"
-            // onChange={handleChange}
+            onChange={handleChange}
             className="w-full px-3 py-2 border rounded"
           />
         </div>
@@ -112,7 +113,7 @@ const BookingStep = ({bookingData, handleChange, nextStep}: any) => {
             key={fields.flightNo.key}
             defaultValue={fields.flightNo.initialValue}
             placeholder="Your Flight No."
-            // onChange={handleChange}
+            onChange={handleChange}
             className="w-full px-3 py-2 border rounded"
           />
         </div>
@@ -140,7 +141,7 @@ const BookingStep = ({bookingData, handleChange, nextStep}: any) => {
             name={fields.carType.name}
             key={fields.carType.key}
             defaultValue={bookingData.carType}
-            //onChange={handleChange}
+            // onChange={handleChange}
             className="w-full px-3 py-2 border rounded"
             readOnly
           />

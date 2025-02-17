@@ -1,70 +1,64 @@
+import Image from 'next/image';
 import React from 'react';
+import { Label } from '../ui/label';
+import KrungsriLogo from '../../public/krungsri-bank-logo.png';
+import KrungSriQrCode from '../../public/krungsri-bank-qrcode.png';
+import KrungsriPromptpay from '../../public/krungsri-bank-promtpay-logo.png';
 
 const PaymentStep = ({ formData, handleChange, nextStep, prevStep }) => {
   return (
     <div className="bg-white p-8 shadow-md rounded">
-      <h1 className="text-xl font-semibold pb-8">Payment Details</h1>
+      <h1 className="flex justify-center items-center text-xl font-semibold pb-4">Payment Details</h1>
       {/* Bank Details */}
-      
-        <label className="block text-gray-700">Bank Name</label>
-        
+      <div className='p-4'>
+        <div className='flex justify-center items-center text-center mb-4'>
+          <Image src={KrungsriLogo} alt="Bank Name" width={100} height={100} className='flex justify-center items-center text-center' />
+        </div>
+        <div className='flex justify-between pb-1 border-b-2 '>
+          <div className='text-left'>Bank Name:</div>
+          <div className='gap-4'></div>
+          <div>Krungsri Bank (Bank of Ayudhya Public Company Limited.)</div>
+        </div>
+        <div className='flex justify-between pb-1 border-b-2'>
+          <div className='text-left'>Bank Type:</div>
+          <div className='gap-4'></div>
+          <div>Savings</div>
+        </div>
+        <div className='flex justify-between pb-1 border-b-2'>
+          <div>Bank Account:</div>
+          <div className='gap-4'></div>
+          <div>1234567890</div>
+        </div>
+        <div className='flex justify-between pb-1 border-b-2'>
+          <div>Account Name:</div>
+          <div className='gap-4'></div>
+          <div>Thanita Ngamsuppakorn</div>
+        </div>
+        <div className='flex justify-between pb-1 border-b-2'>
+          <div>SWIFT Code:</div>
+          <div className='gap-4'></div>
+          <div>AYUDTHBK</div>
+        </div>
+      </div> 
 
-      <form className="flex flex-col space-y-4">
-        {/* Bank Details */}
-        {/* <div>
-          <label className="block text-gray-700">Bank Name</label>
-          <input
-            type="text"
-            name="bankName"
-            value={formData.bankName}
-            onChange={handleChange}
-            className="w-full px-3 py-2 border rounded"
-            required
-          />
-        </div> */}
-       
-        {/* <div>
-          <label className="block text-gray-700">Card Number</label>
-          <input
-            type="text"
-            name="cardNumber"
-            value={formData.cardNumber}
-            onChange={handleChange}
-            className="w-full px-3 py-2 border rounded"
-            required
-          />
-        </div>
+      <div className='flex flex-col justify-center text-center mx-auto my-8'>
         <div>
-          <label className="block text-gray-700">Expiry Date</label>
-          <input
-            type="text"
-            name="expiryDate"
-            value={formData.expiryDate}
-            onChange={handleChange}
-            className="w-full px-3 py-2 border rounded"
-            required
-          />
+          <Label>Scan QR-CODE for Payment</Label>
         </div>
+        <div className='flex justify-center items-center'>
+          <Image src={KrungSriQrCode} alt="Bank Name" width={200}  />
+        </div>    
         <div>
-          <label className="block text-gray-700">CVV</label>
-          <input
-            type="text"
-            name="cvv"
-            value={formData.cvv}
-            onChange={handleChange}
-            className="w-full px-3 py-2 border rounded"
-            required
-          />
-        </div> */}
-        <div className="flex justify-between">
-          <button type="button" onClick={prevStep} className="bg-gray-500 text-white py-2 px-4 rounded">
-            Back
-          </button>
-          <button type="button" onClick={nextStep} className="bg-blue-500 text-white py-2 px-4 rounded">
-            Next
-          </button>
-        </div>
-      </form>
+          <Label>Promptpay Number</Label>
+          <div className='text-md font-bold'>
+            066-164-5987
+          </div>  
+          <Label>(น.ส. ฐานิตา งามศุภกร)</Label>
+        </div> 
+        <div className='flex justify-center items-center'>
+          <Image src={KrungsriPromptpay} alt="Bank Name" width={100}  />
+        </div> 
+      </div>    
     </div>
   );
 };
