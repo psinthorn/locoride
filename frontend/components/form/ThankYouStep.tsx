@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/navigation';
 
-const ThankYouStep = ({ formData }) => {
+const ThankYouStep = ({ formData }: any) => {
   const router = useRouter();
 
   const handlePayment = () => {

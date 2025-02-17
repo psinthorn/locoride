@@ -5,7 +5,7 @@ import KrungsriLogo from '../../public/krungsri-bank-logo.png';
 import KrungSriQrCode from '../../public/krungsri-bank-qrcode.png';
 import KrungsriPromptpay from '../../public/krungsri-bank-promtpay-logo.png';
 
-const PaymentStep = ({ formData, handleChange, nextStep, prevStep }) => {
+const PaymentStep = ({ formData, handleChange, nextStep, prevStep }: any) => {
   return (
     <div className="bg-white p-8 shadow-md rounded">
       <h1 className="flex justify-center items-center text-xl font-semibold pb-4">Payment Details</h1>

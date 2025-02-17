@@ -1,6 +1,6 @@
 import React from 'react';
 
-const StepNavigation = ({ currentStep }) => {
+const StepNavigation = ({ currentStep }: any) => {
   const steps = ['Booking', 'Payment', 'Confirmation'];
 
   return (
