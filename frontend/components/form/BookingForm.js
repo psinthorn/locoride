@@ -5,6 +5,9 @@ import BookingStep from './BookingStep';
 import ConfirmationStep from './ConfirmationStep';
 import ThankYouStep from './ThankYouStep';
 import StepNavigation from './StepNavigation';
+// import { time } from 'console';
+// import { add } from 'date-fns';
+// import { stat } from 'fs';
 // import ReCAPTCHA from 'react-google-recaptcha';
 
 const BookingForm = ({ bookingData }) => {
@@ -12,19 +15,37 @@ const BookingForm = ({ bookingData }) => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
+    address: '',
     email: '',
     mobile: '',
-    flightNo: '',
-    flightTime: '',
+    passengers: '',
+    luggage: '',
+
+    date: '',
+    time: '',
+
     arrival: '',
     departure: '',
+    flightNo: '',
+    flightTime: '',
+    
     carType: '',
+    carModel: '',
+
     rate: '',
+    total: '', // Total price calculation from the rate and passengers
+
     pickupPoint: '',
     dropOffPoint: '',
+
+    note: '',
+
     cardNumber: '',
+    cardHolder: '',
     expiryDate: '',
     cvv: '',
+
+    status: '',
   });
 
   const [currentStep, setCurrentStep] = useState(1);
@@ -46,6 +67,7 @@ const BookingForm = ({ bookingData }) => {
       ...formData,
       [e.target.name]: e.target.value,
     });
+    console.log(formData);
   };
 
   // const handleRecaptchaChange = (token) => {
@@ -61,7 +83,7 @@ const BookingForm = ({ bookingData }) => {
   };
 
   const handleSubmit = async (e) => {
-    console.log("submit form");
+    //console.log("submit form");
     e.preventDefault();
     const response = await fetch('/api/booking', {
       method: 'POST',
