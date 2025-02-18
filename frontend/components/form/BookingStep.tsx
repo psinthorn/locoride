@@ -8,14 +8,12 @@ import { useActionState, useState, useEffect } from "react";
 
 
 const BookingStep = ({bookingData, handleChange, nextStep}: any) => {
-  const [formData, setFormData] = useState({
-  });
+  const [formData, setFormData] = useState({});
 
-  const [lastResult, actionForm] = useActionState(CreateRequest, undefined)
+  // const [lastResult, actionForm] = useActionState(CreateRequest, undefined)
 
   const [form, fields] = useForm({
-      lastResult,
-  
+      // lastResult,
       onValidate({ formData }: { formData: FormData }){
         return parseWithZod(formData, {
           schema: requestSchema
@@ -35,7 +33,7 @@ const BookingStep = ({bookingData, handleChange, nextStep}: any) => {
   return (
     <div className="bg-white p-8 shadow-md rounded">
       <form 
-      action={actionForm} 
+      // action={actionForm} 
       id={form.id}
       onSubmit={form.onSubmit}
       noValidate

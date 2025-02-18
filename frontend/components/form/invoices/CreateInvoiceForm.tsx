@@ -30,8 +30,10 @@ const CreateInvoiceForm = ({userData}: any ) => {
   const [discount, setDiscount] = useState("0")
   const [dueDate, setDueDate] = useState("cash")
 
+  // Add data to database use actionState
   const [lastResult, actionForm] = useActionState(CreateInvoice, undefined)
 
+  // validate form with zod schema
   const [form, fields] = useForm({
       lastResult,
   
@@ -44,6 +46,7 @@ const CreateInvoiceForm = ({userData}: any ) => {
         shouldRevalidate: "onInput"
     });
 
+    // handle currency change
     const handleCurrencyChange = (value: string) => {
       const code = value.toUpperCase();
       setCurrencyCode(code);
@@ -56,6 +59,7 @@ const CreateInvoiceForm = ({userData}: any ) => {
       return result;
     };
 
+    // re-calculate when fare or quantity is change
     useEffect(() => {
       const updateSubTotal = async () => {
         const result = await CalculateSubTotal();

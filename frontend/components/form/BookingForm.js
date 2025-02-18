@@ -1,17 +1,15 @@
 "use client"
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useActionState } from 'react';
 import BookingStep from './BookingStep';
 import ConfirmationStep from './ConfirmationStep';
 import ThankYouStep from './ThankYouStep';
 import StepNavigation from './StepNavigation';
-// import { time } from 'console';
-// import { add } from 'date-fns';
-// import { stat } from 'fs';
-// import ReCAPTCHA from 'react-google-recaptcha';
+import { CreateRequest } from '../actions/actions';
 
 const BookingForm = ({ bookingData }) => {
-  console.log(bookingData);
+
+  // Set the initial form data
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -105,6 +103,20 @@ const BookingForm = ({ bookingData }) => {
     nextStep(); // Move to the next step after submission
   };
 
+
+  // Add data to database use actionState
+  const [lastResult, actionForm] = useActionState(CreateRequest, undefined)
+  const onSubmit = (event) => {
+    event.preventDefault();
+    // if (agree) {
+    //   actionForm(formData);
+    // }
+    console.log("submit form");
+    console.log(formData);
+    nextStep();
+  };
+
+
   return (
     <section className="bg-blue-50 dark:bg-slate-200 py-8 flex justify-center items-center min-h-screen">
       <div className="w-full max-w-3xl px-4 sm:px-6 lg:px-8">
@@ -121,7 +133,7 @@ const BookingForm = ({ bookingData }) => {
           <BookingStep bookingData={formData} handleChange={handleChange} nextStep={nextStep} />
         )}
         {currentStep === 2 && (
-          <ConfirmationStep formData={formData} prevStep={prevStep} handleSubmit={handleSubmit} />
+          <ConfirmationStep formData={formData} prevStep={prevStep} onSubmit={onSubmit}  />
         )}
         {currentStep === 3 && (
           <ThankYouStep formData={formData} />
