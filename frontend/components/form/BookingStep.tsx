@@ -10,8 +10,6 @@ import { useActionState, useState, useEffect } from "react";
 const BookingStep = ({bookingData, handleChange, nextStep}: any) => {
   const [formData, setFormData] = useState({});
 
-  // const [lastResult, actionForm] = useActionState(CreateRequest, undefined)
-
   const [form, fields] = useForm({
       // lastResult,
       onValidate({ formData }: { formData: FormData }){

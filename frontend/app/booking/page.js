@@ -66,7 +66,7 @@ export default function Booking() {
       }));     
   }, [searchParams]);
 
-  console.log("Form Data: ", formData);
+  console.log("Form Data on Main Booking Page: ", formData);
 
   return (
     <div className="min-h-screen bg-gray-100">

@@ -5,9 +5,9 @@ import prisma from "@/components/utilities/db"
 import { requireAuth } from "@/components/utilities/hooks"
 import { invoiceSchema, onboardingSchema, requestSchema } from "@/components/utilities/ZodSchemas"
 import { parseWithZod } from "@conform-to/zod"
-import { mailClient } from "@/components/utilities/mailtrap"
-import { time } from "console"
-import { array } from "zod"
+// import { mailClient } from "@/components/utilities/mailtrap"
+// import { time } from "console"
+// import { array } from "zod"
 // import { sub } from "date-fns"
 
 
@@ -99,7 +99,9 @@ export const CreateRequest = async  (prevState: any ,formData: FormData) => {
   //   }
   // }).then(console.log, console.error);
 
-  return redirect("/")
+  // return redirect("/")
+  console.log("Data", data)
+  return data;
 
 }; 
 

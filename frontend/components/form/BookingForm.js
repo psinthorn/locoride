@@ -105,16 +105,29 @@ const BookingForm = ({ bookingData }) => {
 
 
   // Add data to database use actionState
-  const [lastResult, actionForm] = useActionState(CreateRequest, undefined)
-  const onSubmit = (event) => {
-    event.preventDefault();
-    // if (agree) {
-    //   actionForm(formData);
-    // }
-    console.log("submit form");
-    console.log(formData);
-    nextStep();
-  };
+  // const [lastResult, actionForm] = useActionState(CreateRequest, undefined)
+  
+  // const onSubmit = async (event) => {
+  //   event.preventDefault();
+  //   const result = await actionForm.submit(formData);
+  //   if (result.success) {
+  //     setResponseMessage(result.message);
+  //     setShowMessage(true);
+
+  //     // Hide the message after 5 seconds
+  //     setTimeout(() => {
+  //       setShowMessage(false);
+  //     }, 5000);
+
+  //     nextStep(); // Move to the next step after submission
+  //   } else {
+  //     alert("Failed to create request: " + result.error);
+  //   }
+
+  //   console.log("form submited");
+  //   console.log(formData);
+  //   nextStep();
+  // };
 
 
   return (
@@ -133,7 +146,7 @@ const BookingForm = ({ bookingData }) => {
           <BookingStep bookingData={formData} handleChange={handleChange} nextStep={nextStep} />
         )}
         {currentStep === 2 && (
-          <ConfirmationStep formData={formData} prevStep={prevStep} onSubmit={onSubmit}  />
+          <ConfirmationStep formData={formData} prevStep={prevStep} />
         )}
         {currentStep === 3 && (
           <ThankYouStep formData={formData} />
