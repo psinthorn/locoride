@@ -5,7 +5,7 @@ import { use, useState, useEffect } from 'react';
 import { HiUser } from 'react-icons/hi';
 import RateCalculate  from './../utilities/RateCalculate';
 
-const CarItem = ({car, distance}) => {
+const CarItem = ({car, distance, rate }) => {
   const [activeID, setActiveID] = useState();
   const [carId, setCarId] = useState();
   const [buttonID, setButtonID] = useState();
@@ -14,6 +14,8 @@ const CarItem = ({car, distance}) => {
 
   // Set active car ID and button ID
   const handleClick = (carID) => {
+    // console.log("Car ID is: ", carID);
+    // console.log("Rate Estimate is: ", rate);
     setCarId(carID);
     setActiveID(carID);
     setButtonID(carID);
@@ -23,10 +25,11 @@ const CarItem = ({car, distance}) => {
 
   // if distance or car rate changes, then recalculate rate
   useEffect(() => {
-      const rateAvrage = RateCalculate(distance, car.rate);
+      const rateAvrage = RateCalculate({distance}, car.rate);
       setRateEstimate(rateAvrage);
+      console.log("Rate Estimate is: ", rateEstimate);
+      console.log(typeof(rateAvrage));
   }, [distance, car, selectedCar]);
-
 
   return (
     <div className='flex p-3  m-1 gap-2 rounded-sm  hover:bg-slate-200 active:bg-slate-400 focus:outline-2px focus:ring focus:ring-slate-200'

@@ -85,8 +85,8 @@ const ConfirmationStep = ({ formData, prevStep }: any) => {
             <input type="hidden" name="mobile" value={formData.mobile} />
             <input type="hidden" name="date" value={formData.date} />
             <input type="hidden" name="time" value={formData.time} />
-            <input type="hidden" name="arrival" value={formData.arrival} />
-            <input type="hidden" name="departure" value={formData.departure} />
+            <input type="hidden" name="arrival" value={formData?.arrival} />
+            <input type="hidden" name="departure" value={formData?.departure} />
             <input type="hidden" name="flightNo" value={formData?.flightNo} />
             <input type="hidden" name="carType" value={formData.carType} />
             <input type="hidden" name="carModel" value={formData.carModel} />
@@ -100,7 +100,7 @@ const ConfirmationStep = ({ formData, prevStep }: any) => {
             <input type="hidden" name="userId" value={formData?.userId} />
             <input type="hidden" name="vendorId" value={formData?.vendorId} />
             <input type="hidden" name="organizationId" value={formData?.organizationId} />
-            
+
             <input type="checkbox" id="agree" name="agree" className="mr-2" onChange={onAgree} />
             I agree to the Terms and Conditions
             <div className="flex justify-between mt-4">
@@ -108,7 +108,7 @@ const ConfirmationStep = ({ formData, prevStep }: any) => {
                   Back
                 </button>
                 { agree ?
-                  <button type="submit"  className="bg-blue-500 text-white py-2 px-4 rounded">
+                  <button type="submit" onClick={() => console.log("submit form")}  className="bg-blue-500 text-white py-2 px-4 rounded">
                     Confirm
                   </button>
                   :

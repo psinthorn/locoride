@@ -7,7 +7,7 @@ import { useContext, useEffect, useState } from 'react'
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete'
 
 
-const InputItem = ({type, googleApiKey}) => {
+const InputItem = ({type}) => {
   const [value, setValue] = useState(null);
   const [inputPlaceHolder, setInputPlaceHolder] = useState(null);
   const {source, setSource} = useContext(SourceContext);

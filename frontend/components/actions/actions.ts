@@ -48,7 +48,7 @@ export const CreateRequest = async  (prevState: any ,formData: FormData) => {
     return submission.reply();
   }
 
-  const data = await prisma.request.create({
+  const data = await prisma.requestBooking.create({
     data: {
       requestNumber: submission.value.requestNumber, // Add this field
 

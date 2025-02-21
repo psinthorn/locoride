@@ -4,18 +4,25 @@ import { useContext, useEffect, useState } from 'react';
 import InputItem from './InputItem'
 import SourceContext from '@/context/SourceContext';
 import DestinationContext from '@/context/DestinationContext';
+import { useRequestTransferContext } from '@/context/RequestTransferContext';
 import CarListOptions from '../vehicle/CarListOptions';
 import Services from '../services/Services';
-import { Loader, CircleChevronDown, Heart, Plane, Smile, SmilePlus, Snowflake, Sun, TreePalm, Waves, Car } from 'lucide-react';
+import { CircleChevronDown } from 'lucide-react';
 import IconAnimate from '../utilities/IconAnimate';
+import { redirect, useRouter } from 'next/navigation';
 
 const SearchSection = () => {
   const {source, setSource} = useContext(SourceContext);
   const {destination, setDestination} = useContext(DestinationContext); 
+  const {requestTransfer, setRequestTransfer} = useRequestTransferContext();
   const [routeDistance, setRouteDistance] = useState(0);
   const [routeDistanceInKiloMeter, setRouteDistanceInKiloMeter] = useState(0);
-  
-  
+  const [selectedCarType, setSelectedCarTpe] = useState("");
+  const [selectedCarModel, setSelectedCarModel] = useState("");
+  const [selectedRate, setSelectedRate] = useState(0);
+
+  const router = useRouter();
+ 
   const calculateDistance  = () => {
     if (source && destination) {
         const service = new google.maps.DistanceMatrixService();
@@ -44,12 +51,33 @@ const SearchSection = () => {
 };
 
   useEffect(() => {
-    console.log("source: ", source);
-    console.log("destination: ", destination);
-    setSource(source);
-    setDestination(destination);
-    calculateDistance();
+    if (source){
+      setSource(source);
+    }
+    if (destination){
+      setDestination(destination);
+    }
+    if (source && destination) {
+      calculateDistance();
+    }
   }, [source, destination]);
+
+
+  const handleBookNow = async (carType, carModel, rate ) => {
+    console.log("Handle book now");
+    console.log("Before Request Transfer is: ", requestTransfer);
+      // setRequestTransfer({
+      //   source: source.label,
+      //   destination: destination.label,
+      //   carType: carType,
+      //   carModel: carModel,
+      //   rate: rate,
+      //   //distance: routeDistanceInKilo
+      // });
+      console.log("after Request Transfer is: ", requestTransfer);
+      router.push('/booking');
+      // redirect('/booking');
+  };
 
   return (
     <div className='space-y-4 p-4 bg-white rounded-none h-full md:p-6'>
@@ -80,7 +108,12 @@ const SearchSection = () => {
             : 
             null }            
           { routeDistance ? 
-            <CarListOptions distance={routeDistanceInKiloMeter.toFixed(2)} source={source} destination={destination}  /> 
+            <CarListOptions 
+              distance={routeDistanceInKiloMeter.toFixed(2)}
+              source={source}
+              destination={destination} 
+              handleBookNow={handleBookNow} 
+            /> 
             : 
             null }
         </div>

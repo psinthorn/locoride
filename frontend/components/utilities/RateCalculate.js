@@ -30,7 +30,12 @@ const RateCalculate = ({distance}, rate) => {
   }else if (distance > 15) {
     return Math.ceil((distance - 15) * rate[2] + (10 * rate[1]) + rate[0])
   }
-}
+
+  console.log("rate is: ", rate);
+  console.log("distance is: ", distance);
+  console.log(typeof(distance));
+  console.log(typeof(rate));
+};
 
 export default RateCalculate;
 
