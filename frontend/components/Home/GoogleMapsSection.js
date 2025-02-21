@@ -1,15 +1,17 @@
 "use client"
 
-import React, { useContext, useCallback, useEffect, useState, memo } from 'react';
-import SourceContext from '@/context/SourceContext'
-import DestinationContext from '@/context/DestinationContext'
+import React, { useCallback, useEffect, useState, memo } from 'react';
+import { useSourceContext } from '@/context/SourceContext'
+import { useDestinationContext } from '@/context/DestinationContext'
 import { DirectionsRenderer, GoogleMap, MarkerF, OverlayView, OverlayViewF, useJsApiLoader } from '@react-google-maps/api';
 import { Divide } from 'lucide-react';
 
 // rate per km
 const GoogleMapsSection = () => {
-  const {source, setSource} = useContext(SourceContext);
-  const {destination, setDestination} = useContext(DestinationContext); 
+
+  const {source, setSource} = useSourceContext();
+  const {destination, setDestination} = useDestinationContext(); 
+
   const [directionRoutePoints, setDirectionRoutePoints] = useState([]);
   const containerStyle = {
     width: '100%',

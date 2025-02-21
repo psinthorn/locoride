@@ -10,20 +10,6 @@ import { useRequestTransferContext } from '@/context/RequestTransferContext';
 export default function Booking() {
   const { requestTransfer, setRequestTransfer } = useRequestTransferContext();
   console.log("Booking Request is: ", requestTransfer);
-  // const {requestTransfer, setRequestTransfer} = useContext(RequestTransferContext);
-  // console.log("Booking Request is: ", requestTransfer);
-  // const { requestTransfer, setRequestTransfer } = useContext(RequestTransferContext);
-  // console.log("Request is: ", requestTransfer);
-  // // Get data from the URL query string
-  // const searchParams = useSearchParams();
-  // const rateEstimate = searchParams.get('rateEstimate');
-  // const source = JSON.parse(searchParams.get('source'));
-  // const destination = JSON.parse(searchParams.get('destination'));
-  // const carType = searchParams.get('carType');
-  // const carModel = searchParams.get('carModel');
-  // const pickupPoint = source?.label;
-  // const destinationPoint = destination?.label;
- 
   // Set the initial form data
     const [formData, setFormData] = useState({
       firstName: '',
@@ -48,7 +34,6 @@ export default function Booking() {
   
       rate: requestTransfer?.rate,
       // total: '', // Total price calculation from the rate and passengers
-  
       // pickupPoint: requestTransfer.source? requestTransfer.source : '',
       // dropoffPoint: requestTransfer.destination? requestTransfer.destination : '',
   

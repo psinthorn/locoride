@@ -1,9 +1,9 @@
 "use client"
 
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import InputItem from './InputItem'
-import SourceContext from '@/context/SourceContext';
-import DestinationContext from '@/context/DestinationContext';
+import { useSourceContext } from '@/context/SourceContext';
+import { useDestinationContext } from '@/context/DestinationContext';
 import { useRequestTransferContext } from '@/context/RequestTransferContext';
 import CarListOptions from '../vehicle/CarListOptions';
 import Services from '../services/Services';
@@ -12,15 +12,13 @@ import IconAnimate from '../utilities/IconAnimate';
 import { redirect, useRouter } from 'next/navigation';
 
 const SearchSection = () => {
-  const {source, setSource} = useContext(SourceContext);
-  const {destination, setDestination} = useContext(DestinationContext); 
+  const {source, setSource} = useSourceContext();
+  const {destination, setDestination} = useDestinationContext(); 
   const {requestTransfer, setRequestTransfer} = useRequestTransferContext();
+
   const [routeDistance, setRouteDistance] = useState(0);
   const [routeDistanceInKiloMeter, setRouteDistanceInKiloMeter] = useState(0);
-  const [selectedCarType, setSelectedCarTpe] = useState("");
-  const [selectedCarModel, setSelectedCarModel] = useState("");
-  const [selectedRate, setSelectedRate] = useState(0);
-
+  
   const router = useRouter();
  
   const calculateDistance  = () => {

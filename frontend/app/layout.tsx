@@ -5,6 +5,8 @@ import Footer from "../components/layout/Footer";
 
 import "./globals.css";
 import RequestTransferContextProvider from "@/context/RequestTransferContext";
+import SourceContextProvider from "@/context/SourceContext";
+import DestinationContextProvider from "@/context/DestinationContext";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -26,9 +28,13 @@ export default function RootLayout({
         <body className={`montserrat.className, h-auto`}>
           <div className="h-full">
             <Header />
-            <RequestTransferContextProvider>
-              {children}
-            </RequestTransferContextProvider>
+              <SourceContextProvider>
+                <DestinationContextProvider>
+                  <RequestTransferContextProvider>
+                  {children}
+                  </RequestTransferContextProvider>
+                </DestinationContextProvider>
+              </SourceContextProvider>
           </div>
           <div className="h-20">
             <Footer />

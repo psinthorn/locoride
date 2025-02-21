@@ -2,8 +2,8 @@
 
 import GoogleMapsSection from '@/components/Home/GoogleMapsSection'
 import SearchSection from '@/components/Home/SearchSection'
-import SourceContext from '@/context/SourceContext'
-import DestinationContext from '@/context/DestinationContext'
+import SourceContext, { useSourceContext } from '@/context/SourceContext'
+import DestinationContext, { useDestinationContext } from '@/context/DestinationContext'
 import WhyChooseUs from '@/components/why-us/WhyChooseUs'
 // import GoogleApiKeyContext from '@/context/GoogleApiKeyContext'
 import { useState, useEffect, useContext } from "react";
@@ -13,28 +13,10 @@ import AboutUs from '@/components/AboutUs/AboutUs'
 // import CarListOptions from '../components/vehicle/CarListOptions'
 
 export default function Home() {
-
-  const [source, setSource] = useState<any[]>([]);
-  const [destination, setDestination] = useState<any[]>([]);   
-  
-  const googleAPiKeyContext = process.env.NEXT_PUBLIC_GOOGLE_API_KEY
-
-  useEffect(() => {
-    console.log('source', source)
-    console.log('destination', destination)
-  }, [source, destination])
-
-  return (
-    <SourceContext.Provider 
-    value={{
-      source, 
-      setSource
-      }}>
-      <DestinationContext.Provider 
-      value={{
-        destination, 
-        setDestination
-        }}>       
+const googleAPiKeyContext = process.env.NEXT_PUBLIC_GOOGLE_API_KEY
+const { source, setSource } = useSourceContext();
+const { destination, setDestination } = useDestinationContext();
+  return (   
           <LoadScript 
             libraries={['places']}
             googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_API_KEY || ''}
@@ -62,7 +44,6 @@ export default function Home() {
               <AboutUs />
             </div>
           </LoadScript>    
-      </DestinationContext.Provider>
-    </SourceContext.Provider>
+      
   );
 }

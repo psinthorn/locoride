@@ -1,7 +1,7 @@
 "use Client"
 
-import DestinationContext from '@/context/DestinationContext'
-import SourceContext from '@/context/SourceContext'
+import { useDestinationContext } from '@/context/DestinationContext'
+import { useSourceContext } from '@/context/SourceContext'
 import Image from 'next/image'
 import { useContext, useEffect, useState } from 'react'
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete'
@@ -10,8 +10,8 @@ import GooglePlacesAutocomplete from 'react-google-places-autocomplete'
 const InputItem = ({type}) => {
   const [value, setValue] = useState(null);
   const [inputPlaceHolder, setInputPlaceHolder] = useState(null);
-  const {source, setSource} = useContext(SourceContext);
-  const {destination, setDestination} = useContext(DestinationContext); 
+  const {source, setSource} = useSourceContext();
+  const {destination, setDestination} = useDestinationContext(); 
 
   // check if type is source or destination and set the placeholder accordingly
   useEffect(() => {
