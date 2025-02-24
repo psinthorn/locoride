@@ -25,10 +25,13 @@ const GoogleMapsSection = () => {
   });
 
   const [map, setMap] = useState(null)
+  console.log("source: ", source);
+  console.log("destination: ", destination);
 
 // Pickup location
   useEffect(() => {
-
+    console.log("source: ", source);
+    console.log("destination: ", destination);
     if(source?.length != [] && map){
       map.panTo(
         {

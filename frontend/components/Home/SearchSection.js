@@ -9,7 +9,7 @@ import CarListOptions from '../vehicle/CarListOptions';
 import Services from '../services/Services';
 import { CircleChevronDown } from 'lucide-react';
 import IconAnimate from '../utilities/IconAnimate';
-import { redirect, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
 const SearchSection = () => {
   const {source, setSource} = useSourceContext();
@@ -22,7 +22,12 @@ const SearchSection = () => {
   const router = useRouter();
  
   const calculateDistance  = () => {
-    if (source && destination) {
+    console.log("source: ", source);
+    console.log("destination: ", destination);
+    console.log("source length: ", source.length);
+    console.log("destination length: ", destination.length);
+
+    if ( source && destination ) {
         const service = new google.maps.DistanceMatrixService();
         service.getDistanceMatrix(
           {
@@ -61,17 +66,21 @@ const SearchSection = () => {
   }, [source, destination]);
 
 
-  const handleBookNow = async (carType, carModel, rate ) => {
+  const handleBookNow = ({carType, carModel, rate} ) => {
+    console.log("Car Type is: ", carType);
+    console.log("Car Model is: ", carModel);
+    console.log("Rate is: ", rate);
     console.log("Handle book now");
     console.log("Before Request Transfer is: ", requestTransfer);
-      // setRequestTransfer({
-      //   source: source.label,
-      //   destination: destination.label,
-      //   carType: carType,
-      //   carModel: carModel,
-      //   rate: rate,
-      //   //distance: routeDistanceInKilo
-      // });
+      setRequestTransfer({
+        ...requestTransfer,
+        pickupPoint: source.label,
+        dropoffPoint: destination.label,
+        // carType: carType,
+        // carModel: carModel,
+        // rate: rate,
+        //distance: routeDistanceInKilo
+      });
       console.log("after Request Transfer is: ", requestTransfer);
       router.push('/booking');
       // redirect('/booking');

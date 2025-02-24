@@ -10,10 +10,11 @@ import { useState, useEffect, useContext } from "react";
 import { LoadScript } from '@react-google-maps/api'
 import MainBanner from '@/components/hero/MainBanner'
 import AboutUs from '@/components/AboutUs/AboutUs'
+import { useRequestTransferContext } from '@/context/RequestTransferContext'
 // import CarListOptions from '../components/vehicle/CarListOptions'
 
 export default function Home() {
-const googleAPiKeyContext = process.env.NEXT_PUBLIC_GOOGLE_API_KEY
+// const googleAPiKeyContext = process.env.NEXT_PUBLIC_GOOGLE_API_KEY
 const { source, setSource } = useSourceContext();
 const { destination, setDestination } = useDestinationContext();
   return (   
@@ -26,7 +27,7 @@ const { destination, setDestination } = useDestinationContext();
                 <SearchSection />
               </div>
               <div className="col-span-2 relative">
-                { source.length == 0 || destination.length == 0 ? <MainBanner />  : <GoogleMapsSection /> }
+                { !source || !destination ? <MainBanner />  : <GoogleMapsSection /> }
               </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 p-6 gap-5 ">

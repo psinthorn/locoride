@@ -3,14 +3,14 @@
 import React, { createContext, useContext, useState  } from "react";
 
 interface SourceContextType {
-  source: any[];
-  setSource: React.Dispatch<React.SetStateAction<any[]>>;
+  source: any[] | undefined;
+  setSource: React.Dispatch<React.SetStateAction<any[] | undefined>>;
 }
 
 const SourceContext = createContext<SourceContextType | undefined>(undefined);
 
 export default function SourceContextProvider({ children } : { children: React.ReactNode })  {
-  const [source, setSource] = useState<any[]>([]);
+  const [source, setSource] = useState<any[] | undefined>(undefined);
 
   return (
     <SourceContext.Provider

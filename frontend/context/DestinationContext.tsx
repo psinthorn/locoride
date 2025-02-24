@@ -3,14 +3,14 @@
 import React, { createContext, useContext, useState } from "react";
 
 type DestinationContextType = {
-  destination: any[];
-  setDestination: React.Dispatch<React.SetStateAction<any[]>>;
+  destination: any[] | undefined;
+  setDestination: React.Dispatch<React.SetStateAction<any[] | undefined>>;
 };
 
 const DestinationContext = createContext<DestinationContextType | undefined>(undefined);
 
 export default function DestinationContextProvider({ children } : {children: React.ReactNode}) {
-  const [destination, setDestination] = useState<any[]>([])
+  const [destination, setDestination] = useState<any[] | undefined>(undefined)
   return (
     <DestinationContext.Provider 
       value={

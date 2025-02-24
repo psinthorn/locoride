@@ -173,6 +173,7 @@ model RequestBooking {
   flightNo       String?
   flightDateTime String?
 
+  distance Int
   rate     Int
   quantity Int?
   total    Int?

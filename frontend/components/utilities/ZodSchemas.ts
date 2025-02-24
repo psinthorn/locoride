@@ -1,4 +1,4 @@
-import { flightRouterStateSchema } from 'next/dist/server/app-render/types';
+// Create new file called ZodSchemas.ts in frontend/components/utilities folder and add the following code:
 import { z } from 'zod'
 
 export const onboardingSchema =  z.object({
@@ -28,6 +28,7 @@ export const requestSchema = z.object({
   carType: z.string().min(2, "Minimum is 2 characters"),
   carModel: z.string().min(2, "Minimum is 2 characters"),
 
+  distance: z.string().optional(),
   rate: z.string().optional(),
   pax: z.string().optional(),
   total: z.string().optional(),
