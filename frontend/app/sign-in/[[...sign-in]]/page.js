@@ -1,4 +1,4 @@
-import { SignIn } from "@clerk/nextjs";
+// import { SignIn } from "@clerk/nextjs";
 import Image from "next/image";
 import Banner from "@/public/rrss-banner.png";
 
@@ -13,7 +13,7 @@ export default function Page() {
         className="object-contain w-full h-full"
       />
       <div className="flex absolute inset-0  items-center justify-center">
-        <SignIn />
+        {/* <SignIn /> */}
       </div>
     </>
  

@@ -1,49 +1,54 @@
 "use client"
 
-import React, { useState, useEffect, useActionState } from 'react';
+import React, { useState, useEffect } from 'react';
 import BookingStep from './BookingStep';
 import ConfirmationStep from './ConfirmationStep';
 import ThankYouStep from './ThankYouStep';
 import StepNavigation from './StepNavigation';
 import { CreateRequest } from '../actions/actions';
+import { useRequestTransferContext } from '@/context/RequestTransferContext';
 
 const BookingForm = ({ bookingData }) => {
-
+  const { setRequestTransfer } = useRequestTransferContext();
   // Set the initial form data
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    address: '',
-    email: '',
-    mobile: '',
-    passengers: '',
-    luggage: '',
+    ...bookingData | undefined,
+    // firstName: '',
+    // lastName: '',
+    // address: '',
+    // email: '',
+    // mobile: '',
+    // passengers: '',
+    // luggage: '',
 
-    date: '',
-    time: '',
+    // date: '',
+    // time: '',
 
-    arrival: '',
-    departure: '',
-    flightNo: '',
-    flightTime: '',
+    // arrival: '',
+    // departure: '',
+    // flightNo: '',
+    // flightTime: '',
     
-    carType: '',
-    carModel: '',
+    // carType: 
+    // '',
+    // carModel: '',
 
-    rate: '',
-    total: '', // Total price calculation from the rate and passengers
+    // distance: '',
+    // passengers: '',
+    // rate: '',
+    // total: '', // Total price calculation from the rate and passengers
 
-    pickupPoint: '',
-    dropOffPoint: '',
+    // pickupPoint: '',
+    // dropOffPoint: '',
 
-    note: '',
+    // note: '',
 
-    cardNumber: '',
-    cardHolder: '',
-    expiryDate: '',
-    cvv: '',
+    // cardNumber: '',
+    // cardHolder: '',
+    // expiryDate: '',
+    // cvv: '',
 
-    status: '',
+    // status: '',
   });
 
   const [currentStep, setCurrentStep] = useState(1);
@@ -80,41 +85,54 @@ const BookingForm = ({ bookingData }) => {
     setCurrentStep(currentStep - 1);
   };
 
-  const handleSubmit = async (e) => {
-    //console.log("submit form");
-    e.preventDefault();
-    const response = await fetch('/api/booking', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ ...formData}),
-    });
+  // const handleSubmit = async (e) => {
+  //   //console.log("submit form");
+  //   e.preventDefault();
+  //   const response = await fetch('/api/booking', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify({ ...formData}),
+  //   });
 
-    const result = await response.json();
-    setResponseMessage(result.message);
-    setShowMessage(true);
+  //   const result = await response.json();
+  //   setResponseMessage(result.message);
+  //   setShowMessage(true);
 
-    // Hide the message after 5 seconds
-    setTimeout(() => {
-      setShowMessage(false);
-    }, 5000);
+  //   // Hide the message after 5 seconds
+  //   setTimeout(() => {
+  //     setShowMessage(false);
+  //   }, 5000);
 
-    nextStep(); // Move to the next step after submission
-  };
+  //   nextStep(); // Move to the next step after submission
+  // };
 
 
   // Add data to database use actionState
-  const [lastResult, actionForm] = useActionState(CreateRequest, undefined)
-  const onSubmit = (event) => {
-    event.preventDefault();
-    // if (agree) {
-    //   actionForm(formData);
-    // }
-    console.log("submit form");
-    console.log(formData);
-    nextStep();
-  };
+  // const [lastResult, actionForm] = useActionState(CreateRequest, undefined)
+  
+  // const onSubmit = async (event) => {
+  //   event.preventDefault();
+  //   const result = await actionForm.submit(formData);
+  //   if (result.success) {
+  //     setResponseMessage(result.message);
+  //     setShowMessage(true);
+
+  //     // Hide the message after 5 seconds
+  //     setTimeout(() => {
+  //       setShowMessage(false);
+  //     }, 5000);
+
+  //     nextStep(); // Move to the next step after submission
+  //   } else {
+  //     alert("Failed to create request: " + result.error);
+  //   }
+
+  //   console.log("form submited");
+  //   console.log(formData);
+  //   nextStep();
+  // };
 
 
   return (
@@ -133,7 +151,7 @@ const BookingForm = ({ bookingData }) => {
           <BookingStep bookingData={formData} handleChange={handleChange} nextStep={nextStep} />
         )}
         {currentStep === 2 && (
-          <ConfirmationStep formData={formData} prevStep={prevStep} onSubmit={onSubmit}  />
+          <ConfirmationStep formData={formData} prevStep={prevStep} />
         )}
         {currentStep === 3 && (
           <ThankYouStep formData={formData} />

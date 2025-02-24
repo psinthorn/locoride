@@ -2,62 +2,47 @@
 
 import {CarListData} from '../../data/CarListData'
 import CarItem from './CarItem'
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import RateCalculate from '../utilities/RateCalculate';
-import { useRouter } from 'next/navigation';
-import SourceContext from '@/context/SourceContext';
-import DestinationContext from '@/context/DestinationContext';
+import { useRequestTransferContext } from '@/context/RequestTransferContext';
 
-const CarListOptions = (distance, sou, des) => {
+const CarListOptions = ({ distance,  handleBookNow }) => {
 
   const [selectedCar, setSelectedCar] = useState();
   const [activeIndex, setActiveIndex] = useState();
   const [rateEstimate, setRateEstimate] = useState(0);
-  const {source, setSource} = useContext(SourceContext);
-  const {destination, setDestination} = useContext(DestinationContext); 
-  const router = useRouter();
+  const {requestTransfer, setRequestTransfer} = useRequestTransferContext();
+  
 
-  const handleClick = async (index) => {
+  const handleClick = (index) => {
     setActiveIndex(index);
     const car = CarListData[index];
     setSelectedCar(car);
-
-    if (car) {
-      const rateAvrage = await RateCalculate(distance, car.rate);
-      setRateEstimate(rateAvrage);
-      //console.log(typeof(rateAvrage));
-    }
-  };
-
-  // send data to booking page 
-  const handleBookNow = () => {
-    if (selectedCar) {
-      rateEstimate.toString();
-      router.push(`/booking?carType=${selectedCar.type}&carModel=${selectedCar.model}&rateEstimate=${rateEstimate}&source=${JSON.stringify(source)}&destination=${JSON.stringify(destination)}`);
-    }
+    // setRateEstimate(rateEstimate);
+    setRequestTransfer({...requestTransfer });
+    console.log("Request Transfer is: ", requestTransfer);
   };
 
   return ( 
     <div>
         <div className='p-4 overflow-auto h-[480px]'>
           { CarListData.map((car, index) => (    
-            <div className='cursor-pointer p-2'
+            <div key={car.ID} className='cursor-pointer p-2'
             onClick={() => handleClick(index)}
             >
-              <CarItem key={car.ID} car={car} distance={distance} />  
+              <CarItem car={car} distance={distance} rate={rateEstimate} />  
             </div>       
           ))}     
         </div>    
 
         { selectedCar?
           <div className='relative flex justify-between bottom-8 items-center font-bold text-center w-full text-slate-700 p-4 shadow-xl bg-white  md:w-full sm:w-full border-[1px] rounded-sm '>
-             <h2>{selectedCar.type} Rate Avg. {rateEstimate} THB</h2>
-             <button onClick={handleBookNow} className='bg-black text-white rounded-lg text-center p-4'>Book Now</button>
+             <h2>{selectedCar.type} Rate Avg. { requestTransfer.rate } THB</h2>
+             <button onClick={() => handleBookNow( requestTransfer.carType, requestTransfer.carModel,  )} className='bg-black text-white rounded-lg text-center p-4'>Book Now</button>
              {/* <Booking /> */}
            </div> 
            : null
         }
-
    </div>
   )
 }

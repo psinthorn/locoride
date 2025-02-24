@@ -4,7 +4,10 @@ import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
 
 import "./globals.css";
-import { ClerkProvider } from "@clerk/nextjs";
+import RequestTransferContextProvider from "@/context/RequestTransferContext";
+import SourceContextProvider from "@/context/SourceContext";
+import DestinationContextProvider from "@/context/DestinationContext";
+
 
 const inter = Inter({ subsets: ["latin"] });
 const montserrat = Montserrat({ subsets: ["latin"] });
@@ -20,18 +23,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
+    // <ClerkProvider>
       <html lang="en">
         <body className={`montserrat.className, h-auto`}>
           <div className="h-full">
             <Header />
-            {children}
+              <SourceContextProvider>
+                <DestinationContextProvider>
+                  <RequestTransferContextProvider>
+                  {children}
+                  </RequestTransferContextProvider>
+                </DestinationContextProvider>
+              </SourceContextProvider>
           </div>
           <div className="h-20">
             <Footer />
           </div>
         </body>
       </html>
-    </ClerkProvider>
+    // </ClerkProvider>
   );
 }

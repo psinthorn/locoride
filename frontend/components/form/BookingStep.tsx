@@ -3,14 +3,12 @@
 import { parseWithZod } from "@conform-to/zod";
 import { useForm } from "@conform-to/react";
 import { requestSchema } from "../utilities/ZodSchemas";
-import { CreateRequest } from "../actions/actions";
-import { useActionState, useState, useEffect } from "react";
-
+import { useState, useEffect } from "react";
+import { useRequestTransferContext } from "@/context/RequestTransferContext";
 
 const BookingStep = ({bookingData, handleChange, nextStep}: any) => {
+  const { requestTransfer } = useRequestTransferContext();
   const [formData, setFormData] = useState({});
-
-  // const [lastResult, actionForm] = useActionState(CreateRequest, undefined)
 
   const [form, fields] = useForm({
       // lastResult,

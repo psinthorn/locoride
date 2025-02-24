@@ -1,23 +1,29 @@
 "use client"
 
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import InputItem from './InputItem'
-import SourceContext from '@/context/SourceContext';
-import DestinationContext from '@/context/DestinationContext';
+import { useSourceContext } from '@/context/SourceContext';
+import { useDestinationContext } from '@/context/DestinationContext';
+import { useRequestTransferContext } from '@/context/RequestTransferContext';
 import CarListOptions from '../vehicle/CarListOptions';
 import Services from '../services/Services';
-import { Loader, CircleChevronDown, Heart, Plane, Smile, SmilePlus, Snowflake, Sun, TreePalm, Waves, Car } from 'lucide-react';
+import { CircleChevronDown } from 'lucide-react';
 import IconAnimate from '../utilities/IconAnimate';
+import { useRouter } from 'next/navigation';
 
 const SearchSection = () => {
-  const {source, setSource} = useContext(SourceContext);
-  const {destination, setDestination} = useContext(DestinationContext); 
+  const {source, setSource} = useSourceContext();
+  const {destination, setDestination} = useDestinationContext(); 
+  const {requestTransfer, setRequestTransfer} = useRequestTransferContext();
   const [routeDistance, setRouteDistance] = useState(0);
   const [routeDistanceInKiloMeter, setRouteDistanceInKiloMeter] = useState(0);
-  
-  
+  const router = useRouter();
+ 
+  // Calculate distance between source and destination
   const calculateDistance  = () => {
-    if (source && destination) {
+    console.log("source: ", source);
+    console.log("destination: ", destination);
+    if ( source && destination ) {
         const service = new google.maps.DistanceMatrixService();
         service.getDistanceMatrix(
           {
@@ -43,13 +49,24 @@ const SearchSection = () => {
     };
 };
 
+  // Calculate distance when source and destination are set
   useEffect(() => {
-    console.log("source: ", source);
-    console.log("destination: ", destination);
-    setSource(source);
-    setDestination(destination);
-    calculateDistance();
+    if (source){ setSource(source) }
+    if (destination){ setDestination(destination) }
+    if (source && destination) { calculateDistance()}
   }, [source, destination]);
+
+  // Handle book now and push to booking page
+  const handleBookNow = ({carType, carModel, rate} ) => {
+      setRequestTransfer({
+        ...requestTransfer,
+        pickupPoint: source.label,
+        dropoffPoint: destination.label,
+        distance: routeDistanceInKiloMeter
+      });
+      console.log("after Request Transfer is: ", requestTransfer);
+      router.push('/booking');
+  };
 
   return (
     <div className='space-y-4 p-4 bg-white rounded-none h-full md:p-6'>
@@ -80,7 +97,12 @@ const SearchSection = () => {
             : 
             null }            
           { routeDistance ? 
-            <CarListOptions distance={routeDistanceInKiloMeter.toFixed(2)} source={source} destination={destination}  /> 
+            <CarListOptions 
+              distance={routeDistanceInKiloMeter.toFixed(2)}
+              source={source}
+              destination={destination} 
+              handleBookNow={handleBookNow} 
+            /> 
             : 
             null }
         </div>

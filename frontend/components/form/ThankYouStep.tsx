@@ -14,7 +14,7 @@ const ThankYouStep = ({ formData }: any) => {
       <h2 className="text-2xl text-center font-bold mb-4 rounded-full bg-slate-300 ">Thank You for Your Booking!</h2>
       <p className='text-center'>Your booking has been successfully submitted.</p>
       <div className='text-center font-semibold text-lg p-4 bg-slate-100 rounded-lg my-4'>
-        <p>Far Rate Total: <span className='font-bold text-2xl'> { formData.rate } THB</span></p>
+        <p>Fare Rate Total: <span className='font-bold text-2xl'> { formData.rate } THB</span></p>
         <p>Make deposit @50% for booking: <span className='font-bold text-2xl'> { (formData.rate / 2).toFixed(2) }THB </span></p>
       </div>
       
