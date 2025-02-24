@@ -65,8 +65,8 @@ export const CreateRequest = async  (prevState: any ,formData: FormData) => {
       note: submission.value.note,
 
       rate: parseFloat(submission.value.rate ?? "0"),
-      pax: submission.value.pax,
-      total: submission.value.total,
+      pax: parseFloat(submission.value.pax ?? "0"),
+      total: parseFloat(submission.value.total ?? "0"),
 
       pickupPoint: submission.value.pickupPoint,
       dropoffPoint: submission.value.dropoffPoint,
