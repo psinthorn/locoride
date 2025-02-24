@@ -47,7 +47,7 @@ export const CreateRequest = async  (prevState: any ,formData: FormData) => {
   if (submission.status !== "success") {
     return submission.reply();
   }
-  
+
   const data = await prisma.requestBooking.create({
     data: {
       requestNumber: submission.value.requestNumber, // Add this field
@@ -64,7 +64,7 @@ export const CreateRequest = async  (prevState: any ,formData: FormData) => {
       flightNo: submission.value.flightNo,
       note: submission.value.note,
 
-      rate: submission.value.rate,
+      rate: parseFloat(submission.value.rate ?? "0"),
       pax: submission.value.pax,
       total: submission.value.total,
 
