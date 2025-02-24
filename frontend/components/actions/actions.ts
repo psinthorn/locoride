@@ -47,8 +47,8 @@ export const CreateRequest = async  (prevState: any ,formData: FormData) => {
   if (submission.status !== "success") {
     return submission.reply();
   }
-  prisma.purchasingRequest
-  const data = await prisma.bookingRequest.create({
+  
+  const data = await prisma.requestBooking.create({
     data: {
       requestNumber: submission.value.requestNumber, // Add this field
 
@@ -100,8 +100,8 @@ export const CreateRequest = async  (prevState: any ,formData: FormData) => {
   // }).then(console.log, console.error);
 
   // return redirect("/")
-  console.log("Data", data)
-  return data;
+  // console.log("Data", data)
+  // return data;
 
 }; 
 
