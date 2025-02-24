@@ -5,7 +5,6 @@ import { use, useState, useEffect } from 'react';
 import { HiUser } from 'react-icons/hi';
 import RateCalculate  from './../utilities/RateCalculate';
 import { useRequestTransferContext } from '@/context/RequestTransferContext';
-import { set } from 'date-fns';
 
 const CarItem = ({car, distance }) => {
   const { requestTransfer, setRequestTransfer } = useRequestTransferContext();
@@ -18,22 +17,16 @@ const CarItem = ({car, distance }) => {
 
   // Set active car ID and button ID
   const handleClick = (carID) => {
-    console.log("Car ID is: ", carID);
-    console.log("Car ID is: ", car);
-    console.log("Rate Estimate is: ", rateEstimate);
-    console.log("Distance is: ", distance);
     setCarId(carID);
     setActiveID(carID);
     setButtonID(carID);
     setSelectedCar(car);
-    console.log("Selected Car is: ", selectedCar);
-  }
+  };
 
   // if distance or car rate changes, then recalculate rate
   useEffect(() => {
       const rateAvrage = RateCalculate({distance}, car.rate);
       setRateEstimate(rateAvrage);
-      console.log("Rate Estimate is: ", rateEstimate);
       setRequestTransfer({...requestTransfer, carType: car.type, carModel: car.model, rate: rateEstimate});
   }, [activeID, distance, car]); 
 

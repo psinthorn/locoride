@@ -3,15 +3,15 @@
 import { useDestinationContext } from '@/context/DestinationContext'
 import { useSourceContext } from '@/context/SourceContext'
 import Image from 'next/image'
-import { useContext, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete'
 
-
+// InputItem component for source and destination input
 const InputItem = ({type}) => {
   const [value, setValue] = useState(null);
   const [inputPlaceHolder, setInputPlaceHolder] = useState(null);
-  const {source, setSource} = useSourceContext();
-  const {destination, setDestination} = useDestinationContext(); 
+  const {source, setSource } = useSourceContext();
+  const {destination, setDestination } = useDestinationContext(); 
 
   // check if type is source or destination and set the placeholder accordingly
   useEffect(() => {
@@ -20,10 +20,7 @@ const InputItem = ({type}) => {
 
   const getLatAndLng = (place, type) => {
     setValue(place);
-    console.log(place);
-    console.log(type);
     const placeId = place?.value.place_id;
-    console.log("Place ID is: " + placeId);
     const service = new google.maps.places.PlacesService(document.createElement('div'));
 
     service.getDetails({placeId}, (place, status) => {

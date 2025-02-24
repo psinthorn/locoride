@@ -15,18 +15,14 @@ const SearchSection = () => {
   const {source, setSource} = useSourceContext();
   const {destination, setDestination} = useDestinationContext(); 
   const {requestTransfer, setRequestTransfer} = useRequestTransferContext();
-
   const [routeDistance, setRouteDistance] = useState(0);
   const [routeDistanceInKiloMeter, setRouteDistanceInKiloMeter] = useState(0);
-  
   const router = useRouter();
  
+  // Calculate distance between source and destination
   const calculateDistance  = () => {
     console.log("source: ", source);
     console.log("destination: ", destination);
-    console.log("source length: ", source.length);
-    console.log("destination length: ", destination.length);
-
     if ( source && destination ) {
         const service = new google.maps.DistanceMatrixService();
         service.getDistanceMatrix(
@@ -53,37 +49,23 @@ const SearchSection = () => {
     };
 };
 
+  // Calculate distance when source and destination are set
   useEffect(() => {
-    if (source){
-      setSource(source);
-    }
-    if (destination){
-      setDestination(destination);
-    }
-    if (source && destination) {
-      calculateDistance();
-    }
+    if (source){ setSource(source) }
+    if (destination){ setDestination(destination) }
+    if (source && destination) { calculateDistance()}
   }, [source, destination]);
 
-
+  // Handle book now and push to booking page
   const handleBookNow = ({carType, carModel, rate} ) => {
-    console.log("Car Type is: ", carType);
-    console.log("Car Model is: ", carModel);
-    console.log("Rate is: ", rate);
-    console.log("Handle book now");
-    console.log("Before Request Transfer is: ", requestTransfer);
       setRequestTransfer({
         ...requestTransfer,
         pickupPoint: source.label,
         dropoffPoint: destination.label,
-        // carType: carType,
-        // carModel: carModel,
-        // rate: rate,
-        //distance: routeDistanceInKilo
+        distance: routeDistanceInKiloMeter
       });
       console.log("after Request Transfer is: ", requestTransfer);
       router.push('/booking');
-      // redirect('/booking');
   };
 
   return (

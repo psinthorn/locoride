@@ -23,14 +23,6 @@ const CarListOptions = ({ distance,  handleBookNow }) => {
     console.log("Request Transfer is: ", requestTransfer);
   };
 
-
-  // useEffect(() => { 
-  //   if (activeIndex && selectedCar) {
-  //     const rateAvrage = RateCalculate({ distance }, selectedCar.rate);
-  //     setRateEstimate(rateAvrage);
-  //   }
-  // }, [activeIndex]);
-
   return ( 
     <div>
         <div className='p-4 overflow-auto h-[480px]'>
