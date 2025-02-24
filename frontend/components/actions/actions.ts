@@ -1,9 +1,9 @@
 "use server"
 
-import { notFound, redirect } from "next/navigation"
+import { redirect } from "next/navigation"
 import prisma from "@/components/utilities/db"
 import { requireAuth } from "@/components/utilities/hooks"
-import { invoiceSchema, onboardingSchema, requestSchema } from "@/components/utilities/ZodSchemas"
+import { onboardingSchema, requestSchema } from "@/components/utilities/ZodSchemas"
 import { parseWithZod } from "@conform-to/zod"
 // import { mailClient } from "@/components/utilities/mailtrap"
 // import { time } from "console"
@@ -47,8 +47,8 @@ export const CreateRequest = async  (prevState: any ,formData: FormData) => {
   if (submission.status !== "success") {
     return submission.reply();
   }
-
-  const data = await prisma.requestBooking.create({
+  prisma.purchasingRequest
+  const data = await prisma.bookingRequest.create({
     data: {
       requestNumber: submission.value.requestNumber, // Add this field
 
