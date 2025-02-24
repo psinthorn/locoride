@@ -73,7 +73,7 @@ export const CreateRequest = async  (prevState: any ,formData: FormData) => {
       carType: submission.value.carType,
       carModel: submission.value.carModel,
 
-      status: submission.value.status,
+      // status: submission.value.status,
       // userId: (await session).user?.id,
     }
   });
