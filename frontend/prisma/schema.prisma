@@ -181,8 +181,8 @@ model RequestBooking {
   carType  String
   carModel String
 
-  pickUpPoint  String
-  dropOffPoint String
+  pickupPoint  String
+  dropoffPoint String
 
   agreement Boolean
   note      String?

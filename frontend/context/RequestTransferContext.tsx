@@ -7,26 +7,26 @@ type RequestTransferProviderProps = {
 };
 
 type requestTransferType = {
-  firstName: string,
-  lastName: string,
-  address: string,
-  email: string,
-  mobile: string,
-  luggage: string,
+  firstName: string;
+  lastName: string;
+  address: string;
+  email: string;
+  mobile: string;
+  luggage: string;
   
-  date: '',
-  time: '',
+  date: string;
+  time: string;
   
-  arrival: '',
-  departure: '',
-  flightNo: string,
-  flightTime: '',
+  arrival: string;
+  departure: string;
+  flightNo: string;
+  flightTime: string;
 
   pickupPoint: string;
   dropoffPoint: string;
 
   distance: number;
-  passengers: number,
+  quantity: number;
   rate: number;
   total: number;
 

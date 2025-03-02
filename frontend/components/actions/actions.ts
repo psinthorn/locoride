@@ -40,43 +40,41 @@ export const OnboardUser =  async (prevState: any ,formDara: FormData) => {
 export const CreateRequest = async  (prevState: any ,formData: FormData) => {
   // const session = requireAuth()
   console.log("Create request action")
-  const submission = parseWithZod(formData, {
-    schema: requestSchema
-  });
 
-  if (submission.status !== "success") {
-    return submission.reply();
-  }
-  prisma.purchasingRequest
-  const data = await prisma.bookingRequest.create({
-    data: {
-      requestNumber: submission.value.requestNumber, // Add this field
+    const submission = parseWithZod(formData, {
+      schema: requestSchema
+    });
 
-      firstName: submission.value.firstName,
-      lastName: submission.value.lastName,
-      email: submission.value.email,
-      mobile: submission.value.mobile,
-
-      date: submission.value.date,
-      time: submission.value.time,
-      arrival: submission.value.arrival,
-      departure: submission.value.departure,
-      flightNo: submission.value.flightNo,
-      note: submission.value.note,
-
-      rate: submission.value.rate,
-      pax: submission.value.pax,
-      total: submission.value.total,
-
-      pickupPoint: submission.value.pickupPoint,
-      dropoffPoint: submission.value.dropoffPoint,
-      carType: submission.value.carType,
-      carModel: submission.value.carModel,
-
-      status: submission.value.status,
-      // userId: (await session).user?.id,
+    if (submission.status !== "success") {
+      return submission.reply();
     }
-  });
+
+    const data = ({
+        requestNumber: submission.value.requestNumber,
+        firstName: submission.value.firstName,
+        lastName: submission.value.lastName,
+        email: submission.value.email,
+        mobile: submission.value.mobile,
+        date: submission.value.date,
+        time: submission.value.time,
+        arrival: submission.value.arrival,
+        departure: submission.value.departure,
+        flightNo: submission.value.flightNo,
+        note: submission.value.note,
+        rate: parseInt(submission.value.rate ?? "0"),
+        quantity: parseInt(submission.value.quantity ?? "0"),
+        total: parseInt(submission.value.total ?? "0"),
+        pickupPoint: submission.value.pickupPoint,
+        dropoffPoint: submission.value.dropoffPoint,
+        carType: submission.value.carType,
+        carModel: submission.value.carModel,
+    });
+
+
+    // redirect to confirmation page
+    return redirect(`/booking?step=confirmation`)   
+  
+
 
   // const sender= {
   //   email: "hello@demomailtrap.com",
@@ -100,11 +98,15 @@ export const CreateRequest = async  (prevState: any ,formData: FormData) => {
   // }).then(console.log, console.error);
 
   // return redirect("/")
-  console.log("Data", data)
-  return data;
+  // console.log("Data", data)
+  // return data;
 
 }; 
 
+export const ConfirmedRequest = async () => {
+  // getdata from context and validate with zod
+
+}
 
 // create new invoice for client or customer
 export const CreateInvoice = async  (prevState: any ,formData: FormData) => {

@@ -10,7 +10,8 @@ import { Divide } from 'lucide-react';
   const GoogleMapsSection = () => {
     const {source, setSource} = useSourceContext();
     const {destination, setDestination} = useDestinationContext(); 
-    const [directionRoutePoints, setDirectionRoutePoints] = useState([]);
+    // const [directionRoutePoints, setDirectionRoutePoints] = useState([]);
+    const [directionRoutePoints, setDirectionRoutePoints] = useState(null);
     const containerStyle = {
       width: '100%',
       height: '100%'
@@ -69,8 +70,10 @@ import { Divide } from 'lucide-react';
     const directionRoute = () => {
       const DirectionService = new google.maps.DirectionsService();
       DirectionService.route({
-        origin:{lat: source.lat, lng: source.lng},
-        destination:{lat: destination.lat, lng: destination.lng},
+        // origin:{lat: source.lat, lng: source.lng},
+        // destination:{lat: destination.lat, lng: destination.lng},
+        origin: source,
+        destination: destination,
         travelMode: google.maps.TravelMode.DRIVING
       }, (result, status) => {
         if(status === google.maps.DirectionsStatus.OK){

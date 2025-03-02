@@ -7,9 +7,13 @@ import ThankYouStep from './ThankYouStep';
 import StepNavigation from './StepNavigation';
 import { CreateRequest } from '../actions/actions';
 import { useRequestTransferContext } from '@/context/RequestTransferContext';
+import { useParams } from 'next/navigation';
 
 const BookingForm = ({ bookingData }) => {
-  const { setRequestTransfer } = useRequestTransferContext();
+  const {requestTransfer, setRequestTransfer } = useRequestTransferContext();
+  console.log(requestTransfer);
+  // const param = useParams();
+  // const step = param("confirmation")
   // Set the initial form data
   const [formData, setFormData] = useState({
     ...bookingData | undefined,
@@ -85,28 +89,28 @@ const BookingForm = ({ bookingData }) => {
     setCurrentStep(currentStep - 1);
   };
 
-  // const handleSubmit = async (e) => {
-  //   //console.log("submit form");
-  //   e.preventDefault();
-  //   const response = await fetch('/api/booking', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify({ ...formData}),
-  //   });
+  const handleSubmit = async (e) => {
+    //console.log("submit form");
+    e.preventDefault();
+    // const response = await fetch('/api/booking', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify({ ...formData}),
+    // });
 
-  //   const result = await response.json();
-  //   setResponseMessage(result.message);
-  //   setShowMessage(true);
+    const result = await response.json();
+    setResponseMessage(result.message);
+    setShowMessage(true);
 
-  //   // Hide the message after 5 seconds
-  //   setTimeout(() => {
-  //     setShowMessage(false);
-  //   }, 5000);
+    // Hide the message after 5 seconds
+    setTimeout(() => {
+      setShowMessage(false);
+    }, 5000);
 
-  //   nextStep(); // Move to the next step after submission
-  // };
+    nextStep(); // Move to the next step after submission
+  };
 
 
   // Add data to database use actionState
@@ -148,7 +152,7 @@ const BookingForm = ({ bookingData }) => {
         </div>
         <StepNavigation currentStep={currentStep} />
         {currentStep === 1 && (
-          <BookingStep bookingData={formData} handleChange={handleChange} nextStep={nextStep} />
+          <BookingStep bookingData={formData} handleChange={handleChange} nextStep={nextStep} handleSubmit={ handleSubmit } />
         )}
         {currentStep === 2 && (
           <ConfirmationStep formData={formData} prevStep={prevStep} />
