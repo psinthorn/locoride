@@ -1,10 +1,10 @@
 import React, { useActionState, useState } from 'react';
 import { Label } from '../ui/label';
 import { CreateRequest } from '../actions/actions';
-import next from 'next';
 import { parseWithZod } from '@conform-to/zod';
 import { requestSchema } from '../utilities/ZodSchemas';
 import { useForm } from '@conform-to/react';
+import SubmitButton from './SubmitButton';
 
 const ConfirmationStep = ({ formData, prevStep }: any) => {
 
@@ -28,13 +28,13 @@ const ConfirmationStep = ({ formData, prevStep }: any) => {
     const [form, fields] = useForm({
         lastResult,
     
-        onValidate({ formData }: { formData: FormData }){
-          return parseWithZod(formData, {
-            schema: requestSchema
-          });
-        },
-          shouldValidate: "onBlur",
-          shouldRevalidate: "onInput"
+        // onValidate({ formData }: { formData: FormData }){
+        //   return parseWithZod(formData, {
+        //     schema: requestSchema
+        //   });
+        // },
+        //   shouldValidate: "onBlur",
+        //   shouldRevalidate: "onInput"
       });
 
   // Use the formData to display the booking details
@@ -78,8 +78,8 @@ const ConfirmationStep = ({ formData, prevStep }: any) => {
             noValidate
             className="mb-4"
           >
-            <input type="hidden" name="requestNumber" value={formData?.requestNumber} />
-            <input type="hidden" name="firstName" value={formData.firstName} />
+            <input type="hidden" name={ fields.requestNumber.name } key={ fields.requestNumber.key } value={formData?.requestNumber} />
+            <input type="hidden" name={ fields.firstName.name } key={ fields.firstName.key } value={formData.firstName} />
             <input type="hidden" name="lastName" value={formData.lastName} />
             <input type="hidden" name="email" value={formData.email} />
             <input type="hidden" name="mobile" value={formData.mobile} />
@@ -91,7 +91,7 @@ const ConfirmationStep = ({ formData, prevStep }: any) => {
             <input type="hidden" name="carType" value={formData.carType} />
             <input type="hidden" name="carModel" value={formData.carModel} />
             <input type="hidden" name="rate" value={formData.rate} />
-            <input type="hidden" name="pax" value={formData?.pax} />
+            <input type="hidden" name="quantity" value={formData?.quantity} />
             <input type="hidden" name="total" value={formData?.total} />
             <input type="hidden" name="pickupPoint" value={formData.pickupPoint} />
             <input type="hidden" name="dropoffPoint" value={formData.dropoffPoint} />
@@ -99,7 +99,7 @@ const ConfirmationStep = ({ formData, prevStep }: any) => {
             <input type="hidden" name="status" value={formData?.status} />
             <input type="hidden" name="userId" value={formData?.userId} />
             <input type="hidden" name="vendorId" value={formData?.vendorId} />
-            <input type="hidden" name="organizationId" value={formData?.organizationId} />
+            <input type="hidden" name="organizationId" value={formData?.organizationId} /> 
 
             <input type="checkbox" id="agree" name="agree" className="mr-2" onChange={onAgree} />
             I agree to the Terms and Conditions
@@ -108,14 +108,15 @@ const ConfirmationStep = ({ formData, prevStep }: any) => {
                   Back
                 </button>
                 { agree ?
-                  <button type="submit" onClick={() => console.log("submit form")}  className="bg-blue-500 text-white py-2 px-4 rounded">
-                    Confirm
-                  </button>
+                  // <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded">
+                  //   Confirm
+                  // </button> 
+                  <SubmitButton text='Confirm' />
                   :
                   <button type="submit" disabled className="bg-blue-200 text-white py-2 px-4 rounded">
                     Confirm
                   </button>
-                }
+                } 
             </div>
           </form> 
 

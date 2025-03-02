@@ -8,36 +8,36 @@ export const onboardingSchema =  z.object({
 });
 
 export const requestSchema = z.object({
-  requestNumber: z.string(),
+  requestNumber: z.string().default("REQ-" + Math.floor(Math.random() * 1000000)),
 
   firstName: z.string().min(2, "Minimum is 2 characters"),
   lastName: z.string().min(2, "Minimum is 2 characters"),
   email: z.string().email("Invalid email address"),
-  address: z.string().min(2, "Minimum is 2 characters"),
-  mobile: z.string().min(2, "Minimum is 2 characters"),
+  address: z.string().optional(),
+  mobile: z.string().optional(),
   whatsApp: z.string().optional(),
 
-  date: z.string().min(2, "Minimum is 2 characters"),
-  time: z.string().min(2, "Minimum is 2 characters"),
+  date: z.string().optional(),
+  time: z.string().optional(),
 
   arrival: z.string().optional(),
   departure: z.string().optional(),
   flightNo: z.string().optional(),
   flightDateTime: z.string().optional(),
  
-  carType: z.string().min(2, "Minimum is 2 characters"),
-  carModel: z.string().min(2, "Minimum is 2 characters"),
+  carType: z.string().optional(),
+  carModel: z.string().optional(),
 
   distance: z.string().optional(),
   rate: z.string().optional(),
-  pax: z.string().optional(),
+  quantity: z.string().optional(),
   total: z.string().optional(),
 
-  pickupPoint: z.string().min(2, "Minimum is 2 characters"),
-  dropoffPoint: z.string().min(2, "Minimum is 2 characters"),
+  pickupPoint: z.string().optional(),
+  dropoffPoint: z.string().optional(),
 
   note: z.string().optional(),
-  status: z.enum(["PENDING","CONFIRMED","CANCELLED","COMPLETED"]).default("PENDING")
+  // status: z.enum(["PENDING","CONFIRMED","CANCELLED","COMPLETED"]).default("PENDING")
 
 });
 

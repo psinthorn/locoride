@@ -10,7 +10,7 @@ interface ButtonText {
 }
 
 const SubmitButton = ({ text }: ButtonText ) => {
-  console.log("submit button");
+  console.log("click on submit button");
   const { pending } = useFormStatus()
   return (
     <div>

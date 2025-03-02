@@ -17,42 +17,23 @@ const BookingStep = ({bookingData, handleChange, nextStep, handleSubmit }: any) 
   const [formData, setFormData] = useState(undefined);
   const [isFormValid, setIsFormValid] = useState(false);
 
-  // const [lastResult, actionForm] = useActionState(CreateRequest, undefined);
+  const [lastResult, actionForm] = useActionState(CreateRequest, undefined);
   const [form, fields] = useForm({
+      lastResult,
       onValidate({ formData }: { formData: FormData }){
-         const submission = parseWithZod(formData, {
+        return parseWithZod(formData, {
           schema: requestSchema
         });
-        console.log("result: ", submission);
-       if(submission.status === "success"){
-          setIsFormValid(true)
-          setRequestTransfer(bookingData)
-          nextStep();
-       };
-       return submission;
       },
         shouldValidate: "onBlur",
         shouldRevalidate: "onInput"
     });
 
-    // useEffect(() => {
-    //     setFormData({
-    //       ...bookingData,
-    //     });
-    //   }, [bookingData]);
-
-    
-
-  // const handleClick = (event: React.FormEvent) => {
-  //   event.preventDefault();
-  //   //const result = form.validate();
-  //   if (isFormValid) {
-  //     console.log("Form data:", formData);
-      
-  //   } else {
-  //     console.log("Validation errors:" );
-  //   }
-  // };
+ useEffect(() => {
+    setFormData({
+      ...bookingData,
+    });
+  }, [bookingData]);
 
   // const onSubmit = (event: React.FormEvent) => {
   //   event.preventDefault();
@@ -72,7 +53,7 @@ const BookingStep = ({bookingData, handleChange, nextStep, handleSubmit }: any) 
     <div className="bg-white p-8 shadow-md rounded">
       
       <form 
-        //action={actionForm} 
+        action={actionForm} 
         id={form.id}
         onSubmit={form.onSubmit}
         noValidate

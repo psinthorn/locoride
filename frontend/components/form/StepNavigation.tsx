@@ -1,7 +1,7 @@
 import React from 'react';
 
 const StepNavigation = ({ currentStep }: any) => {
-  const steps = ['Booking', 'Payment', 'Confirmation'];
+  const steps = ['Booking', 'Confirmation', 'Payment'];
 
   return (
     <div className="flex justify-center mb-6">
