@@ -5,10 +5,13 @@ import { parseWithZod } from '@conform-to/zod';
 import { requestSchema } from '../utilities/ZodSchemas';
 import { useForm } from '@conform-to/react';
 import SubmitButton from './SubmitButton';
+import { useRequestTransferContext } from '@/context/RequestTransferContext';
 
-const ConfirmationStep = ({ formData, prevStep }: any) => {
-
+const ConfirmationStep = ({ formData, prevStep, nextStep }: any) => {
+  //const { requestTransfer, setRequestTransfer } = useRequestTransferContext()
+  const [ isFormValid, setIsFormValid ] = useState(false)
   console.log("Data on confirmation page", formData);
+
   // Agee to terms and conditions
   const [agree, setAgree] = useState(false);
   const onAgree = () => {
@@ -26,15 +29,19 @@ const ConfirmationStep = ({ formData, prevStep }: any) => {
   const [lastResult, actionForm] = useActionState(CreateRequest, undefined);
   // validate form with zod schema
     const [form, fields] = useForm({
-        lastResult,
-    
-        // onValidate({ formData }: { formData: FormData }){
-        //   return parseWithZod(formData, {
-        //     schema: requestSchema
-        //   });
-        // },
-        //   shouldValidate: "onBlur",
-        //   shouldRevalidate: "onInput"
+        // lastResult,
+        onValidate({ formData }: { formData: FormData }){
+          const submission = parseWithZod(formData, {
+            schema: requestSchema
+          });
+          if(submission.status === "success"){
+            setIsFormValid(true)
+          }
+          nextStep()
+          return submission
+        },
+          shouldValidate: "onBlur",
+          shouldRevalidate: "onInput"
       });
 
   // Use the formData to display the booking details

@@ -5,11 +5,8 @@ import prisma from "@/components/utilities/db"
 import { requireAuth } from "@/components/utilities/hooks"
 import { onboardingSchema, requestSchema } from "@/components/utilities/ZodSchemas"
 import { parseWithZod } from "@conform-to/zod"
-// import { mailClient } from "@/components/utilities/mailtrap"
-// import { time } from "console"
-// import { array } from "zod"
-// import { sub } from "date-fns"
-
+import { mailClient } from "@/components/utilities/mailtrap"
+import { MailtrapClient } from "mailtrap"
 
 export const OnboardUser =  async (prevState: any ,formDara: FormData) => {
   const session = requireAuth()
@@ -38,9 +35,8 @@ export const OnboardUser =  async (prevState: any ,formDara: FormData) => {
 
 // create new booking request for client or customer
 export const CreateRequest = async  (prevState: any ,formData: FormData) => {
-  // const session = requireAuth()
-  console.log("Create request action")
-
+    // const session = requireAuth()
+    console.log("Create request action")
     const submission = parseWithZod(formData, {
       schema: requestSchema
     });
@@ -70,43 +66,65 @@ export const CreateRequest = async  (prevState: any ,formData: FormData) => {
         carModel: submission.value.carModel,
     });
 
-
-    // redirect to confirmation page
-    return redirect(`/booking?step=confirmation`)   
-  
-
-
   // const sender= {
   //   email: "hello@demomailtrap.com",
-  //   name: data.fromEmail
+  //   name: "booking@rungruangsubsamui.com"
   // }
 
   // mailClient.send({
   //   from: sender,
-  //   to: [{ email: data.clientEmail }],
+  //   to: [{ email: data.email }],
   //   // subject: `Invoice ${data.invoiceNumber} from ${data.fromName}`,
   //   // text: `Hello ${data.clientName},\n\nYou have a new invoice from ${data.fromName} for the amount of ${data.itemRate} ${data.currency}.\n\nPlease find the invoice attached.\n\nBest Regards,\n${data.fromName}`,
   //   // category: "invoice test",
   //   template_uuid: "eb703aa6-64b1-4960-9b78-a4b486f75124",
   //   template_variables: {
-  //     "clientName": data.clientName,
-  //     "invoicenumber": data.invoiceNumber,
-  //     "dueDate": data.dueDate,
-  //     "total": data.itemTotal,
-  //     "invoiceLink": `http://localhost:3000/invoice/${data.id}`
+  //     "clientName": data.firstName,
+  //     "requestNumber": data.requestNumber,
+  //     // "dueDate": data.date?.toString(),
+  //     "total": data.rate,
+  //     "requestLink": `http://localhost:3000/request/${data.requestNumber}`
   //   }
   // }).then(console.log, console.error);
 
-  // return redirect("/")
-  // console.log("Data", data)
-  // return data;
+
+
+const TOKEN = "4d31240f32e99bd425b0f7659afb4d5d";
+
+const client = new MailtrapClient({
+  token: TOKEN,
+});
+
+const sender = {
+  email: "hello@f2.co.th",
+  name: "Mailtrap Test",
+};
+const recipients = [
+  {
+    email: data.email,
+  },
+  {
+    email: "f2coltd@gmail.com"
+  }
+];
+
+client
+  .send({
+    from: sender,
+    to: recipients,
+    subject: "You are awesome!",
+    text: "Congrats for sending test email with Mailtrap! and this is use bulk mail",
+    category: "Integration Test",
+  })
+  .then(console.log, console.error);
+  
+  return data;
 
 }; 
 
-export const ConfirmedRequest = async () => {
-  // getdata from context and validate with zod
 
-}
+
+
 
 // create new invoice for client or customer
 export const CreateInvoice = async  (prevState: any ,formData: FormData) => {

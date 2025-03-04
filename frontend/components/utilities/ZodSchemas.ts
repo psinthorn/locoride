@@ -17,7 +17,7 @@ export const requestSchema = z.object({
   mobile: z.string().optional(),
   whatsApp: z.string().optional(),
 
-  date: z.string().optional(),
+  date: z.string(),
   time: z.string().optional(),
 
   arrival: z.string().optional(),
