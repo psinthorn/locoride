@@ -12,67 +12,48 @@ import { set } from "date-fns";
 import { useFormStatus } from "react-dom";
 import { Loader2 } from "lucide-react";
 
-const BookingStep = ({bookingData, handleChange, nextStep, handleSubmit }: any) => {
+const BookingStep = ({bookingData, handleChange, nextStep, handleSendmail }: any) => {
   const { requestTransfer, setRequestTransfer } = useRequestTransferContext();
   const [formData, setFormData] = useState(undefined);
   const [isFormValid, setIsFormValid] = useState(false);
 
-  // const [lastResult, actionForm] = useActionState(CreateRequest, undefined);
+  console.log(requestTransfer);
+  //const [lastResult, actionForm] = useActionState(CreateRequest, undefined);
   const [form, fields] = useForm({
       onValidate({ formData }: { formData: FormData }){
          const submission = parseWithZod(formData, {
-          schema: requestSchema
-        });
-        console.log("result: ", submission);
-       if(submission.status === "success"){
-          setIsFormValid(true)
-          setRequestTransfer(bookingData)
-          nextStep();
-       };
-       return submission;
+            schema: requestSchema
+          });
+
+            // if submission success then setFormValid to true
+            // set requestTransfer context with submit form data
+            // go to confirmation step
+            console.log("result: ", submission);
+            if(submission.status === "success"){
+              setIsFormValid(true)
+              setRequestTransfer({
+                ...bookingData
+              })
+              nextStep();
+            };
+
+        return submission;
       },
         shouldValidate: "onBlur",
         shouldRevalidate: "onInput"
     });
 
-    // useEffect(() => {
-    //     setFormData({
-    //       ...bookingData,
-    //     });
-    //   }, [bookingData]);
-
-    
-
-  // const handleClick = (event: React.FormEvent) => {
-  //   event.preventDefault();
-  //   //const result = form.validate();
-  //   if (isFormValid) {
-  //     console.log("Form data:", formData);
-      
-  //   } else {
-  //     console.log("Validation errors:" );
-  //   }
-  // };
-
-  // const onSubmit = (event: React.FormEvent) => {
-  //   event.preventDefault();
-  //   const result = form.validate();
-  //   if (result.isValid) {
-  //     console.log("Form data:", formData);
-  //     setRequestTransfer(formData); // Update the context with form data
-  //     nextStep(); // Call the nextStep function
-  //   } else {
-  //     console.log("Validation errors:", result.errors);
-  //   }
-  // };
-
-  
+    useEffect(() => {
+        setFormData({
+          ...bookingData,
+        });
+      }, [bookingData]);
 
   return (
     <div className="bg-white p-8 shadow-md rounded">
       
       <form 
-        //action={actionForm} 
+        // action={actionForm} 
         id={form.id}
         onSubmit={form.onSubmit}
         noValidate
@@ -83,7 +64,7 @@ const BookingStep = ({bookingData, handleChange, nextStep, handleSubmit }: any) 
           <input
             name={fields.firstName.name}
             key={fields.firstName.key}
-            defaultValue={fields.firstName.initialValue}
+            defaultValue={requestTransfer?.firstName}
             type='text' 
             placeholder='First Name' 
             onChange={handleChange}
@@ -97,7 +78,7 @@ const BookingStep = ({bookingData, handleChange, nextStep, handleSubmit }: any) 
             type="text"
             name={fields.lastName.name}
             key={fields.lastName.key}
-            defaultValue={fields.lastName.initialValue}
+            defaultValue={requestTransfer?.lastName}
             placeholder="Last Name"
             onChange={handleChange}
             className="w-full px-3 py-2 border rounded"
@@ -110,7 +91,7 @@ const BookingStep = ({bookingData, handleChange, nextStep, handleSubmit }: any) 
             type="email"
             name={fields.email.name}
             key={fields.email.key}
-            defaultValue={fields.email.initialValue}
+            defaultValue={requestTransfer?.email}
             onChange={handleChange}
             placeholder="Your Email"
             className="w-full px-3 py-2 border rounded"
