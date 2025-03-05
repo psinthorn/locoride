@@ -61,6 +61,10 @@ const BookingStep = ({bookingData, handleChange, nextStep }: any) => {
         className="flex flex-col space-y-4"
       >
         <div>
+          <input hidden 
+          type="text" 
+          name="requestNumber" 
+          value={ Math.floor(Math.random() * 1000000000) } />
           <label className="block text-gray-700">First Name</label>
           <input
             name={fields.firstName.name}
