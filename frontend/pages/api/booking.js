@@ -1,38 +1,3 @@
-// // import React from 'react'
-// // import nodemailer from 'nodemailer';
-
-// // const booking = (req, res) => {
-
-// //     const transporter = nodemailer.createTransport({
-// //     host: 'sandbox.smtp.mailtrap.io',
-// //     port: 2525,
-// //     auth: {
-// //       user: '192643efe13672',
-// //       pass: '2a309a3b94ae90',
-// //     },
-// //   });
-
-// //   async function mailServ() {
-// //     // send mail with defined transport object
-// //     const info = await transporter.sendMail({
-// //       from: '"F2xMail 👻" <f2coltd@gmail.com>', // sender address
-// //       to: "psinthorn@gmail.com", // list of receivers
-// //       subject: "Hello ✔", // Subject line
-// //       text: "Hello world? LOcoride", // plain text body
-// //       html: "<b>Hello world?</b>", // html body
-// //     });
-  
-// //     console.log("Message sent: %s", info.messageId);
-// //     // Message sent: <d786aa62-4e0a-070a-47ed-0b0666549519@ethereal.email>
-// //   }
-// //   console.log('mailServ excute Go ->', );
-// //   mailServ().catch(console.error);
-// // }
-
-// // export default booking
-
-
-//import { NextApiRequest, NextApiResponse } from 'next';
 import nodemailer from 'nodemailer';
 // import mysql from 'mysql2/promise';
 //import { EmailOptions } from '../../types';
@@ -63,12 +28,15 @@ export default async (req, res) => {
         <h1>New Request Transfer Booking</h1>
         <h3>Customer Details:</h3>
         <hr/>
+        <h3>Booking Details</h3>
+        <hr/>
+        <p><strong>Booking ID:</strong> ${requestNumber}</p>
         <p><strong>First Name:</strong> ${firstName}</p>
         <p><strong>Last Name:</strong> ${lastName}</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Mobile:</strong> ${mobile}</p>
         <p><strong>Flight No:</strong> ${flightNo}</p>
-        <p><strong>Arrival Time:</strong> ${date}</p>
+        <p><strong>Pickup Date/Time:</strong> ${date}</p>
         <p><strong>Car Type:</strong> ${carType}</p>
         <p><strong>Car Type:</strong> ${carModel}</p>
         <p><strong>Rate:</strong> ${rate}</p>
@@ -98,7 +66,7 @@ export default async (req, res) => {
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Mobile:</strong> ${mobile}</p>
         <p><strong>Flight No:</strong> ${flightNo}</p>
-        <p><strong>Arrival Time:</strong> ${date}</p>
+        <p><strong>Pickup Date/Time:</strong> ${date}</p>
         <p><strong>Car Type:</strong> ${carType}</p>
          <p><strong>Car Type:</strong> ${carModel}</p>
         <p><strong>Rate:</strong> ${rate}</p>

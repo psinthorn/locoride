@@ -8,7 +8,7 @@ export const onboardingSchema =  z.object({
 });
 
 export const requestSchema = z.object({
-  requestNumber: z.string().default("REQ-" + Math.floor(Math.random() * 1000000)),
+  requestNumber: z.string().optional(),
 
   firstName: z.string().min(2, "Minimum is 2 characters"),
   lastName: z.string().min(2, "Minimum is 2 characters"),

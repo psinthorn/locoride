@@ -87,7 +87,7 @@ const BookingForm = ({ bookingData }) => {
           </h2>
         </div>
         {showMessage && (
-          <p className="mt-4 text-center text-green-600">{responseMessage}</p>
+          <p className="mt-4 mb-4 text-center text-green-600">{responseMessage}</p>
         )}
         <StepNavigation currentStep={currentStep} />
         {currentStep === 1 && (
