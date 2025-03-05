@@ -142,17 +142,15 @@ export default async (req, res) => {
       try {
         // Send email to the administrator
         await transporter.sendMail(adminMailOptions);
-
         // Send acknowledgment email to the customer with PDF voucher
         await transporter.sendMail(customerMailOptions);
-
+        // Success message
         res.status(200).json({ message: 'Messages sent successfully!' });
       } catch (error) {
         console.error('Error sending email:', error);
         res.status(500).json({ message: 'Failed to send messages.' });
       }
-
-    //});
+    // });
   } else {
     res.status(405).json({ message: 'Method not allowed' });
   }
