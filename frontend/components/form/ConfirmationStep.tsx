@@ -5,9 +5,9 @@ import { parseWithZod } from '@conform-to/zod';
 import { requestSchema } from '../utilities/ZodSchemas';
 import { useForm } from '@conform-to/react';
 import SubmitButton from './SubmitButton';
-import { useRequestTransferContext } from '@/context/RequestTransferContext';
+// import { useRequestTransferContext } from '@/context/RequestTransferContext';
 
-const ConfirmationStep = ({ formData, prevStep, nextStep }: any) => {
+const ConfirmationStep = ({ formData, handleSendmail, prevStep, nextStep }: any) => {
   //const { requestTransfer, setRequestTransfer } = useRequestTransferContext()
   const [ isFormValid, setIsFormValid ] = useState(false)
   console.log("Data on confirmation page", formData);
@@ -25,24 +25,19 @@ const ConfirmationStep = ({ formData, prevStep, nextStep }: any) => {
     }
   };
 
-  // Use action state to create a new request
-  const [lastResult, actionForm] = useActionState(CreateRequest, undefined);
-  // validate form with zod schema
-    const [form, fields] = useForm({
-        // lastResult,
-        onValidate({ formData }: { formData: FormData }){
-          const submission = parseWithZod(formData, {
-            schema: requestSchema
-          });
-          if(submission.status === "success"){
-            setIsFormValid(true)
-          }
-          nextStep()
-          return submission
-        },
-          shouldValidate: "onBlur",
-          shouldRevalidate: "onInput"
-      });
+  // // Use action state to create a new request
+  // const [lastResult, actionForm] = useActionState(CreateRequest, undefined);
+  // // validate form with zod schema
+  // const [form, fields] = useForm({
+  //       //lastResult,
+  //   onValidate({ formData }: { formData: FormData }){
+  //     return parseWithZod(formData, {
+  //         schema: requestSchema
+  //     });
+  //   },
+  //         shouldValidate: "onBlur",
+  //         shouldRevalidate: "onInput"
+  //   });
 
   // Use the formData to display the booking details
   return (
@@ -79,13 +74,13 @@ const ConfirmationStep = ({ formData, prevStep, nextStep }: any) => {
       
           {/* Agree to terms and conditions form */}
           <form
-            action={actionForm}
-            id={form.id}
-            onSubmit={form.onSubmit}
+            //action={actionForm}
+            // id={form.id}
+            // onSubmit={form.onSubmit}
             noValidate
             className="mb-4"
           >
-            <input type="hidden" name={ fields.requestNumber.name } key={ fields.requestNumber.key } value={formData?.requestNumber} />
+            {/* <input type="hidden" name={ fields.requestNumber.name } key={ fields.requestNumber.key } value={formData?.requestNumber} />
             <input type="hidden" name={ fields.firstName.name } key={ fields.firstName.key } value={formData.firstName} />
             <input type="hidden" name="lastName" value={formData.lastName} />
             <input type="hidden" name="email" value={formData.email} />
@@ -106,7 +101,7 @@ const ConfirmationStep = ({ formData, prevStep, nextStep }: any) => {
             <input type="hidden" name="status" value={formData?.status} />
             <input type="hidden" name="userId" value={formData?.userId} />
             <input type="hidden" name="vendorId" value={formData?.vendorId} />
-            <input type="hidden" name="organizationId" value={formData?.organizationId} /> 
+            <input type="hidden" name="organizationId" value={formData?.organizationId} />  */}
 
             <input type="checkbox" id="agree" name="agree" className="mr-2" onChange={onAgree} />
             I agree to the Terms and Conditions
@@ -115,10 +110,10 @@ const ConfirmationStep = ({ formData, prevStep, nextStep }: any) => {
                   Back
                 </button>
                 { agree ?
-                  // <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded">
-                  //   Confirm
-                  // </button> 
-                  <SubmitButton text='Confirm' />
+                  <button type="submit" onClick={ handleSendmail } className="bg-blue-500 text-white py-2 px-4 rounded">
+                    Confirm
+                  </button> 
+                  //<SubmitButton text='Confirm' />
                   :
                   <button type="submit" disabled className="bg-blue-200 text-white py-2 px-4 rounded">
                     Confirm

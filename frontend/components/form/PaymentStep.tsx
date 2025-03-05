@@ -27,7 +27,7 @@ const PaymentStep = ({ formData, handleChange, nextStep, prevStep }: any) => {
         <div className='flex justify-between pb-1 border-b-2'>
           <div>Bank Account:</div>
           <div className='gap-4'></div>
-          <div>1234567890</div>
+          <div>478-1-07889-8</div>
         </div>
         <div className='flex justify-between pb-1 border-b-2'>
           <div>Account Name:</div>
