@@ -11,8 +11,9 @@ import SubmitButton from "@/components/form/SubmitButton";
 import { set } from "date-fns";
 import { useFormStatus } from "react-dom";
 import { Loader2 } from "lucide-react";
+import { request } from "http";
 
-const BookingStep = ({bookingData, handleChange, nextStep, handleSendmail }: any) => {
+const BookingStep = ({bookingData, handleChange, nextStep }: any) => {
   const { requestTransfer, setRequestTransfer } = useRequestTransferContext();
   const [formData, setFormData] = useState(undefined);
   const [isFormValid, setIsFormValid] = useState(false);
@@ -60,6 +61,10 @@ const BookingStep = ({bookingData, handleChange, nextStep, handleSendmail }: any
         className="flex flex-col space-y-4"
       >
         <div>
+          <input hidden 
+          type="text" 
+          name="requestNumber" 
+          value={ Math.floor(Math.random() * 1000000000) } />
           <label className="block text-gray-700">First Name</label>
           <input
             name={fields.firstName.name}
@@ -104,7 +109,7 @@ const BookingStep = ({bookingData, handleChange, nextStep, handleSendmail }: any
             type="tel"
             name={fields.mobile.name}
             key={fields.mobile.key}
-            defaultValue={fields.mobile.initialValue}
+            defaultValue={requestTransfer?.mobile}
             placeholder="Your Mobile"
             onChange={handleChange}
             className="w-full px-3 py-2 border rounded"
@@ -117,7 +122,7 @@ const BookingStep = ({bookingData, handleChange, nextStep, handleSendmail }: any
             type="datetime-local"
             name={fields.date.name}
             key={fields.date.key}
-            defaultValue={fields.date.initialValue}
+            defaultValue={requestTransfer?.date}
             // placeholder="Date"
             onChange={handleChange}
             className="w-full px-3 py-2 border rounded"
@@ -129,7 +134,7 @@ const BookingStep = ({bookingData, handleChange, nextStep, handleSendmail }: any
             type="text"
             name={fields.flightNo.name}
             key={fields.flightNo.key}
-            defaultValue={fields.flightNo.initialValue}
+            defaultValue={requestTransfer?.flightNo}
             placeholder="Your Flight No."
             onChange={handleChange}
             className="w-full px-3 py-2 border rounded"

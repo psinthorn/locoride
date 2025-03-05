@@ -86,19 +86,20 @@ const BookingForm = ({ bookingData }) => {
             Book Your Transfer
           </h2>
         </div>
+        {showMessage && (
+          <p className="mt-4 text-center text-green-600">{responseMessage}</p>
+        )}
         <StepNavigation currentStep={currentStep} />
         {currentStep === 1 && (
-          <BookingStep bookingData={formData} handleChange={handleChange} nextStep={nextStep} handleSendmail={ handleSendmail } />
+          <BookingStep bookingData={formData} handleChange={ handleChange } nextStep={ nextStep }  />
         )}
         {currentStep === 2 && (
-          <ConfirmationStep formData={formData} prevStep={prevStep} />
+          <ConfirmationStep formData={formData} prevStep={ prevStep } handleSendmail={ handleSendmail } />
         )}
         {currentStep === 3 && (
           <ThankYouStep formData={formData} />
         )}
-        {showMessage && (
-          <p className="mt-4 text-center text-green-600">{responseMessage}</p>
-        )}
+        
       </div>
     </section>
   );
