@@ -44,6 +44,7 @@ const ConfirmationStep = ({ formData, handleSendmail, prevStep, nextStep }: any)
     <div className="bg-white p-8 shadow-md rounded">
       <h2 className="text-2xl font-bold mb-4">Confirm Your Booking</h2>
       <p className='border-b-2'>Please confirm your booking details below:</p>
+      <p><strong>Request No.:</strong> {formData.requestNumber}</p>
       <p><strong>First Name:</strong> {formData.firstName}</p>
       <p><strong>Last Name:</strong> {formData.lastName}</p>
       <p><strong>Email:</strong> {formData.email}</p>

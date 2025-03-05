@@ -7,6 +7,7 @@ type RequestTransferProviderProps = {
 };
 
 type requestTransferType = {
+  requestNumber: string;
   firstName: string;
   lastName: string;
   address: string;

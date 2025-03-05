@@ -33,7 +33,8 @@ const BookingStep = ({bookingData, handleChange, nextStep }: any) => {
             if(submission.status === "success"){
               setIsFormValid(true)
               setRequestTransfer({
-                ...bookingData
+                ...bookingData,
+                requestNumber: "REQ-" +  Math.floor(Math.random() * 1000000000)
               })
               nextStep();
             };
@@ -47,6 +48,7 @@ const BookingStep = ({bookingData, handleChange, nextStep }: any) => {
     useEffect(() => {
         setFormData({
           ...bookingData,
+          
         });
       }, [bookingData]);
 
@@ -61,10 +63,18 @@ const BookingStep = ({bookingData, handleChange, nextStep }: any) => {
         className="flex flex-col space-y-4"
       >
         <div>
-          <input hidden 
-          type="text" 
-          name="requestNumber" 
-          value={ Math.floor(Math.random() * 1000000000) } />
+          {/* <label className="block text-gray-700">Request No.</label>
+          <input 
+            disabled
+            type="text" 
+            name={fields.requestNumber.name} 
+            key={fields.requestNumber.key}
+            value={"REQ-" +  Math.floor(Math.random() * 1000000000) } 
+            className="w-full px-3 py-2 border rounded"
+          /> */}
+          <p className="text-sm text-red-500">{fields.requestNumber.errors}</p>
+        </div>
+        <div>
           <label className="block text-gray-700">First Name</label>
           <input
             name={fields.firstName.name}
