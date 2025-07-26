@@ -60,7 +60,13 @@ Locoride is a cutting-edge platform designed to revolutionize urban transportati
 - Webflow
 
 ## Getting Started
+Dowonload rpositories and install dependencies 
 
+```bash
+git clone https://github.com/psinthorn/locoride.git
+npm run install --legacy-peer-deps
+
+```
 First, run the frontend development server:
 
 ```bash
