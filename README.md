@@ -67,7 +67,7 @@ git clone https://github.com/psinthorn/locoride.git
 npm run install --legacy-peer-deps
 
 ```
-First, run the frontend development server:
+to run the frontend development server:
 
 ```bash
 npm run dev
